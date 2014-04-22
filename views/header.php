@@ -16,7 +16,7 @@
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<!-- Strap it up if your gonna hit it SMART -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-		<script src="js/ftellipsis.min.js"></script>
+		<script src="js/ftellipsis.js"></script>
 		<script type="text/javascript">
         function Redirect(keyword)
         {
