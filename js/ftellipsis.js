@@ -558,8 +558,6 @@
    */
 
   function getSize(el) {
-    // return [el.offsetWidth, el.offsetHeight];
-console.log('height', $(el).height());
     var height = $(el).height() - $(el).find('strong').height();
     return [el.offsetWidth, height];
   }
