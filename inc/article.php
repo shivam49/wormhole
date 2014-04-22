@@ -15,9 +15,18 @@ function filterArticle(&$article) {
     return true;
   }
 
-  $broken = strpos($article['fields']['image'][0], '/>');
-  if ($broken !== false) {
-    $article['fields']['image'][0] = substr($article['fields']['image'][0], 0, $broken - 1);
+  foreach ($article['fields'] as &$field) {
+    if (is_array($field)) {
+      $broken = strpos($field[0], '/>');
+      if ($broken !== false) {
+        $field[0] = substr($field[0], 0, $broken - 1);
+      }
+    } else {
+      $broken = strpos($field, '/>');
+      if ($broken !== false) {
+        $field = substr($field, 0, $broken - 1);
+      }
+    }
   }
 }
 
