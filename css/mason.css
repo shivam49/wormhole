@@ -8,13 +8,13 @@
   height: 380px;
   padding-right: 2pt; }
   .article .image {
-    min-height: 80%;
+    min-height: 50%;
     background: none no-repeat scroll center center / cover transparent; }
   .article .text {
     color: #ffffff;
     padding: 10px;
     margin-right: 2pt;
-    max-height: 50%;
+    min-height: 50%;
     left: 0;
     right: 0; }
     .article .text.blue {
