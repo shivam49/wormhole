@@ -73,7 +73,7 @@ function getArticles($keywords = false, $textSearch = false) {
   $response = [];
 
   $json = '{
-    "size": 49,
+    "size": 50,
     "sort": {
       "_script": {
         "script": "Math.random()",
@@ -92,6 +92,8 @@ function getArticles($keywords = false, $textSearch = false) {
 
   $results = $client->search($params);
 
+  $titles = [];
+
   foreach ($results['hits']['hits'] as $hit) {
     if (filterArticle($hit)) {
       continue;
@@ -103,6 +105,11 @@ function getArticles($keywords = false, $textSearch = false) {
     $hit['fields']['imagePath'] = '/cache.php?url=' . urlencode(strip_tags($hit['fields']['image'][0]));
     $hit['fields']['excerpt'] = strip_tags($hit['fields']['description'][0]);
     $hit['fields']['color'] = getColor($topic);
+
+    if (in_array($hit['fields']['title'], $titles)) {
+      continue;
+    }
+    array_push($titles, $hit['fields']['title']);
 
     array_push($response, $hit['fields']);
   }
