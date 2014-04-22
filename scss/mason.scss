@@ -23,7 +23,7 @@ $gutter: 2pt;
   padding-right: $gutter;
   .image {
     min-height: 80%;
-    background: none no-repeat scroll center center / cover  transparent;
+    background: none no-repeat scroll center center / cover transparent;
   }
   .text {
     color: #ffffff;
@@ -38,6 +38,13 @@ $gutter: 2pt;
     &.purple { background-color: $purple; }
     max-height: 50%;
     left: 0; right: 0;
+    strong {
+      font-size: 1.5em;
+    }
+    p {
+      padding-top: 1.143em;
+      font-size: 1.286em;
+    }
   }
 }
 
