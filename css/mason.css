@@ -34,8 +34,9 @@
     .article .text strong {
       font-size: 1.5em; }
     .article .text p {
-      padding-top: 1.143em;
-      font-size: 1.286em; }
+      padding-top: 0.65em;
+      font-size: 1.286em;
+      line-height: 1.286em; }
 
 @font-face {
   font-family: 'ProximaNovaRegular';
