@@ -126,7 +126,7 @@ function getArticles($keywords = false, $textSearch = false) {
     $hit['fields']['category'] = $topic;
     $hit['fields']['id'] = $hit['_id'];
     $hit['fields']['title'] = strip_tags($hit['fields']['title'][0]);
-    if ($hit['field']['image'][0] === 'default') {
+    if ($hit['fields']['image'][0] === 'default') {
       $hit['fields']['imagePath'] = '/cache.php?url=' . urlencode(strip_tags($hit['fields']['image'][0]));
     } else {
       $hit['fields']['imagePath'] = "/img/default-$topic.svg";
