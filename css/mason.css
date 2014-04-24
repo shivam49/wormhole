@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'ProximaNovaRegular';
+  src: url("../fonts/proximanova-regular-webfont.svg") format("svg"); }
+@font-face {
+  font-family: 'ProximaNovaBold';
+  src: url("../fonts/proximanova-bold-webfont.svg") format("svg"); }
+/*	TYPOGRAPHY	*/
+.side-navigation > li > a {
+  font-family: "ProximaNovaRegular"; }
+
+strong {
+  font-family: "ProximaNovaBold";
+  font-size: 1.3em;
+  line-height: 110%; }
+
 #content-wrap .col-xs-1, #content-wrap .col-sm-1, #content-wrap .col-md-1, #content-wrap .col-lg-1, #content-wrap .col-xs-2, #content-wrap .col-sm-2, #content-wrap .col-md-2, #content-wrap .col-lg-2, #content-wrap .col-xs-3, #content-wrap .col-sm-3, #content-wrap .col-md-3, #content-wrap .col-lg-3, #content-wrap .col-xs-4, #content-wrap .col-sm-4, #content-wrap .col-md-4, #content-wrap .col-lg-4, #content-wrap .col-xs-5, #content-wrap .col-sm-5, #content-wrap .col-md-5, #content-wrap .col-lg-5, #content-wrap .col-xs-6, #content-wrap .col-sm-6, #content-wrap .col-md-6, #content-wrap .col-lg-6, #content-wrap .col-xs-7, #content-wrap .col-sm-7, #content-wrap .col-md-7, #content-wrap .col-lg-7, #content-wrap .col-xs-8, #content-wrap .col-sm-8, #content-wrap .col-md-8, #content-wrap .col-lg-8, #content-wrap .col-xs-9, #content-wrap .col-sm-9, #content-wrap .col-md-9, #content-wrap .col-lg-9, #content-wrap .col-xs-10, #content-wrap .col-sm-10, #content-wrap .col-md-10, #content-wrap .col-lg-10, #content-wrap .col-xs-11, #content-wrap .col-sm-11, #content-wrap .col-md-11, #content-wrap .col-lg-11, #content-wrap .col-xs-12, #content-wrap .col-sm-12, #content-wrap .col-md-12, #content-wrap .col-lg-12 {
   padding-left: 0;
   padding-right: 0; }
@@ -31,18 +46,13 @@
       background-color: white; }
     .article .text.purple {
       background-color: #655aa7; }
-    .article .text strong {
-      font-size: 1.5em; }
     .article .text p {
       padding-top: 0.65em;
-      font-size: 1.286em;
-      line-height: 1.286em; }
+      font-size: 1.3em;
+      line-height: 1.3em; }
 
-@font-face {
-  font-family: 'ProximaNovaRegular';
-  src: url("fonts/proximanova-regular-webfont.woff") format("woff"); }
 .container-element, .article {
-  font-family: 'ProximaNovaRegular'; }
+  font-family: "ProximaNovaRegular"; }
   .container-element .list-article-content:after, .container-element .list-article-content:before, .article .list-article-content:after, .article .list-article-content:before {
     border: solid transparent;
     content: " ";
