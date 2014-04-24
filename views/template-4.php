@@ -24,7 +24,7 @@
   <div class="col-md-4">
     <div class="article up">
       <a href="?article_id=<?= $articles[2]['id'] ?>">
-        <div class="image" style="background-image:url(<?php echo $articles[3]['imagePath'] ?>);">&nbsp;</div>
+        <div class="image" style="background-image:url(<?php echo $articles[2]['imagePath'] ?>);">&nbsp;</div>
         <div class="text <?php echo $articles[2]['color']; ?>">
           <strong><?php echo $articles[2]['title'] ?></strong>
           <p><?php echo $articles[2]['excerpt'] ?></p>

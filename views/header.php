@@ -48,7 +48,7 @@
 								<div class="row">
 						        	<form class="navbar-form navbar-left" role="search">
 							        	<div class="input-group">
-											<input type="text" class="form-control" name="keyword" value="<?php echo $_GET['keyword']?>">
+											<input type="text" class="form-control" name="keyword" value="<?= in_array('keyword', $_GET) ? $_GET['keyword'] : '' ?>">
 											<span class="input-group-btn">
 									        	<button class="btn btn-default" type="button" onClick="Redirect(keyword.value)">
 									        		<img id="search-icon" src="http://vps.eekoh.me/images/submit-btn.png">

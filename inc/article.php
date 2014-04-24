@@ -2,12 +2,38 @@
 
 include 'es.php';
 
-function filterArticle(&$article) {
-  $blocked = [
-    5050407240225330112
-  ];
+function fixBrokenFields(&$article) {
+  if (is_array($article)) {
+    foreach ($article as &$field) {
+      fixBrokenFields($field);
+    }
+  } else {
+    if (preg_match('/^([^<]+)[\'"]\/>/', $article, $matches)) {
+      $article = $matches[1];
+    }
+  }
 
-  if (in_array($article['_id'], $blocked)) {
+  return $article;
+}
+
+function filterArticle(&$article) {
+  if (! array_key_exists('fields', $article)) {
+    return false;
+  }
+
+  if (! array_key_exists('title', $article['fields'])) {
+    return true;
+  }
+
+  if (! array_key_exists('image', $article['fields'])) {
+    return true;
+  }
+
+  fixBrokenFields($article['fields']['image'][0]);
+
+  $image = md5($article['fields']['image'][0]);
+  if (file_exists('/var/www/cache/' . $image) && filesize('/var/www/cache/' . $image) === 0) {
+    // $article['fields']['image'][0] = 'default';
     return true;
   }
 
@@ -15,19 +41,7 @@ function filterArticle(&$article) {
     return true;
   }
 
-  foreach ($article['fields'] as &$field) {
-    if (is_array($field)) {
-      $broken = strpos($field[0], '/>');
-      if ($broken !== false) {
-        $field[0] = substr($field[0], 0, $broken - 1);
-      }
-    } else {
-      $broken = strpos($field, '/>');
-      if ($broken !== false) {
-        $field = substr($field, 0, $broken - 1);
-      }
-    }
-  }
+  fixBrokenFields($article);
 }
 
 function riak($bucket, $key) {
@@ -107,11 +121,16 @@ function getArticles($keywords = false, $textSearch = false) {
     if (filterArticle($hit)) {
       continue;
     }
+
     $topic = getTopic($hit['_id']);
     $hit['fields']['category'] = $topic;
     $hit['fields']['id'] = $hit['_id'];
     $hit['fields']['title'] = strip_tags($hit['fields']['title'][0]);
-    $hit['fields']['imagePath'] = '/cache.php?url=' . urlencode(strip_tags($hit['fields']['image'][0]));
+    if ($hit['field']['image'][0] === 'default') {
+      $hit['fields']['imagePath'] = '/cache.php?url=' . urlencode(strip_tags($hit['fields']['image'][0]));
+    } else {
+      $hit['fields']['imagePath'] = "/img/default-$topic.svg";
+    }
     $hit['fields']['excerpt'] = strip_tags($hit['fields']['description'][0]);
     $hit['fields']['color'] = getColor($topic);
 
@@ -182,7 +201,9 @@ function getArticle($articleId) {
   
   $topic = getTopic($articleId);
 
-  return [
+  $json['image'] = fixBrokenFields($json['image']);
+  
+  $article = [
     'id' => $json['article_id'],
     'title' => strip_tags($json['title']),
     'imagePath' => '/cache.php?url=' . urlencode(strip_tags($json['image'])),
@@ -191,4 +212,7 @@ function getArticle($articleId) {
     'category' => $topic,
     'color' => getColor($topic)
   ];
+  fixBrokenFields($article);
+
+  return $article;
 }
