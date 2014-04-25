@@ -94,9 +94,8 @@ function getArticles($keywords = false, $textSearch = false) {
   }
 
   $response = [];
-
-  $json = '{
-    "size": 50,
+  
+  $random = '
     "sort": {
       "_script": {
         "script": "Math.random()",
@@ -105,6 +104,15 @@ function getArticles($keywords = false, $textSearch = false) {
         "order": "asc"
       }
     },
+  ';
+  
+  if ($textsearch) {
+    $random = '';
+  }
+
+  $json = '{
+    "size": 50,
+    ' . $random . '
     "fields": [ "article_id", "title", "image", "description" ]
     ' . $query . '
   }';
