@@ -106,7 +106,7 @@ function getArticles($keywords = false, $textSearch = false) {
     },
   ';
   
-  if ($textsearch) {
+  if ($textSearch) {
     $random = '';
   }
 
