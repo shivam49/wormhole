@@ -158,7 +158,11 @@ function getArticles($keywords = false, $textSearch = false) {
 }
 
 function getTopic($articleId) {
-  $topic = riak('article_category2', $articleId);
+  $topic = riak('article_category6', $articleId);
+
+  if ($topic === null) {
+    $topic = riak('article_category2', $articleId);
+  }
 
   if ($topic === null) {
     $topic = riak('article_category', $articleId);
@@ -199,9 +203,13 @@ function getColor($topic) {
 }
 
 function getArticle($articleId) {
-  $json = json_decode(riak('meat_grinder2', $articleId), true);
+  $json = json_decode(riak('meat_grinder6', $articleId), true);
 
   // Check meat_grinder
+  if ($json === null) {
+    $json = json_decode(riak('meat_grinder2', $articleId), true);
+  }
+
   if ($json === null) {
     $json = json_decode(riak('meat_grinder', $articleId), true);
   }
