@@ -17,6 +17,7 @@
 		<!-- Strap it up if your gonna hit it SMART -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<script src="js/ftellipsis.js"></script>
+		<script src="js/jquery.nicescroll.min.js"></script>
 		<script type="text/javascript">
         function Redirect(keyword)
         {

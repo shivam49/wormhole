@@ -130,6 +130,10 @@ function getArticles($keywords = false, $textSearch = false) {
       continue;
     }
 
+    if (! array_key_exists('description', $hit['fields'])) {
+      continue;
+    }
+
     $topic = getTopic($hit['_id']);
     $hit['fields']['category'] = $topic;
     $hit['fields']['id'] = $hit['_id'];
