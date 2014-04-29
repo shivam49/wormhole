@@ -69,6 +69,7 @@
     this.columnGap = getColumnGap(style);
     this.columnWidth = size[0] / this.columnCount;
     this.lineHeight = getLineHeight(style);
+console.log(this.lineHeight);
     this.deltaHeight = size[1] % this.lineHeight;
     this.linesPerColumn = Math.floor(this.columnHeight / this.lineHeight);
     this.totalLines = this.linesPerColumn * this.columnCount;

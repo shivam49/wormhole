@@ -11,8 +11,15 @@
   #timeline-selector div.center { margin: 0 auto; padding: 0; }
   #timeline div.row { text-align: center; }
   #timeline div.col-xs-1 { padding: 0; }
+  #timeline { position: fixed; right: 0; z-index: 100; }
   @media (min-width: @screen-md-min) { #timeline-dates { display: none; } }
 </style>
+
+<script type="text/javascript">
+  $(function () {
+    $("#content-wrap").css("top", $("#timeline").height() - 2);
+  });
+</script>
 
 <div class="col-xs-10" id="timeline">
   <div class="row">
@@ -30,15 +37,15 @@
       <div class="row pad color">
         <div class="col-xs-1"><img src="images/arrow-left.svg" /></div>
         <div class="col-xs-1">April 29</div>
-        <div class="col-xs-1">April 30</div>
-        <div class="col-xs-1">April 01</div>
-        <div class="col-xs-1">April 02</div>
-        <div class="col-xs-1">April 03</div>
-        <div class="col-xs-1">April 04</div>
-        <div class="col-xs-1">April 05</div>
-        <div class="col-xs-1">April 06</div>
-        <div class="col-xs-1">April 07</div>
-        <div class="col-xs-1">April 08</div>
+        <div class="col-xs-1">April 28</div>
+        <div class="col-xs-1">April 27</div>
+        <div class="col-xs-1">April 26</div>
+        <div class="col-xs-1">April 25</div>
+        <div class="col-xs-1">April 24</div>
+        <div class="col-xs-1">April 23</div>
+        <div class="col-xs-1">April 22</div>
+        <div class="col-xs-1">April 21</div>
+        <div class="col-xs-1">April 20</div>
         <div class="col-xs-1"><img src="images/arrow-right.svg" /></div>
       </div>
     </div>

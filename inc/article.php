@@ -1,5 +1,4 @@
 <?php
-
 include 'es.php';
 
 function fixBrokenFields(&$article) {
@@ -52,7 +51,7 @@ function riak($bucket, $key) {
 function getRelatedArticles($articleId, $article) {
   global $client;
 
-  $raw = file_get_contents("http://192.168.3.53:9200/articles2/article/$articleId/_mlt");
+  $raw = file_get_contents("http://192.168.3.53:9200/articles6/article/$articleId/_mlt");
   $json = json_decode($raw, true);
 
   $titles = [ $article['title'] ];
@@ -91,6 +90,28 @@ function getArticles($keywords = false, $textSearch = false) {
         }
       }
     ';
+
+    if ($keywords === 'news') {
+      $news_kw = [
+        '"ukraine"',
+        '"clooney"',
+        '"internet explorer"',
+        '"fedex"',
+        '"obama"',
+        '"united states"', '"cia"',
+        '"russia"',
+        '"paul simon"'
+       ];
+      $query = '
+        , "query" : {
+          "terms" : {
+            "article_text" : [' . implode(', ', $news_kw) .  '],
+            "minimum_should_match": 1,
+            "boost": 10 
+          }
+        }
+      ';
+    }
   }
 
   $response = [];
@@ -106,7 +127,7 @@ function getArticles($keywords = false, $textSearch = false) {
     },
   ';
   
-  if ($textSearch) {
+  if ($textSearch || $keywords === 'news') {
     $random = '';
   }
 
@@ -117,7 +138,7 @@ function getArticles($keywords = false, $textSearch = false) {
     ' . $query . '
   }';
 
-  $params['index'] = 'articles2';
+  $params['index'] = 'articles6';
   $params['type']  = 'article';
   $params['body']  = $json;
 
@@ -158,6 +179,11 @@ function getArticles($keywords = false, $textSearch = false) {
 }
 
 function getTopic($articleId) {
+  if ((array_key_exists('HTTP_REFERER', $_SERVER) && strpos($_SERVER['HTTP_REFERER'], 'category=news') !== false)
+      || (array_key_exists('category', $_REQUEST) && $_REQUEST['category'] === 'news')) {
+    return 'news';
+  }
+
   $topic = riak('article_category6', $articleId);
 
   if ($topic === null) {
