@@ -3,7 +3,7 @@ $green: #8CC63E;
 $red: #D55153;
 $orange: #E97E4A;
 $gray: #AEAEAE;
-$black: #FFFFFF;
+$black: #000000;
 $purple: #655aa7;
 $gutter: 2pt;
 $pnr: 'ProximaNovaRegular';
@@ -63,7 +63,7 @@ strong {
     left: 0; right: 0;
     p {
       padding-top: 0.65em;
-      font-size: 1.3em;
+      font-size: 1.0em;
       line-height: 1.3em;
     }
   }
@@ -100,6 +100,7 @@ strong {
     .text.gray:after { border-bottom-color: $gray; }
     .text.black:after { border-bottom-color: $black; }
     .text.purple:after { border-bottom-color: $purple; }
+    .text.black:after { border-bottom-color: $black; }
     .text { bottom: 0; }
   }
 
@@ -127,6 +128,7 @@ strong {
     .text.gray:after { border-top-color: $gray; }
     .text.black:after { border-top-color: $black; }
     .text.purple:after { border-top-color: $purple; }
+    .text.black:after { border-top-color: $black; }
     .text { z-index: 2; }
     .image {
       position: absolute;

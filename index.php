@@ -18,7 +18,7 @@
 
     include 'views/article.php';
   } else { // Articles
-    if (! empty($category) && $category !== 'news') {
+    if (! empty($category)) {
       $all = getArticles($category);
     } else if (! empty($keyword)) {
       $all = getArticles($keyword, true);
