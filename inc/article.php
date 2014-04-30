@@ -179,7 +179,7 @@ function getArticles($keywords = false, $textSearch = false) {
 }
 
 function getTopic($articleId) {
-  if ((array_key_exists('HTTP_REFERER', $_SERVER) && strpos($_SERVER['HTTP_REFERER'], 'category=news') !== false)
+  if ((array_key_exists('HTTP_REFERER', $_SERVER) && strpos($_SERVER['HTTP_REFERER'], 'category=news') !== false && ! array_key_exists('category', $_REQUEST))
       || (array_key_exists('category', $_REQUEST) && $_REQUEST['category'] === 'news')) {
     return 'news';
   }
