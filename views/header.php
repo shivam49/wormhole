@@ -38,7 +38,7 @@
 				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 					<div class="navbar-header col-md-2">
 						<div class="logo">
-							<a class="navbar-brand" href="<?php echo implode('/', explode('/', $_SERVER['SCRIPT_NAME'], -1)) ?>">
+							<a class="navbar-brand" href="<?php echo dirname($_SERVER['SCRIPT_NAME']) ?>">
 								<img src="images/logo.png" alt="Logo"/>
 							</a>
 						</div>
