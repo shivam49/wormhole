@@ -9,8 +9,11 @@
   $category = checkGET('category');
   $articleId = checkGET('article_id');
   $keyword = checkGET('keyword');
+  $view = checkGET('view');
 
-  if (! empty($articleId)) { // Article
+  if (! empty($view)) { // View
+    include "views/$view.php";
+  } else if (! empty($articleId)) { // Article
     $article = getArticle($articleId);
     $response = [
       'relatedArticles' => getRelatedArticles($articleId, $article)

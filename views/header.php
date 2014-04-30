@@ -62,12 +62,13 @@
 							<div class="col-md-6">
                            <ul class="nav navbar-nav actions marginRight4" >
 						        	<li>
-										<a href="#" class="print">
+										<a href="?view=messages" class="print">
 											&nbsp;
 										</a>
+<!--<img src="images/inbox.png" style/>-->
 									</li>
 									<li>
-										<a href="#" class="msg">
+										<a href="?view=notifications" class="msg">
 											&nbsp;
 										</a>
 									</li>
@@ -77,12 +78,14 @@
 										</a>
 									</li>
 									<li>
-										<a href="#" class="setting">
+										<a href="?view=profile" class="setting">
 											&nbsp;
 										</a>
 									</li>					
 								</ul>
+<a href="?view=system">
                                  <img src="images/tree-small.png" class="tree pull-right marginRight30"  />
+</a>
 							</div>
 						</div>
 					</div>
