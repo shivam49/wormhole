@@ -1,26 +1,79 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 #freewall
   background: #FFF
   top: 0
   left: 0
   right: 0
   left: 0
-  margin-top: 50px
+  margin-top: 49px
   margin-left: 214px  
   position: absolute
 
   .brick
-    height: 100px
-    width: 100px
-    background: #333
+    color: #FFF
+    border: #FFF solid 1px
+    overflow: visible
+    height: auto
+    padding: 8px
+    min-height: 150px
+    @include clearfix
 
-    &.size12
-      width: 100px
-      height: 100px
 
-    &.size32
-      width: 200px
-      height: 200px
+    &.two_one
+      height: auto
+      min-height: 150px
 
-    &.size22
-      width: 300px
-      height: 300px 
+    a
+      .svg
+        width: 300px
+
+    .content
+      height: 100%
+      width: 100%
+      line-height: 110%
+
+      .brick-img
+        color: #FFF
+        -webkit-background-size: cover
+        -moz-background-size: cover
+        -o-background-size: cover
+        background-size: cover
+
+      .title
+        color: #FFFFFF
+        font-weight: bold
+        display: block
+        padding-bottom: 8px
+
+      .description
+        color: #FFFFFF
+        display: block
+        font-weight: normal
+
+.news
+  background-color: #000000
+
+.entertainment
+  background-color: #d55153
+
+.politics
+  background-color: #655aa7
+
+.sports
+  background-color: #8cc63e
+
+.edutech
+  background-color: #5482c2
+
+.business
+  background-color: #aeaeae
+
+.lifestyle
+  background-color: #e97e4a

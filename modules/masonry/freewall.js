@@ -20,8 +20,8 @@
         defaultConfig: {
             animate: false,
             cache: true, // cache the size of blocks for performance;
-            cellW: 100, // function(container) {return 100;}
-            cellH: 100, // function(container) {return 100;}
+            cellW: 50, // function(container) {return 100;}
+            cellH: 50, // function(container) {return 100;}
             delay: 0, // slowdown active block;
             engine: 'giot', // 'giot' is a person name;
             fixSize: null, // resize + adjust = fill gap;

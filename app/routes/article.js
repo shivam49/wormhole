@@ -1,19 +1,35 @@
-'use strict';
+var riak = require('../riak'),
+    elastic = require('../elastic');
 
 // Add the route
 var list = {
   handler: function (request, reply) {
-    reply.view('articles');
+    elastic.search({
+      index: 'articles6',
+      size: 49
+    }).then(function (articles) {
+      reply.view('articles', {
+        articles: articles.hits.hits
+      });
+    });
   }
 };
 
-var details = {
+var article = {
   handler: function (request, reply) {
-    reply('yay');
+    riak.buckets(function (err, buckets) {
+      if (err) {
+        return reply('error');
+      }
+
+      reply.view('articles', {
+        buckets: JSON.stringify(buckets)
+      });
+    });
   }
 };
 
 module.exports = [
   { method: 'GET', path: '/', config: list },
-  { method: 'GET', path: '/article/{article}', config: details }
+  { method: 'GET', path: '/articles/{article}', config: article }
 ];

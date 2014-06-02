@@ -1,29 +1,31 @@
-'use strict';
-
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     path = require('path'),
     Spawner = require('./lib/spawner'),
     sass = require('component-sass'),
     component = require('gulp-component'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    requireDir = require('./lib/requireDir');
+
+// Load Gulp Tasks
+requireDir('gulp/tasks');
 
 sass.loadPath([
-	path.join(__dirname, 'lib', 'sass'),
+  path.join(__dirname, 'lib', 'sass')
 ]);
 
 gulp.task('component', function () {
   gulp.src(path.join(__dirname, 'component.json'))
-    .pipe(component({
-      configure: function (builder) {
-        builder.use(sass);
-      },
-      out: path.join(__dirname, 'public', 'assets')
-    })).on('error', function (error) {
-      gutil.log(gutil.colors.red('[Error]'), 'SASS');
-      console.error(error);
-    })
-    .pipe(gulp.dest('public'));
+  .pipe(component({
+    configure: function (builder) {
+      builder.use(sass);
+    },
+    out: path.join(__dirname, 'public', 'assets')
+  })).on('error', function (error) {
+    gutil.log(gutil.colors.red('[Error]'), 'SASS');
+    console.error(error);
+  })
+  .pipe(gulp.dest('public'));
 });
 
 gulp.task('watch', [ 'component' ], function () {
@@ -48,7 +50,7 @@ gulp.task('watch', [ 'component' ], function () {
 
   gulp.watch([
     'index.js',
-    'app/controllers/*.js',
+    'app/routes/*.js',
     'app/plugins/**/*.js'
   ]).on('change', function (file) {
     gutil.log(gutil.colors.blue('[Watch]'), file.path);

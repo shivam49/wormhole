@@ -1,9 +1,7 @@
-'use strict';
-
-var fs = require('fs'),
-    path = require('path'),
+var fs    = require('fs'),
+    path  = require('path'),
     async = require('async'),
-    hapi = require('hapi');
+    hapi  = require('hapi');
 
 var port = process.env.PORT || 8000;
 var config = {
@@ -18,15 +16,8 @@ var config = {
 // Create a server with a host and port
 var server = new hapi.Server(port, config);
 
-// HAPI Plugin Path
-var plugins = path.join(__dirname, 'app', 'plugins');
-
-// Load Development Helper Plugin
-server.pack.require(path.join(plugins, 'development'), function(err) {
-  if (err) {
-    console.error('Failed loading plugin: development');
-  }
-});
+// Load HAPI Plugins
+require('./app/plugins')(server);
 
 server.views({
   engines: {
@@ -55,8 +46,10 @@ function loadRoutes(callback) {
     }
 
     async.each(files, function(file, cb) {
-      var route = require(path.join(routes, file));
-      server.route(route);
+      if (path.extname(file) === '.js') {
+        var route = require(path.join(routes, file));
+        server.route(route);
+      }
       cb();
     }, callback);
   });

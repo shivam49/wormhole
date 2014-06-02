@@ -1,0 +1,16 @@
+{
+  "name": "app",
+  "local": [
+    "navbar",
+    "sidebar",
+    "masonry"
+  ],
+  "main": "index.js",
+  "styles": [
+    "reset.sass",
+    "style.sass"
+  ],
+  "scripts": [
+    "index.js"
+  ]
+}
