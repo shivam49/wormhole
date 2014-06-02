@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+  head
+    title eekoh
+
+    link(rel='stylesheet', type='text/css', href='/build.css')
+
+    block head
+  body
+    block content
+
+    script(src='/build.js')
+    script.
+      require('app');
+    script(src='http://localhost:35729/livereload.js')

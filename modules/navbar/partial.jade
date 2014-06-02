@@ -1,0 +1,21 @@
+.navbar
+  .brand-wrap
+    a.logo(href='/')
+      != svg('/assets/navbar/logo.svg')
+  .search-wrap
+    .form-wrap
+      form(name='input', action='_self', method='get')
+        input(type='text', name='search', placeholder='Discover ...')
+        button(type='submit', class='btn-link')
+          != svg('/assets/navbar/search.svg')
+      .spacer
+      .tree-wrap
+        a(href='/')
+          != svg('/assets/navbar/tree.svg')
+      .pipe
+  .action-wrap
+    .action-container
+      a(href='/', class="messages")
+      a(href='/', class="notifications")
+      a(href='/', class="deals")
+      a(href='/', class="settings")

@@ -1,0 +1,35 @@
+@import "bourbon/bourbon"
+@import "neat/neat"
+
+$grid-columns: 8
+$max-width: auto
+
+.sidebar-wrap
+  width: 204px
+  margin: 50px 5px 0px 5px
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background: #FF9900
+
+  .sidebar
+    @include outer-container
+    background: #009900
+    height: auto
+    padding: 30px 5px 0px 30px
+
+    h3
+      &.title
+        font-weight: bold
+
+    ul
+      li
+        display: block
+        list-style: none
+        padding-left: 25px
+        background-image: url(/assets/sidebar/arrows.png)
+        background-repeat: no-repeat
+        background-position: 7px -326px
+
