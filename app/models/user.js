@@ -29,10 +29,9 @@ function Model(sequelize, DataType) {
           method: 'GET',
           path: '/users',
           handler: function (request, reply) {
-            models.User.all().success(reply)
-            .error(function (err) {
-              Hapi.error.internal(err);
-            });
+            models.User.all()
+            .success(reply)
+            .error(Hapi.error.internal);
           }
         });
 
