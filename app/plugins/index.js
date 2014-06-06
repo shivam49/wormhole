@@ -1,4 +1,6 @@
 var plugins = {
+  '../models': null,
+
   // Jade Helpers Functions
   './jade': null,
 
