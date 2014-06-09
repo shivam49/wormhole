@@ -1,71 +1,46 @@
-var fs    = require('fs'),
-    path  = require('path'),
-    async = require('async'),
-    hapi  = require('hapi');
+var express = require('express');
+var path    = require('path');
+var server  = require(path.join(__dirname, 'server'));
+var models  = require(path.join(__dirname, 'app', 'models'));
+var app     = express();
 
-var port = process.env.PORT || 8000;
-var config = {
-  debug: {
-    request: [ 'error' ]
-  },
-  files: {
-    relativeTo: __dirname
+// initialize the controllers
+app = require(path.join(__dirname, 'app', 'routes'))(app);
+
+function loadModels(fn) {
+  models.sequelize.sync({force: true}).complete(fn);
+}
+
+function errorHandler(err, req, res, next) {
+  if (err.message.indexOf('not found') > -1) {
+    return next();
   }
-};
 
-// Create a server with a host and port
-var server = new hapi.Server(port, config);
+  console.error(err.stack);
 
-// Load HAPI Plugins
-require('./app/plugins')(server);
-
-server.views({
-  engines: {
-    jade: 'jade'
-  },
-  path: path.join(__dirname, 'app', 'views'),
-  compileOptions: {
-    basedir: path.join(__dirname, 'modules'),
-    pretty: true
-  },
-  isCached: false
-});
-
-// Load Models
-function loadModels(callback) {
-  callback();
+  res.status(500).send('An error has occurred.');
 }
 
-// Load Routes
-function loadRoutes(callback) {
-  var routes = path.join(__dirname, 'app', 'routes');
-
-  fs.readdir(routes, function(err, files) {
-    if (err) {
-      return callback(err);
-    }
-
-    async.each(files, function(file, cb) {
-      if (path.extname(file) === '.js') {
-        var route = require(path.join(routes, file));
-        server.route(route);
-      }
-      cb();
-    }, callback);
-  });
+function notFoundHandler(req, res) {
+  res.status(404).send('Not found');
 }
 
-async.series([
-  loadModels,
-  loadRoutes
-], function(err) {
+function startServer(err) {
   if (err) {
-    throw new Error(err);
+    throw err;
   }
 
-  server.start(function() {
-    if (process.send) {
-      process.send('online');
-    }
-  });
-});
+  var port = process.env.PORT || 8000;
+
+  server.use(express.static('./public'));
+  server.use('/', app);
+  server.use(errorHandler);
+  server.use(notFoundHandler);
+
+  if (!module.parent) {
+    server.listen(port);
+    console.log('Server has started on port ' + port + '.');
+  }
+}
+
+loadModels(startServer);

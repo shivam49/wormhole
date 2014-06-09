@@ -1,35 +1,36 @@
-var riak = require('../riak'),
-    elastic = require('../elastic');
+var path        = require('path');
+var riak        = require(path.join(__dirname, '..', 'riak'));
+var elastic     = require(path.join(__dirname, '..', 'elastic'));
+var express     = require('express');
+var controller  = express.Router();
 
-// Add the route
-var list = {
-  handler: function (request, reply) {
-    elastic.search({
-      index: 'articles6',
-      size: 49
-    }).then(function (articles) {
-      reply.view('articles', {
-        articles: articles.hits.hits
-      });
+controller.route('/')
+.get(function (req, res, next) {
+  function response(articles) {
+    res.render('articles', {
+      articles: articles.hits.hits
     });
   }
-};
 
-var article = {
-  handler: function (request, reply) {
-    riak.buckets(function (err, buckets) {
-      if (err) {
-        return reply('error');
-      }
+  elastic.search({
+    index: 'articles6',
+    size: 49
+  }).then(response, next);
+});
 
-      reply.view('articles', {
-        buckets: JSON.stringify(buckets)
-      });
+controller.route('/articles/:article')
+.get(function (req, res, next) {
+  function response(err, buckets) {
+    if (err) {
+      return next(err);
+    }
+
+    res.render('articles', {
+      buckets: JSON.stringify(buckets)
     });
   }
-};
 
-module.exports = [
-  { method: 'GET', path: '/', config: list },
-  { method: 'GET', path: '/articles/{article}', config: article }
-];
+  riak.buckets(response);
+});
+
+module.exports = ['/', controller];

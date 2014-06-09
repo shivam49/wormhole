@@ -2,8 +2,6 @@
 
 /* jshint camelcase: false */
 
-var Hapi = require('hapi');
-
 function Model(sequelize, DataType) {
   var User = sequelize.define('User', {
     id_user: {
@@ -23,20 +21,6 @@ function Model(sequelize, DataType) {
         User.hasMany(models.UserPassword, {foreignKey: 'fk_id_user'});
         User.hasMany(models.UserStatus,   {foreignKey: 'fk_id_user'});
       },
-      routes: function(models) {
-        var routes = [];
-        routes.push({
-          method: 'GET',
-          path: '/users',
-          handler: function (request, reply) {
-            models.User.all()
-            .success(reply)
-            .error(Hapi.error.internal);
-          }
-        });
-
-        return routes;
-      }
     },
     tableName:  'user', // defaults to plural form
     underscored: true,
