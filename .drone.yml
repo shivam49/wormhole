@@ -6,5 +6,6 @@ env:
   - PG_USER=wormhole
   - PG_PASSWORD=e3en8hhe
 script:
+  - npm install -g mocha
   - npm install
-  - node index.js
+  - mocha
