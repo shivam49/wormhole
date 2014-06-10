@@ -1,0 +1,304 @@
+@import "bourbon/bourbon"
+@import "neat/neat"
+
+.notifications-messages-holder
+  position: fixed
+  top: 45px
+  right: 25px
+  width: 290px
+  height: 500px
+  background: #fff
+  z-index: 200
+  border: 1px solid #000
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1)
+  -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1)
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1)
+  display: none
+  
+  .notifications-messages-hdr
+    color: #fff
+    font-size: 11px
+    width: 288px
+    height: 21px
+    background: #4e4f50
+    padding: 0px 10px
+    line-height: 21px
+    position: relative
+    
+    a, a:link, a:visited, a:hover, a:active
+      color: #fff
+      text-decoration: none
+      margin-left: 20px
+      
+    .notifications-messages-arrow
+      width: 20px
+      height: 12px
+      background-image: url(/assets/notifications/notifications-arrow.png)
+      background-size: 20px 12px
+      position: absolute
+      top: -12px
+      left: 109px
+ 
+  .notifications-messages-seeall
+    width: 288px
+    height: 20px
+    background: #f2f2f2
+    position: absolute
+    bottom: 0px
+    line-height: 20px
+    z-index: 100
+    text-align: center
+    font-size: 11px
+    
+    a, a:link, a:visited, a:hover, a:active
+      color: #000
+  
+  .notifications-messages-entry
+    width: 275px
+    padding: 5px 10px
+    margin: 0px auto
+    border-bottom: 1px solid #ccc
+    
+    .notifications-messages-name
+      font-size: 12px
+      max-width: 195px
+      line-height: 14px
+      margin-bottom: 4px
+      font-family: proxima_nova_bold
+    
+      a, a:link, a:visited, a:hover, a:active
+        color: #000
+        text-decoration: none
+    
+    .notifications-messages-content
+    
+      .notifications-messages-photo
+        width: 50px
+        height: 50px
+        float: left
+        margin-right: 10px
+        -webkit-border-radius: 3px
+        -moz-border-radius: 3px
+        border-radius: 3px
+
+        img
+          -webkit-border-radius: 3px
+          -moz-border-radius: 3px
+          border-radius: 3px
+          width: 50px
+          height: 50px
+        
+      .notifications-messages-info
+        float: left
+        width: 195px
+
+        .notifications-messages-date
+          font-size: 9px
+          line-height: 12px
+          margin-bottom: 3px
+          background-image: url(/assets/notifications/icon-chat-blue.svg)
+          background-size: 18px 12px
+          background-repeat: no-repeat
+          padding-left: 22px
+          
+          a, a:link, a:visited, a:hover, a:active
+            color: #000
+        
+        .notifications-messages-body
+          line-height: 14px
+          font-size: 11px
+        
+      .clear
+        clear: both
+
+
+.notifications-alerts-holder
+  position: fixed
+  top: 45px
+  right: 25px
+  width: 290px
+  height: 500px
+  background: #fff
+  z-index: 200
+  border: 1px solid #000
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1)
+  -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1)
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1)
+  display: none
+  
+  .notifications-alerts-hdr
+    color: #fff
+    font-size: 11px
+    width: 288px
+    height: 21px
+    background: #4e4f50
+    padding: 0px 10px
+    line-height: 21px
+    position: relative
+    
+    a, a:link, a:visited, a:hover, a:active
+      color: #fff
+      text-decoration: none
+      margin-left: 20px
+      
+    .notifications-alerts-arrow
+      width: 20px
+      height: 12px
+      background-image: url(/assets/notifications/notifications-arrow.png)
+      background-size: 20px 12px
+      position: absolute
+      top: -12px
+      left: 163px
+ 
+  .notifications-alerts-seeall
+    width: 288px
+    height: 20px
+    background: #f2f2f2
+    position: absolute
+    bottom: 0px
+    line-height: 20px
+    z-index: 100
+    text-align: center
+    font-size: 11px
+    
+    a, a:link, a:visited, a:hover, a:active
+      color: #000
+  
+  .notifications-alerts-entry
+    width: 275px
+    padding: 5px 10px
+    margin: 0px auto
+    border-bottom: 1px solid #ccc
+    
+    .notifications-alerts-name
+      font-size: 12px
+      max-width: 275px
+      line-height: 14px
+      margin-bottom: 4px
+      font-family: proxima_nova_bold
+    
+      a, a:link, a:visited, a:hover, a:active
+        color: #000
+        text-decoration: none
+
+      .deal
+        background-image: url(/assets/notifications/icon-deal.svg)
+        background-size: 20px 16px
+        background-repeat: no-repeat
+        padding-left: 24px      
+
+      .discussion
+        background-image: url(/assets/notifications/icon-discussion-green.svg)
+        background-size: 16px 13px
+        background-repeat: no-repeat
+        padding-left: 24px
+        background-position: 0px 2px 
+    
+      .brand
+        background-image: url(/assets/notifications/icon-brand.svg)
+        background-size: 20px 15px
+        background-repeat: no-repeat
+        padding-left: 24px      
+    
+    .notifications-alerts-content
+    
+      .notifications-alerts-photo
+        width: 50px
+        height: 50px
+        float: left
+        margin-right: 10px
+        -webkit-border-radius: 3px
+        -moz-border-radius: 3px
+        border-radius: 3px
+
+        img
+          -webkit-border-radius: 3px
+          -moz-border-radius: 3px
+          border-radius: 3px
+          width: 50px
+          height: 50px
+        
+      .notifications-alerts-info
+        float: left
+        width: 195px
+
+        .notifications-alerts-date
+          font-size: 10px
+          line-height: 24px
+          margin-top: 5px
+          float: left
+          color: #1b75bb
+          
+          
+          a, a:link, a:visited, a:hover, a:active
+            color: #1b75bb
+        
+        .notifications-alerts-body
+          line-height: 14px
+          font-size: 11px
+        
+        .notifications-alerts-btns
+          float: right
+          margin-top: 5px
+          
+          a, a:link, a:visited, a:active, a:hover
+            padding: 2px 5px
+            height: 13px
+            border: 1px solid #9b9c9c
+            font-size: 11px
+            color: #000
+          
+          .accept
+            background: #4e4f50
+            color: #fff !important
+            margin-right: 10px
+
+          .accept:hover, .decline:hover
+            opacity: 0.5
+
+
+          .decline
+            background: #fff
+            color: #000
+ 
+        
+      .clear
+        clear: both
+
+.notifications-deals-holder
+  position: fixed
+  top: 45px
+  right: 25px
+  width: 290px
+  background: #fff
+  z-index: 200
+  border: 1px solid #000
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1)
+  -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1)
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1)
+  display: none
+  
+  .notifications-deals-hdr
+    color: #fff
+    font-size: 11px
+    width: 288px
+    height: 21px
+    background: #4e4f50
+    padding: 0px 10px
+    line-height: 21px
+    position: relative
+
+    .notifications-deals-arrow
+      width: 20px
+      height: 12px
+      background-image: url(/assets/notifications/notifications-arrow.png)
+      background-size: 20px 12px
+      position: absolute
+      top: -12px
+      left: 205px
+      
+  .notifications-text
+    font-size: 11px
+    padding: 10px 20px
+    line-height: 14px
+
