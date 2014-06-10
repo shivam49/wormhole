@@ -9,3 +9,7 @@ script:
   - npm install -g mocha
   - npm install
   - mocha
+deploy:
+  ssh:
+    target: beta@192.168.3.66
+    cmd: /home/beta/deploy.sh
