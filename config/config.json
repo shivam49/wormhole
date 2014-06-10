@@ -11,7 +11,8 @@
   },
   "twitter": {
     "id": "jC0UQJDrDT6NwRGYVfZdJBdpp",
-    "secret": "ZLXqfj8F1XAAPkR3gd07HvjvejQexCltOIwiFradbeU7gQQpnH"
+    "secret": "ZLXqfj8F1XAAPkR3gd07HvjvejQexCltOIwiFradbeU7gQQpnH",
+    "callbackUrl": "http://beta.eekoh.me/auth/twitter/callback"
   },
   "facebook": {
     "id": "717340098325774",

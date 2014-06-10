@@ -36,12 +36,12 @@
     "riak-js": "^0.10.2",
     "sequelize": "^1.7.3",
     "travelogue": "^2.0.0",
-    "passport-google-oauth": "^0.1.5",
     "passport-facebook": "^1.0.3",
     "lodash": "^2.4.1",
     "connect-flash": "^0.1.1",
     "moment": "^2.6.0",
     "connect-ensure-login": "^0.1.1",
-    "yar": "^2.1.0"
+    "yar": "^2.1.0",
+    "passport-twitter": "^1.0.2"
   }
 }
