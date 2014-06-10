@@ -9,7 +9,7 @@ var sequelize = new Sequelize(
   process.env.PG_DATABASE, process.env.PG_USER, process.env.PG_PASSWORD, {
   dialect: 'postgres',
   host: process.env.DB_HOST || '127.0.0.1',
-  logging: (process.env.NODE_ENV === 'dev' ? console.logging : false)
+  logging: console.log
 });
 
 function load(file) {

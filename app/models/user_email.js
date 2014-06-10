@@ -35,6 +35,7 @@ function Model(sequelize, DataType) {
   }, {
     classMethods: {
       associate: function(models) {
+        UserEmail.belongsTo(models.User, {foreignKey: 'fk_id_user'});
         UserEmail.hasMany(models.Email, {foreignKey: 'id_email'});
         UserEmail.hasMany(models.Verifier, {foreignKey: 'id_verifier'});
       }

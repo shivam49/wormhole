@@ -1,3 +1,6 @@
+'use strict';
+
+var _       = require('lodash');
 var express = require('express');
 var path    = require('path');
 var server  = require(path.join(__dirname, 'server'));
@@ -8,17 +11,29 @@ var app     = express();
 app = require(path.join(__dirname, 'app', 'routes'))(app);
 
 function loadModels(fn) {
+  // we'll want to get rid of force true eventually...
   models.sequelize.sync({force: true}).complete(fn);
 }
 
 function errorHandler(err, req, res, next) {
-  if (err.message.indexOf('not found') > -1) {
+  if (err.message && err.message.indexOf('not found') > 0) {
     return next();
   }
 
   console.error(err.stack);
 
-  res.status(500).send('An error has occurred.');
+  if (err.message) {
+    req.flash('error', err.message);
+    return res.redirect('back');
+  }
+
+  var errors = [];
+  Object.keys(err).forEach(function (key) {
+    errors = errors.concat(_.flatten(err[key]));
+  });
+
+  req.flash('error', _.flatten(errors).join('<br>'));
+  res.redirect('back');
 }
 
 function notFoundHandler(req, res) {

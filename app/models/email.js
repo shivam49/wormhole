@@ -15,7 +15,7 @@ function Model(sequelize, DataType) {
   }, {
     classMethods: {
       associate: function(models) {
-        Email.belongsTo(models.UserEmail, {foreignKey: 'fk_id_email'});
+        Email.belongsTo(models.UserEmail, {foreignKey: 'id_email'});
       }
     },
     tableName:  'email', // defaults to plural form

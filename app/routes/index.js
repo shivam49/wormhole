@@ -1,6 +1,8 @@
 var path  = require('path');
 var utils = require(path.join('..', '..', 'utils'));
 
+// todo: throw this into a common plugin folder or something...
+// make it compatible with jade locals
 function svg(path, alt, fileType) {
   if (! path) {
     throw new Error('Missing path for svg');
