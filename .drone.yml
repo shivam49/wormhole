@@ -1,0 +1,10 @@
+image: node
+env:
+  - NODE_ENV=dev
+  - DB_HOST=192.168.3.65
+  - PG_DATABASE=wormhole
+  - PG_USER=wormhole
+  - PG_PASSWORD=e3en8hhe
+script:
+  - npm install
+  - node index.js
