@@ -13,7 +13,6 @@ function facebookStrategy() {
   function buildFacebookProfile(accessToken, refreshToken, profile, done) {
     var email;
 
-    console.log(profile);
     // check for an email first
     if (!Array.isArray(profile.emails) ||
         profile.emails.length < 1 ||
