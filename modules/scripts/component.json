@@ -1,5 +1,5 @@
 {
-	"name": "profile",
+	"name": "scripts",
 	"version": "0.0.1",
 	"paths": [
 		"../vendor"
@@ -9,7 +9,6 @@
 		"index.js"
 	],
 	"styles": [
-		"style.sass"
 	],
 	"images": [
 	]

@@ -1,0 +1,135 @@
+@import "bourbon/bourbon"
+@import "neat/neat"
+
+.notifications-nav
+  position: absolute
+  height: 22px
+  background: #4e4f50
+  top: 50px
+  left: 211px
+  z-index: 1000
+  font-size: 12px
+  line-height: 22px
+  display: none
+  z-index: 1000
+  
+  a, a:visited, a:link, a:hover, a:active
+    display: inline-block
+    width: 33%
+    height: 22px
+    color: #ccc
+    border-left: 3px solid #fff
+    text-align: center
+    
+    &.active 
+      color: #fff
+      font-weight: 700
+      font-size: 13px
+
+.notifications-page
+  width: 680px
+  height: 100%
+  background: #fff
+  margin-left: 214px
+  margin-top: 75px
+  position: absolute
+  top: 0px
+  left: 0px
+  display: none
+  z-index: 1000
+
+  .notification
+    padding: 10px 15px
+    border-bottom: 1px solid #ccc
+    margin: 0px 10px 0px 10px
+    font-size: 12px
+    line-height: 15px
+    position: relative
+    
+    a, a:link, a:active, a:hover, a:visited
+      color: #000
+      font-weight: 700
+
+    .photo
+      width: 65px
+      height: 65px
+      float: left
+      margin-right: 10px
+      -webkit-border-radius: 3px
+      -moz-border-radius: 3px
+      border-radius: 3px
+
+      img
+        -webkit-border-radius: 3px
+        -moz-border-radius: 3px
+        border-radius: 3px
+        width: 65px
+        height: 65px
+
+    .notifications-alerts-name
+      font-size: 12px
+      max-width: 275px
+      line-height: 14px
+      margin-bottom: 10px
+      font-weight: 700
+    
+      a, a:link, a:visited, a:hover, a:active
+        color: #000
+        text-decoration: none
+
+      .deal
+        background-image: url(/assets/notifications/icon-deal.svg)
+        background-size: 20px 16px
+        background-repeat: no-repeat
+        padding-left: 24px      
+
+      .discussion
+        background-image: url(/assets/notifications/icon-discussion-green.svg)
+        background-size: 16px 13px
+        background-repeat: no-repeat
+        padding-left: 24px
+        background-position: 0px 2px 
+    
+      .brand
+        background-image: url(/assets/notifications/icon-brand.svg)
+        background-size: 20px 15px
+        background-repeat: no-repeat
+        padding-left: 24px      
+
+    .info 
+      font-size: 11px
+      height: 62px
+      
+      .name
+        font-size: 12px
+        
+      .time
+        margin-top: 5px
+        color: #76afd4
+        position: absolute
+        bottom: 10px
+        left: 90px
+        
+    .buttons 
+      position: absolute
+      bottom: 10px
+      right: 10px
+        
+      a, a:link, a:visited, a:active, a:hover
+        padding: 2px 5px
+        height: 13px
+        border: 1px solid #9b9c9c
+        font-size: 11px
+        color: #000
+          
+      .accept
+        background: #4e4f50
+        color: #fff !important
+        margin-right: 10px
+
+      .accept:hover, .decline:hover
+        opacity: 0.5
+
+      .decline
+        background: #fff
+        color: #000

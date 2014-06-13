@@ -2,6 +2,9 @@
   | TOGGLE 
   a(href='#', class="show-profile") profile
   a(href='#', class="show-login") login
+  a(href='#', class="show-articlepage") article page
+  a(href='#', class="show-lumberyard") lumberyard
+  a(href='#', class="show-notifications") notifications
 
 .home
   .home-logo
@@ -51,41 +54,4 @@
        .close-btn X
      input(type="text", id="email", name="email", placeholder="E-mail address")
      button(type="submit", value="Sign up", class="btn") Request new password
-
-
-script(type='text/javascript').
-  $('.show-profile').click(function() {
-    $('.profile-top').toggle();
-    $('.profile-content').toggle();
-  });
-
-  $('.show-login').click(function() {
-    $('.home').toggle();
-  });
-
-  $('.home-btn-join').click(function() {
-    $('.home-overlay').slideToggle();
-  });
-
-  $('.home-btn-login').click(function() {
-    $('.home-overlay-login').slideToggle();
-  });
-
-  $('.home-overlay-service.email').click(function() {
-    $('.home-overlay').fadeToggle();
-    $('.home-overlay-register').slideToggle();
-  });
-
-  $('.close-btn').click(function() {
-    $('.home-overlay').fadeOut();
-    $('.home-overlay-register').fadeOut();
-    $('.home-overlay-login').fadeOut();
-    $('.home-overlay-password').fadeOut();
-  });
-
-  $('.home-btn-password').click(function() {
-    $('.home-overlay-login').fadeToggle();
-    $('.home-overlay-password').slideToggle();
-  });
-
 

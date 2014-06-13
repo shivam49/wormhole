@@ -1,31 +1,17 @@
 @import "bourbon/bourbon"
 @import "neat/neat"
 
-@mixin grid($total, $gutter) 
-  float: left
-  width: percentage(1 / $total)
-
-  @for $i from 1 through $total 
-    &:nth-of-type(#{$i}) 
-      margin-left: ($i - 1) / $total * $gutter + 0px
-      margin-right: ($total - $i) / $total * $gutter + 0px
-
-  &:first-of-type
-    margin-left: 0
-  &:last-of-type
-    margin-right: 0
-
-
 .profile-top
   height: 133px
   border-bottom: 3px solid #fff
   background: #fff
   position: fixed
   top: 75px
-  z-index: 50
+  z-index: 100
   width: 100%
   font-size: 12px
   color: #4e4f50
+  display: none
 
   .profile-top-photo
     height: 130px
@@ -55,13 +41,12 @@
       line-height: 13px
       
       .profile-top-left-name
-        font-family: proxima_nova_bold
+        font-weight: 700
         font-size: 18px
         line-height: 20px
 
       .profile-top-left-position
-        font-family: proxima_nova_bold
-        font-weight: normal
+        font-weight: 700
         font-style: normal
         font-size: 11px
         line-height: 12px
@@ -94,8 +79,7 @@
         
         a, a:link, a:visited, a:hover, a:active 
           font-size: 14px
-          font-family: proxima_nova_bold
-          font-weight: normal
+          font-weight: 700
           font-style: normal
           line-height: 14px
           display: block
@@ -182,7 +166,7 @@
       bottom: 1px
       width: 158px
       text-align: center
-      font-family: proxima_nova_bold
+      font-weight: 700
       
     .profile-top-stage-icon
       background: url(/assets/profile/tree-orange-01.svg)
@@ -212,7 +196,7 @@
       bottom: 1px
       width: 240px
       text-align: center
-      font-family: proxima_nova_bold
+      font-weight: 700
       
     .profile-top-influencers-slider
       width: 184px
@@ -235,8 +219,7 @@
       color: #666768
     
       a, a:link, a:visited, a:hover, a:active
-        font-family: proxima_nova_bold
-        font-weight: normal
+        font-weight: 700
         font-style: normal
         color: #000
       
@@ -289,7 +272,8 @@ $max-width: auto
   position: absolute
   top: 0px
   left: 0px
-  z-index: 2000
+  z-index: 1000
+  display: none
   
   .profile-content-padding
     padding: 10px
@@ -340,8 +324,7 @@ $max-width: auto
       
       .number
         font-size: 40px
-        font-family: proxima_nova_bold
-        font-weight: normal
+        font-weight: 700
         font-style: normal
         position: absolute
         top: 0px

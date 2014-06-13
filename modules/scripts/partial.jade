@@ -1,0 +1,89 @@
+script(src="//code.jquery.com/jquery-2.1.0.min.js")
+
+script(type='text/javascript').
+
+  $('.show-profile').click(function() {
+    $('.profile-top').toggle();
+    $('.profile-content').toggle();
+  });
+
+  $('.show-lumberyard').click(function() {
+    $('.lumberyard-nav').toggle();
+    $('.lumberyard').toggle();
+  });
+
+  $('.show-notifications').click(function() {
+    $('.notifications-nav').toggle();
+    $('.notifications-page').toggle();
+  });
+
+  $('.show-login').click(function() {
+    $('.home').toggle();
+  });
+
+  $('.show-articlepage').click(function() {
+    $('.article-page, .article-page-sidebar').toggle();
+  });
+
+  $('.home-btn-join').click(function() {
+    $('.home-overlay').slideToggle();
+  });
+
+  $('.home-btn-login').click(function() {
+    $('.home-overlay-login').slideToggle();
+  });
+
+  $('.home-overlay-service.email').click(function() {
+    $('.home-overlay').fadeToggle();
+    $('.home-overlay-register').slideToggle();
+  });
+
+  $('.close-btn').click(function() {
+    $('.home-overlay').fadeOut();
+    $('.home-overlay-register').fadeOut();
+    $('.home-overlay-login').fadeOut();
+    $('.home-overlay-password').fadeOut();
+  });
+
+  $('.home-btn-password').click(function() {
+    $('.home-overlay-login').fadeToggle();
+    $('.home-overlay-password').slideToggle();
+  });
+
+  $('.chat-status').click(function() {
+    $('.chat-window').toggleClass('active');
+  });
+
+  $('.action-container .messages').click(function() {
+    $('.notifications-messages-holder').fadeToggle('fast');
+  });
+
+  $('.action-container .notifications').click(function() {
+    $('.notifications-alerts-holder').fadeToggle('fast');
+  });
+
+  $('.action-container .deals').click(function() {
+    $('.notifications-deals-holder').fadeToggle('fast');
+  });
+
+  $('.dropdown-menu').click(function() {
+    $('.dropdown').fadeToggle('fast');
+  });
+
+  $('#searchbar').hover(function() {
+    $('.search_results').fadeToggle('fast');
+  });
+
+  var resize = function() {
+    var bodywidth = $('.profile-top').width();
+    var newwidth = bodywidth - 761;
+    var otherwidth = bodywidth - 455;
+    console.log( "bodywidth", newwidth);
+    $("#profile-top-content").width(newwidth);
+    $("#profile-top-menu").width(newwidth);
+    $(".article-page, .lumberyard-nav, .profile-content, .lumberyard, .notifications-nav").width(otherwidth);
+  };
+
+  $(document).ready(resize);
+  $(window).resize(resize);
+

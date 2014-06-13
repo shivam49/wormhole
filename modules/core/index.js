@@ -4,7 +4,13 @@
   'profile',
   'notifications',
   'sidebar',
-  'masonry'
+  'masonry',
+  'articles',
+  'login',
+  'lumberyard',
+  'notificationspage',
+  'scripts'
+
 ].forEach(function (module) {
   require(module);
 });
