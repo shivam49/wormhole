@@ -109,8 +109,23 @@ function startServer(err) {
 
   if (!module.parent) {
     server.listen(port);
+    if (process.send) {
+      process.send('online');
+    }
     console.log('Server has started on port ' + port + '.');
   }
+
+  process.on('message', function (message) {
+    if (message === 'shutdown') {
+      server.close(function () {
+        process.exit(0);
+      });
+
+      setTimeout(function () {
+        process.exit(0);
+      }, 10 * 1000);
+    }
+  });
 }
 
 loadModels(startServer);

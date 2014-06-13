@@ -1,6 +1,6 @@
 image: node
 env:
-  - NODE_ENV=dev
+  - NODE_ENV=production
   - DB_HOST=192.168.3.65
   - PG_DATABASE=wormhole
   - PG_USER=wormhole
@@ -9,3 +9,7 @@ script:
   - npm install -g mocha
   - npm install
   - mocha
+deploy:
+  ssh:
+    target: beta@192.168.3.66
+    cmd: /home/beta/deploy.sh
