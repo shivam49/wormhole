@@ -21,7 +21,9 @@ passport.deserializeUser(function (user, done) {
 // load our strategies
 utils.bootstrap(path.join(__dirname, 'auth')).forEach(function (file) {
   var ctrl = require(path.join(__dirname, 'auth', file));
-  controller.stack = controller.stack.concat(ctrl.stack);
+  if (ctrl.stack) {
+    controller.stack = controller.stack.concat(ctrl.stack);
+  }
 });
 
 module.exports = ['/auth', controller];

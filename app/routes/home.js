@@ -1,19 +1,28 @@
 
 /* jshint camelcase: false */
 
-var _ = require('lodash');
 var passport = require('passport');
+var _ = require('lodash');
 var moment = require('moment');
 var express = require('express');
 var controller = express.Router();
 var path = require('path');
 var models = require(path.join(__dirname, '..', 'models'));
+var localStrategy = require(path.join(__dirname, 'auth', 'local')).localStrategy;
 
 controller.route('/logout')
 .get(logOut);
 
+controller.use('/login', useLocal);
+
 controller.route('/login')
-.get(login);
+.get(login)
+.post(passport.authenticate('local', {
+    failureFlash: true,
+    failureRedirect: '/login'
+  }), function (req, res) {
+    res.redirect('/');
+});
 
 controller.route('/register')
 .post(register);
@@ -27,76 +36,14 @@ function login(req, res) {
   res.render('auth');
 }
 
-// function loginCheck(req, res, next) {
-//   if (!_.isString(req.body.username) || _.isEmpty(req.body.username.trim())) {
-//     return next(new Error('You must enter in your email address/username.'));
-//   }
+function useLocal(req, res, next) {
+  if (req.method !== 'POST') {
+    return next();
+  }
 
-//   if (!_.isString(req.body.password) || _.isEmpty(req.body.password.trim())) {
-//     return next(new Error('You must enter in a password.'));
-//   }
-
-//   if (req.body.username.indexOf('@') > -1 && req.body.username.indexOf('.') > -1) {
-//     findUserByEmail();
-//   } else {
-//     findUserByUsername();
-//   }
-
-//   function findUserByEmail() {
-//     models.Email.find({
-//       where: {
-//         email: req.body.username.toLowerCase().trim()
-//       }
-//     }).complete(function (err, email) {
-//       if (err) {
-//         return next(err);
-//       }
-
-//       if (!email) {
-//         return next(new Error('This email address/username/password combination is invalid.'));
-//       }
-
-//       findUserEmail('fk_id_email', email.id_email);
-//     });
-//   }
-
-//   function findUserByUsername() {
-//     models.Username.find({
-//       where: {
-//         username: req.body.username.toLowerCase().trim()
-//       }
-//     }).complete(function (err, username) {
-//       if (err) {
-//         return next(err);
-//       }
-
-//       if (!username) {
-//         return next(new Error('This email address/username/password combination is invalid.'));
-//       }
-
-//       findUserEmail('fk_id_username', user.id_username);
-//     });
-//   }
-
-//   function findUserEmail(key, value) {
-//     var where = {};
-//     where[key] = value;
-
-//     models.UserEmail.find({
-//       where: where
-//     }).complete(function (err, userEmail) {
-//       if (err) {
-//         return next(err);
-//       }
-
-//       if (!userEmail) {
-//         return next(new Error('This email address/username/password combination is invalid.'));
-//       }
-
-//       models.sequelize.query(['SELECT '])
-//     })
-//   }
-// }
+  passport.use(localStrategy());
+  next();
+}
 
 // todo:  move most of these validations straight into the models as well
 //        we'll want still want to keep these here though before we even reach
@@ -120,6 +67,10 @@ function register(req, res, next) {
 
   if (req.body.password !== req.body.password_confirm) {
     return next(new Error('You must confirm your password correctly.'));
+  }
+
+  if (req.body.password.length < 6) {
+    return next(new Error('Your password must be at least six (6) characters long.'));
   }
 
   // check for "@" and "." if so it's an email
@@ -236,7 +187,7 @@ function register(req, res, next) {
       };
 
       if (!_.isUndefined(userUserName) && !_.isNull(userUserName)) {
-        data.fk_id_username = userUserName.id;
+        data.fk_id_username = userUserName.fk_id_username;
       }
 
       models.UserEmail.create(data).complete(function (err, userEmail) {
@@ -283,8 +234,8 @@ function register(req, res, next) {
       }));
 
       chainer.add(models.UserNames.create({
-        first_name: req.body.first_name.trim(),
-        last_name: req.body.last_name.trim()
+        name_first: req.body.first_name.trim(),
+        name_last: req.body.last_name.trim()
       }));
 
       chainer.run().complete(function (err, results) {
