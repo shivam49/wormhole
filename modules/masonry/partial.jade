@@ -1,6 +1,6 @@
 #freewall
   - for (var i = 0; i < Object.keys(articles).length; ++i) {
-    - var content = [articles[i]._source.category]
+    - var content = 'masonry-'+[articles[i]._source.category]
     .brick.two_one(class=content)
       - var brick = ['brick-img']
       - var image = ['background:url('+articles[i]._source.image+') no-repeat center center fixed;']

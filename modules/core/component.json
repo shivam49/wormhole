@@ -1,7 +1,10 @@
 {
   "name": "app",
   "local": [
+    "chatwindow",
     "navbar",
+    "profile",
+    "notifications",
     "sidebar",
     "masonry"
   ],

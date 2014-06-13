@@ -1,21 +1,136 @@
 .navbar
-  .brand-wrap
-    a.logo(href='/')
-      != svg('/assets/navbar/logo.svg')
+  a(href='/', class="brand-wrap")
   .search-wrap
     .form-wrap
       form(name='input', action='_self', method='get')
-        input(type='text', name='search', placeholder='Discover ...')
+        input(type='text', name='search', placeholder='Discover ...' id="searchbar")
         button(type='submit', class='btn-link')
           != svg('/assets/navbar/search.svg')
-      .spacer
-      .tree-wrap
-        a(href='/')
-          != svg('/assets/navbar/tree.svg')
-      .pipe
+  .tree
   .action-wrap
     .action-container
-      a(href='/', class="messages")
-      a(href='/', class="notifications")
-      a(href='/', class="deals")
-      a(href='/', class="settings")
+      .messages
+        .active 13
+      .notifications
+        .active 21
+      .deals
+        .active 57
+      .settings
+
+.submenu
+  .submenu-holder
+    .dropdown-menu Timeline
+      .dropdown-burger
+    .dropdown
+      a(href='#') Timeline
+      a(href='#') Trending
+      a(href='#') Streams
+      a(href='#') Lumberyard
+      
+    .calendar
+      a(href='/' class="active") 22 apr
+      a(href='/') 22 apr
+      a(href='/') 22 apr
+      a(href='/') 22 apr
+      a(href='/') 22 apr
+    .chat-status
+       a(href='#') Chat
+
+// search results
+
+.search_results
+  .search-hdr Eekoh Page
+  .search-entries
+
+    .search-entry
+      .search-entry-img
+        a(href='/page')
+          img(src='https://positivecoach.org/common/cms/images/Lakers%20Logo%20%20Lot%204%203%20of%203.gif', width="50", height="40")
+      .search-entry-info
+        .search-entry-info-hdr
+          a(href='/page') LA Lakers eekoh page
+        .search-entry-info-rank 1 / 452
+      a(href='/page', class="search-entry-icon follow")
+      .clear
+
+    .search-entry
+      .search-entry-img
+        a(href='/page')
+          img(src='https://positivecoach.org/common/cms/images/Lakers%20Logo%20%20Lot%204%203%20of%203.gif', width="50", height="40")
+      .search-entry-info
+        .search-entry-info-hdr
+          a(href='/page') LA Lakers eekoh page
+        .search-entry-info-rank 1 / 452
+      a(href='/page', class="search-entry-icon follow")
+      .clear
+
+  .search-hdr People
+  .search-entries
+
+    .search-entry
+      .search-entry-img
+        a(href='/page')
+          img(src='https://positivecoach.org/common/cms/images/Lakers%20Logo%20%20Lot%204%203%20of%203.gif', width="50", height="40")
+      .search-entry-info
+        .search-entry-info-hdr
+          a(href='/page') LA Lakers eekoh page
+        .search-entry-info-rank 1 / 452
+      a(href='/page', class="search-entry-icon connect")
+      .clear
+
+    .search-entry
+      .search-entry-img
+        a(href='/page')
+          img(src='https://positivecoach.org/common/cms/images/Lakers%20Logo%20%20Lot%204%203%20of%203.gif', width="50", height="40")
+      .search-entry-info
+        .search-entry-info-hdr
+          a(href='/page') LA Lakers eekoh page
+        .search-entry-info-rank 1 / 452
+      a(href='/page', class="search-entry-icon add")
+      .clear
+
+  .search-seeall
+     a(href='#') See all
+
+script(src="//code.jquery.com/jquery-2.1.0.min.js")
+
+script(type='text/javascript').
+  $('.chat-status').click(function() {
+    $('.chat-window').toggleClass('active');
+  });
+
+  $('.action-container .messages').hover(function() {
+    $('.notifications-messages-holder').fadeToggle('fast');
+  });
+
+  $('.action-container .notifications').hover(function() {
+    $('.notifications-alerts-holder').fadeToggle('fast');
+  });
+
+  $('.action-container .deals').hover(function() {
+    $('.notifications-deals-holder').fadeToggle('fast');
+  });
+
+  $('.dropdown-menu').click(function() {
+    $('.dropdown').fadeToggle('fast');
+  });
+
+  $('#searchbar').hover(function() {
+    $('.search_results').fadeToggle('fast');
+  });
+
+  var resize = function() {
+    var bodywidth = $('.profile-top').width();
+    var newwidth = bodywidth - 761;
+    var otherwidth = bodywidth - 455;
+    console.log( "bodywidth", newwidth);
+    $("#profile-top-content").width(newwidth);
+    $("#profile-top-menu").width(newwidth);
+    $(".profile-content").width(otherwidth);
+  };
+
+  $(document).ready(resize);
+  $(window).resize(resize);
+
+  
+  
