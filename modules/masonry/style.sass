@@ -41,7 +41,7 @@
     .content
       padding: 8px
       width: 100%
-      line-height: 110%
+      line-height: 100%
       display: block
       border-top: 2px #FFF solid
       height: auto
@@ -50,15 +50,24 @@
         color: #FFFFFF
         font-weight: bold
         display: block
-        padding-bottom: 8px
-        min-height: 25px 
+        display: -webkit-box
+        font-size: 11pt
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
+        overflow: hidden
+        text-overflow: ellipsis
+        margin-bottom: 5px
 
       .description
+        line-height: 110%
         color: #FFFFFF
         display: block
-        font-weight: normal
-        min-height: 60px
+        display: -webkit-box
         font-size: 10pt
+        -webkit-line-clamp: 3
+        -webkit-box-orient: vertical
+        overflow: hidden
+        text-overflow: ellipsis
 
 .masonry-news
   background-color: #000000
