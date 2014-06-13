@@ -14,15 +14,15 @@ function Model(sequelize, DataType) {
       references: 'user',
       referencesKey: 'id_user'
     },
-    fk_id_username: {
+    fk_id_usernames: {
       type: DataType.INTEGER,
-      references: 'username',
-      referencesKey: 'id_username'
+      references: 'usernames',
+      referencesKey: 'id_name'
     }
   }, {
     classMethods: {
       associate: function(models) {
-        UserName.hasMany(models.UserName, {foreignKey: 'id_username'});
+        UserName.hasMany(models.UserNames, {foreignKey: 'id_name'});
       }
     },
     tableName:  'user_name', // defaults to plural form

@@ -282,6 +282,11 @@ function register(req, res, next) {
         school: req.body.education.trim()
       }));
 
+      chainer.add(models.UserNames.create({
+        first_name: req.body.first_name.trim(),
+        last_name: req.body.last_name.trim()
+      }));
+
       chainer.run().complete(function (err, results) {
         // todo:  Since this isn't important.. we should eventually use some
         //        form of logging instead of straight up returning an error
@@ -308,6 +313,11 @@ function register(req, res, next) {
           fk_id_school: results[3].id_school
         }));
 
+        chainer2.add(models.User_Name.create({
+          fk_id_user: user.id_user,
+          fk_id_usernames: results[4].id_name
+        }));
+
         chainer2.run().complete(response);
       });
     }
@@ -325,8 +335,10 @@ function register(req, res, next) {
 
     function html() {
       req.flash('success', 'Your account has been created!');
-      req.username = req.body.email.trim();
-      passport.authenticate('local')(req, res, function () {
+      req.login(user, function (err) {
+        if (err) {
+          return next(err);
+        }
         res.redirect('/');
       });
     }

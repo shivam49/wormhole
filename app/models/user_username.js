@@ -22,7 +22,7 @@ function Model(sequelize, DataType) {
   }, {
     classMethods: {
       associate: function(models) {
-        UserUsername.hasMany(models.UserNames, {foreignKey: 'id_name'});
+        UserUsername.hasMany(models.User_Name, {foreignKey: 'id_name'});
         UserUsername.hasMany(models.UserName, {foreignKey: 'id_username'});
       }
     },
