@@ -14,5 +14,14 @@
 	],
 	"styles": [
 		"style.sass"
+	],
+	"images": [
+		"noImage-news.svg",
+		"noImage-business.svg",
+		"noImage-edutech.svg",
+		"noImage-entertainment.svg",
+		"noImage-politics.svg",
+		"noImage-sports.svg",
+		"noImage-lifestyle.svg"
 	]
 }

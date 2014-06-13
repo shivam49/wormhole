@@ -2,12 +2,14 @@
   - for (var i = 0; i < Object.keys(articles).length; ++i) {
     - var content = 'masonry-'+[articles[i]._source.category]
     - var brick = ['brick-img']
-    - var image = ['background:url('+articles[i]._source.image+') no-repeat center center;']
-
-    .brick.two_one
-      a
-        .svg(class=brick style=image)
-        .content(class=content)
-          .title!= articles[i]._source.title
-          .description!= articles[i]._source.description
+      if articles[i]._source.image
+        - var image = ['background:url('+articles[i]._source.image+') no-repeat center center;']
+      else
+        - var image = ['background:url(/assets/masonry/noImage-'+articles[i]._source.category+'.svg) no-repeat center center;']
+      .brick.two_one(class=content)
+        a
+          .svg(class=brick style=image)
+          .content
+            .title!= articles[i]._source.title
+            .description!= articles[i]._source.description
   - }
