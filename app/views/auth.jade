@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  form(action='/auth/local', method='post')
+    input(type='hidden', name='_csrf', value=csrf)
+    .form-group
+      label Username or E-mail
+      input(type='text', name='username', required)
+    .form-group
+      label Password
+      input(type='password', name='password', required)
+    input(type='submit', value='Login')
+
+  p - or register -
+
+  form(action='/register', method='post')
+    input(type='hidden', name='_csrf', value=csrf)
+    .form-group
+      label First Name
+      input(name='first_name', type='text', placeolder='First Name', required)
+    .form-group
+      label Last Name
+      input(name='last_name', type='text', placeholder='Last Name', required)
+    .form-group
+      label Screen Name <small>Optional</small>
+      input(name='username', type='text')
+    .form-group
+      label E-mail
+      input(name='email', type='email', placeholder='email@email.com', required)
+    .form-group
+      label Password
+      input(name='password', type='password', placeholder='Password (6 or more characters)', required)
+    .form-group
+      label Re-enter Password
+      input(name='password_confirm', type='password', placeholder='Re-enter password', required)
+    .form-group
+      label Gender
+      select(name='gender', required)
+        option(value='Male') Male
+        option(value='Female') Female
+    .form-group
+      label Date of Birth
+      input(name='dob', type='text', placeholder='DD/MM/YYYY', required)
+    .form-group
+      label Education
+      input(name='education', type='text', required)
+    .form-group
+      label Work
+      input(name='work', type='text', required)
+    .form-group
+      label Position
+      input(name='position', type='text', required)
+    input(type='submit', value='Register')

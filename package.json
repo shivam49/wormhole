@@ -39,9 +39,10 @@
     "passport-facebook": "^1.0.3",
     "lodash": "^2.4.1",
     "connect-flash": "^0.1.1",
-    "moment": "^2.6.0",
+    "moment": "^2.7.0",
     "connect-ensure-login": "^0.1.1",
     "yar": "^2.1.0",
-    "passport-twitter": "^1.0.2"
+    "passport-twitter": "^1.0.2",
+    "passport-local": "^1.0.0"
   }
 }

@@ -8,6 +8,11 @@ html(lang="en")
     block head
   body
     include _menu
+
+    //- Messages
+    block messages
+      include _messages
+
     block content
 
     script(src='/build.js')

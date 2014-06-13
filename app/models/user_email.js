@@ -19,18 +19,23 @@ function Model(sequelize, DataType) {
       references:     'email',
       referencesKey:  'id_email'
     },
+    fk_id_username: {
+      type: DataType.INTEGER,
+      references: 'username',
+      referencesKey: 'id_username'
+    },
     fk_id_verifier: {
       type: DataType.INTEGER,
       references:     'verifier',
       referencesKey:  'id_verifier'
     },
-    active: {
-      type: DataType.BOOLEAN,
-      defaultValue: true
-    },
     primary: {
       type: DataType.BOOLEAN,
       defaultValue: true
+    },
+    password: {
+      type: DataType.STRING,
+      defaultValue: '' // we don't always need a password with things like oAuth etc...
     }
   }, {
     classMethods: {
@@ -38,6 +43,7 @@ function Model(sequelize, DataType) {
         UserEmail.belongsTo(models.User, {foreignKey: 'fk_id_user'});
         UserEmail.hasMany(models.Email, {foreignKey: 'id_email'});
         UserEmail.hasMany(models.Verifier, {foreignKey: 'id_verifier'});
+        UserEmail.hasMany(models.Username, {foreignKey: 'id_username'});
       }
     },
     tableName:  'user_email', // defaults to plural form

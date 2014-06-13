@@ -40,6 +40,7 @@ app.use(function (req, res, next) {
     warning: req.flash('warning')
   };
 
+  res.locals.req = req;
   res.locals.csrf = req.csrfToken();
   res.locals.moment = moment;
   res.locals._ = _;

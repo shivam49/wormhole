@@ -18,11 +18,7 @@ function Model(sequelize, DataType) {
       type: DataType.INTEGER,
       references: 'username',
       referencesKey: 'id_username'
-    },
-    active: {
-      type: DataType.BOOLEAN,
-      defaultValue: true
-    },
+    }
   }, {
     classMethods: {
       associate: function(models) {

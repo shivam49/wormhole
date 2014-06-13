@@ -23,10 +23,6 @@ function Model(sequelize, DataType) {
       type: DataType.INTEGER,
       references:     'verifier',
       referencesKey:  'id_verifier'
-    },
-    active: {
-      type: DataType.BOOLEAN,
-      defaultValue: true
     }
   }, {
     classMethods: {

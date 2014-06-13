@@ -23,10 +23,6 @@ function Model(sequelize, DataType) {
       type: DataType.INTEGER,
       references:     'position',
       referencesKey:  'id_position'
-    },
-    active: {
-      type: DataType.BOOLEAN,
-      defaultValue: true
     }
   }, {
     classMethods: {

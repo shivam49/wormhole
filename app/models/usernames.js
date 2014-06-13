@@ -3,30 +3,31 @@
 /* jshint camelcase: false */
 
 function Model(sequelize, DataType) {
-  var Password = sequelize.define('Password', {
-    id_password: {
+  var UserNames = sequelize.define('UserNames', {
+    id_name: {
       type:           DataType.INTEGER,
       primaryKey:     true,
       autoIncrement:  true
     },
-    password: {
+    name_first: {
+      type: DataType.STRING
+    },
+    name_last: {
       type: DataType.STRING
     }
   }, {
     classMethods: {
       associate: function(models) {
-        Password.belongsTo(models.UserPassword, {
-          foreignKey: 'fk_id_password'
-        });
+        UserNames.belongsTo(models.User_Name, {foreignKey: 'id_name'});
       }
     },
-    tableName:  'password', // defaults to plural form
+    tableName:  'usernames', // defaults to plural form
     underscored: true,
     createdAt: false,
     updatedAt: false
   });
 
-  return Password;
+  return UserNames;
 }
 
 module.exports = Model;

@@ -18,7 +18,6 @@ function Model(sequelize, DataType) {
         User.hasMany(models.UserEmail,    {foreignKey: 'fk_id_user'});
         User.hasMany(models.UserSchool,   {foreignKey: 'fk_id_user'});
         User.hasMany(models.UserEmployer, {foreignKey: 'fk_id_user'});
-        User.hasMany(models.UserPassword, {foreignKey: 'fk_id_user'});
         User.hasMany(models.UserStatus,   {foreignKey: 'fk_id_user'});
       },
     },

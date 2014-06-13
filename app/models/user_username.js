@@ -18,14 +18,11 @@ function Model(sequelize, DataType) {
       type: DataType.INTEGER,
       references:     'username',
       referencesKey:  'id_username'
-    },
-    active: {
-      type: DataType.BOOLEAN,
-      defaultValue: true
     }
   }, {
     classMethods: {
       associate: function(models) {
+        UserUsername.hasMany(models.UserNames, {foreignKey: 'id_name'});
         UserUsername.hasMany(models.UserName, {foreignKey: 'id_username'});
       }
     },

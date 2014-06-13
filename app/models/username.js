@@ -9,10 +9,7 @@ function Model(sequelize, DataType) {
       primaryKey:     true,
       autoIncrement:  true
     },
-    name_first: {
-      type: DataType.STRING
-    },
-    name_last: {
+    username: {
       type: DataType.STRING
     }
   }, {

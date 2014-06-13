@@ -9,7 +9,7 @@ function Model(sequelize, DataType) {
       primaryKey:     true,
       autoIncrement:  true
     },
-    email: {
+    school: {
       type: DataType.STRING
     }
   }, {

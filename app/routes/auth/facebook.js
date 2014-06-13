@@ -1,12 +1,12 @@
 
 /*jshint camelcase: false */
 
-var express         = require('express');
-var controller      = express.Router();
-var path            = require('path');
-var models          = require(path.join(__dirname, '..', '..', 'models'));
-var config          = require(path.join(__dirname, '..', '..', '..', 'config'));
-var passport        = require('passport');
+var express           = require('express');
+var controller        = express.Router();
+var path              = require('path');
+var models            = require(path.join(__dirname, '..', '..', 'models'));
+var config            = require(path.join(__dirname, '..', '..', '..', 'config'));
+var passport          = require('passport');
 var FacebookStrategy  = require('passport-facebook');
 
 function facebookStrategy() {
