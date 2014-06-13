@@ -1,0 +1,91 @@
+.showhidestuff
+  | TOGGLE 
+  a(href='#', class="show-profile") profile
+  a(href='#', class="show-login") login
+
+.home
+  .home-logo
+  .home-btn-holder
+     a(href='#', class="home-btn-join") Join
+     a(href='#', class="home-btn-login") Login
+     
+   .home-overlay
+     .home-overlay-hdr Join eekoh
+       .close-btn X
+     .home-overlay-service.facebook Sign in with Facebook 
+     .home-overlay-service.google Sign in with Google 
+     .home-overlay-service.twitter Sign in with Twitter 
+     .home-overlay-service.email Sign in with E-mail 
+     
+   .home-overlay-register
+     .home-overlay-register-hdr Sign up with e-mail
+       .close-btn X
+     input(type="text", id="firstname", name="firstname", placeholder="First Name", class="error")
+     input(type="text", id="lastname", name="lastname", placeholder="Last Name")
+     input(type="text", id="email", name="email", placeholder="E-mail address")
+     input(type="password", id="password", name="password", placeholder="Password (6 or more characters)")
+     input(type="password", id="passwordagain", name="passwordagain", placeholder="Re-enter password")
+     input(type="text", id="location", name="location", placeholder="Location")
+     .tree
+     .tree-personalize 
+       label
+       input(type='checkbox', name='checkbox', value='test')
+       | Let eekoh personalize your experience.
+     
+     button(type="submit", value="Sign up", class="btn") Sign up
+     .register-terms
+       | By creating an account, I accept eekoh's 
+       a(href='#', class="home-btn-login") Terms and Policy
+
+   .home-overlay-login
+     .home-overlay-register-hdr Login
+       .close-btn X
+     input(type="text", id="email", name="email", placeholder="E-mail address")
+     input(type="password", id="password", name="password", placeholder="Password")
+     button(type="submit", value="Sign up", class="btn") Login
+     .register-terms
+       a(href='#', class="home-btn-password") Forgot your password?
+
+   .home-overlay-password
+     .home-overlay-register-hdr Forgot your password?
+       .close-btn X
+     input(type="text", id="email", name="email", placeholder="E-mail address")
+     button(type="submit", value="Sign up", class="btn") Request new password
+
+
+script(type='text/javascript').
+  $('.show-profile').click(function() {
+    $('.profile-top').toggle();
+    $('.profile-content').toggle();
+  });
+
+  $('.show-login').click(function() {
+    $('.home').toggle();
+  });
+
+  $('.home-btn-join').click(function() {
+    $('.home-overlay').slideToggle();
+  });
+
+  $('.home-btn-login').click(function() {
+    $('.home-overlay-login').slideToggle();
+  });
+
+  $('.home-overlay-service.email').click(function() {
+    $('.home-overlay').fadeToggle();
+    $('.home-overlay-register').slideToggle();
+  });
+
+  $('.close-btn').click(function() {
+    $('.home-overlay').fadeOut();
+    $('.home-overlay-register').fadeOut();
+    $('.home-overlay-login').fadeOut();
+    $('.home-overlay-password').fadeOut();
+  });
+
+  $('.home-btn-password').click(function() {
+    $('.home-overlay-login').fadeToggle();
+    $('.home-overlay-password').slideToggle();
+  });
+
+

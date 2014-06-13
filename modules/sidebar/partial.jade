@@ -1,18 +1,36 @@
 .sidebar-wrap
   .sidebar
-    h3.title Topics
-    ul
-      li  
-        a(href='/')  News
-      li  
-        a(href='/')  Entertainment
-      li  
-        a(href='/')  Politics
-      li  
-        a(href='/')  Sports
-      li  
-        a(href='/')  Edutech
-      li  
-        a(href='/')  Business
-      li  
-        a(href='/')  Lifestyle
+    .sidebar-profile
+      .sidebar-profile-photo
+        a(href='/profile')
+          img(src='http://1.bp.blogspot.com/-eh7B7qlNR6U/ULc8ofWeg7I/AAAAAAAAXyg/Bj195OomDLw/s640/cute_cat_bath_07.jpg', alt='Profile Photo')
+      .sidebar-profile-info
+        h3.title Helen Liu
+        | Director of Design at eekoh
+        | Ranking: xx / xx
+
+    .sidebar-nav
+    
+      h3.title Topics
+      ul
+        li  
+          a(href='/', class="news")  News
+        li  
+          a(href='/', class="entertainment")  Entertainment
+        li  
+          a(href='/', class="politics")  Politics
+        li  
+          a(href='/', class="sports")  Sports
+        li  
+          a(href='/', class="edutech")  Edutech
+        li  
+          a(href='/', class="business")  Business
+        li  
+          a(href='/', class="lifestyle")  Lifestyle
+        li  
+          a(href='/', class="following")  Following
+
+    .sidebar-stage
+      | Redwood Stage
+      
+    .sidebar-stage-icon.redwood
