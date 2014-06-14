@@ -20,13 +20,13 @@ controller.route('/')
 
 controller.route('/article/:article')
 .get(function (req, res, next) {
-  function response(err, buckets) {
+  function response(err, article) {
     if (err) {
       return next(err);
     }
 
     res.render('article', {
-      buckets: JSON.stringify(buckets)
+      article: article.buckets
     });
   }
 
