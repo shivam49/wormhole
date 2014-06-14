@@ -2,7 +2,7 @@
   - for (var i = 0; i < Object.keys(articles).length; ++i) {
     - var content = 'masonry-'+[articles[i]._source.category]
     - var brick = ['brick-img']
-    - var url = '/articles/'+[articles[i]._source.article_id]
+    - var url = '/article/'+[articles[i]._source.article_id]
       if articles[i]._source.image
         - var image = ['background:url(http://vps.eekoh.me/cache.php?url='+encodeURIComponent(articles[i]._source.image)+') no-repeat center center;']
       else

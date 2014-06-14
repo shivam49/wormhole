@@ -18,14 +18,14 @@ controller.route('/')
   }).then(response, next);
 });
 
-controller.route('/articles/:article')
+controller.route('/article/:article')
 .get(function (req, res, next) {
   function response(err, buckets) {
     if (err) {
       return next(err);
     }
 
-    res.render('articles', {
+    res.render('article', {
       buckets: JSON.stringify(buckets)
     });
   }
