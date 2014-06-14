@@ -1,5 +1,5 @@
 {
-	"name": "articles",
+	"name": "article",
 	"version": "0.0.1",
 	"paths": [
 		"../vendor"
