@@ -26,11 +26,11 @@ controller.route('/article/:article')
     }
 
     res.render('article', {
-      article: article.buckets
+      article: article
     });
   }
-
-  riak.buckets(response);
+  console.log(req.params.article);
+  riak.get('clean_text6', req.params.article, response);
 });
 
 module.exports = ['/', controller];
