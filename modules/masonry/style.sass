@@ -30,7 +30,7 @@
     a
       .svg
         width: 100%
-        height: 200px 
+        height: 200px
 
         &.brick-img
           -webkit-background-size: cover !important
@@ -43,8 +43,37 @@
       width: 100%
       line-height: 100%
       display: block
-      border-top: 2px #FFF solid
+      border-top: 2px #FFF solid !important
       height: auto
+      position: relative
+
+      &:before
+        border: solid transparent
+        content: " "
+        height: 0
+        width: 0
+        position: absolute
+        pointer-events: none
+        bottom: 100%
+        left: 50%
+        border-color: rgba(255, 255, 255, 0)
+        border-bottom-color: #fff
+        border-width: 11pt
+        margin-left: -11pt
+
+      &:after
+        border: solid transparent
+        content: " "
+        height: 0
+        width: 0
+        position: absolute
+        pointer-events: none
+        bottom: 100%
+        left: 50%
+        border-color: rgba(255, 255, 255, 0)
+        border-width: 8pt
+        margin-left: -8pt
+        border-bottom-color: #000
 
       .title
         color: #FFFFFF
@@ -68,6 +97,7 @@
         -webkit-box-orient: vertical
         overflow: hidden
         text-overflow: ellipsis
+
 
 .masonry-news
   background-color: #000000

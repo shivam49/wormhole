@@ -1,16 +1,16 @@
 #freewall
   - for (var i = 0; i < Object.keys(articles).length; ++i) {
-    - var content = 'masonry-'+[articles[i]._source.category]
+    - var category = [articles[i]._source.category]    
     - var brick = ['brick-img']
     - var url = '/article/'+[articles[i]._source.article_id]
       if articles[i]._source.image
         - var image = ['background:url(http://vps.eekoh.me/cache.php?url='+encodeURIComponent(articles[i]._source.image)+') no-repeat center center;']
       else
         - var image = ['background:url(/assets/masonry/noImage-'+articles[i]._source.category+'.svg) no-repeat center center;']
-      .brick.two_one(class=content)
+      .brick.two_one(class='masonry-'+category)
         a(href=url)
           .svg(class=brick style=image)
-          .content
+          .content(class='border-'+category)
             .title!= articles[i]._source.title
             .description!= articles[i]._source.description
   - }
