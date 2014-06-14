@@ -2,12 +2,13 @@
   - for (var i = 0; i < Object.keys(articles).length; ++i) {
     - var content = 'masonry-'+[articles[i]._source.category]
     - var brick = ['brick-img']
+    - var url = '/articles/'+[articles[i]._source.article_id]
       if articles[i]._source.image
-        - var image = ['background:url('+articles[i]._source.image+') no-repeat center center;']
+        - var image = ['background:url(http://vps.eekoh.me/cache.php?url='+encodeURIComponent(articles[i]._source.image)+') no-repeat center center;']
       else
         - var image = ['background:url(/assets/masonry/noImage-'+articles[i]._source.category+'.svg) no-repeat center center;']
       .brick.two_one(class=content)
-        a
+        a(href=url)
           .svg(class=brick style=image)
           .content
             .title!= articles[i]._source.title
