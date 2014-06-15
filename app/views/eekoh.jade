@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  include /navbar/partial
+  include /sidebar/partial
+
+  h2 Your Eekohs
+  ul
+    each eekoh in eekohs
+      li= eekoh
+
+  h2 Recently Visited Eekohs
+  ul
+    each visit in visited
+      li= visit

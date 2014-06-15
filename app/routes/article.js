@@ -4,6 +4,8 @@ var elastic     = require(path.join(__dirname, '..', 'elastic'));
 var express     = require('express');
 var controller  = express.Router();
 
+var models = require(path.join(__dirname, '..', 'models'));
+
 controller.route('/')
 .get(function (req, res, next) {
   function response(articles) {
@@ -16,6 +18,30 @@ controller.route('/')
     index: 'articles6',
     size: 49
   }).then(response, next);
+})
+.post(function (req, res) {
+  // Alex.. change this..
+  var articleHash = req.body.articleHash || '';
+
+  models.Record.create({
+    action: 'article_add',
+    articleHash: articleHash
+  }).complete(function (/* err */) {
+    // if (err) {
+      // eventually we'll want some sort of lib logger (bunyan?)
+    // }
+  });
+
+  res.format({
+    html: function() {
+      req.flash('success', 'Your article has been submitted.');
+      res.redirect('back');
+    },
+    json: function() {
+      // Alex: place the newely generated article / JSON output here...
+      res.json(true);
+    }
+  });
 });
 
 controller.route('/article/:article')
@@ -25,10 +51,18 @@ controller.route('/article/:article')
       return next(err);
     }
 
+    models.Record.create({
+      action: 'article_viewed',
+      articleHash: JSON.stringify(article)
+    }).complete(function () {
+      /* error logging concept goes here */
+    });
+
     res.render('article', {
       article: article
     });
   }
+
   console.log(req.params.article);
   riak.get('clean_text6', req.params.article, response);
 });
