@@ -9,7 +9,9 @@
   'login',
   'lumberyard',
   'notificationspage',
-  'scripts'
+  'registration',
+  'scripts',
+  'inbox'
 
 ].forEach(function (module) {
   require(module);

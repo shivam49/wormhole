@@ -25,12 +25,48 @@ script(type='text/javascript').
     $('.article-page, .article-page-sidebar').toggle();
   });
 
+  $('.show-registration').click(function() {
+    $('.registration-page').toggle();
+    $('.registration-nav').toggle();
+    $('#reg01').toggleClass('active')
+  });
+
+  $('.show-registration2').click(function() {
+    $('.registration-page2').toggle();
+    $('.registration-nav').toggle();
+    $('#reg02').toggleClass('active')
+  });
+
+  $('.show-registration3').click(function() {
+    $('.registration-page3').toggle();
+    $('.registration-nav').toggle();
+    $('#reg03').toggleClass('active')
+  });
+
+  $('.show-logintop').click(function() {
+    $('.logintop').toggle();
+    $('.welcome').toggle();
+  });
+
+  $('.show-login-overlay').click(function() {
+    $('.top-login-overlay').slideToggle();
+  });
+
+
   $('.home-btn-join').click(function() {
     $('.home-overlay').slideToggle();
   });
 
   $('.home-btn-login').click(function() {
     $('.home-overlay-login').slideToggle();
+  });
+
+  $('#overlayclose').click(function() {
+    $('.overlay').fadeOut();
+  });
+
+  $('.edit-photo').click(function() {
+    $('.overlay').fadeIn();
   });
 
   $('.home-overlay-service.email').click(function() {
@@ -81,7 +117,7 @@ script(type='text/javascript').
     console.log( "bodywidth", newwidth);
     $("#profile-top-content").width(newwidth);
     $("#profile-top-menu").width(newwidth);
-    $(".article-page, .lumberyard-nav, .profile-content, .lumberyard, .notifications-nav").width(otherwidth);
+    $(".article-page, .lumberyard-nav, .profile-content, .lumberyard, .notifications-nav, .registration-page, .registration-page2, .registration-page3").width(otherwidth);
   };
 
   $(document).ready(resize);

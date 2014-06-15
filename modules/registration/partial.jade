@@ -1,1 +1,153 @@
-.registration
+.overlay
+  .overlay-photo
+    .hdr Add / Edit photo
+      a(href="#", id="overlayclose") X
+      .clear
+    .holder
+      .info
+        | <b>Adjust photo</b>
+        | <br>Drag your photo to the blue square to size. 
+        a(href="#") Change photo.
+      .photos
+        .bigone
+        .smallone
+        .clear
+    .divider
+    .buttons
+      .cancel Cancel
+      .save Save
+      .clear
+              
+.registration-nav
+  a(href="#", id="reg01" class="active") Step 1 - Complete your profile
+  a(href="#", id="reg02") Step 2 - Choose your topics
+  a(href="#", id="reg03") Step 3 - Add connections
+
+.registration-page
+  .label First Name*:
+  .input
+    input(type="text", id="firstname")
+  .clear
+  .label Last Name*:
+  .input
+    input(type="text", id="lastname")
+  .clear
+  .label Screen Name:
+  .input.checkbox
+    input(type="text", id="screenname")
+    input(type="checkbox", name="use-fullname", class="checkbox")
+    | Use full name
+    input(type="checkbox", name="use-screenname", class="checkbox")
+    | Use screen name
+   .clear
+  .label E-mail:
+  .input
+    input(type="text", id="email")
+  .clear
+  .label Gender:
+  .input
+    input(type="text", id="gender")
+  .clear
+  .label Date of birth*:
+  .input
+    input(type="text", id="dob")
+  .clear
+  .label Education:
+  .input
+    input(type="text", id="education")
+  .clear
+  .label Work:
+  .input
+    input(type="text", id="work")
+  .clear
+  .label Position:
+  .input
+    input(type="text", id="position")
+  .clear
+  .edit-photo
+  .buttons
+    .save Save
+    .cancel Cancel
+    .clear
+
+
+.registration-page2
+  .padding
+    .hdr
+      | <b>Choose your topics</b>
+      | (must pick minimum of 3 topics)
+    .links
+      .type.entertainment
+        .number 8
+        .name.entertainment Entertainment
+        .icon-add
+      .type.politics
+        .number 8
+        .name.politics Politics
+        .icon-add
+      .type.sports
+        .number 8
+        .name.sports Sports
+        .icon-add
+      .type.lifestyle
+        .number 8
+        .name.lifestyle Lifestyle
+        .icon-add
+      .type.edutech
+        .number 8
+        .name.edutech Edutech
+        .icon-add
+      .type.business
+        .number 8
+        .name.business Business
+        .icon-add
+      .clear
+  .buttons
+    .cancel Cancel
+    .save Save
+    .clear
+
+
+.registration-page3
+  .padding
+    .hdr
+      | <b>Find your connections</b>
+    .connections
+
+      .connection
+        .logo.facebook
+        .name Facebook
+        .link
+          a(href="#") Find connections
+      .connection
+        .logo.google
+        .name Google
+        .link
+          a(href="#") Find connections
+      .connection
+        .logo.twitter
+        .name Twitter
+        .link
+          a(href="#") Find connections
+      .connection
+        .logo.pinterest
+        .name Pinterest
+        .link
+          a(href="#") Find connections
+      .connection
+        .logo.instagram
+        .name Instagram
+        .link
+          a(href="#") Find connections
+      .connection
+        .logo.linkedin
+        .name Linkedin
+        .link
+          a(href="#") Find connections
+
+      .clear
+
+      .buttons
+        .save Save
+        .skip Skip
+        .clear

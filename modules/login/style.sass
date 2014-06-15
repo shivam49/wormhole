@@ -7,7 +7,7 @@
   height: 20px
   line-height: 20px
   position: fixed
-  top: 0px
+  bottom: 0px
   left: 0px
   z-index: 2000
   font-size: 10px
@@ -16,7 +16,13 @@
   a, a:link, a:visited, a:hover, a:active
     color: #fff
     margin-left: 20px
-    
+ 
+button 
+  @include button(simple, #000)
+  padding: 10px 0px
+  margin: 20px auto
+  width: 100%
+   
 .home
   width: 100%
   height: 100%
@@ -104,12 +110,6 @@
       
       &.error
         border: 1px solid red
-      
-    button 
-      @include button(simple, #000)
-      padding: 10px 0px
-      margin: 20px auto
-      width: 100%
 
     .home-overlay-register-hdr
       height: 55px
@@ -234,4 +234,107 @@
     .home-overlay-service:hover
       cursor: pointer
       border: 2px solid #fff
-        
+ 
+/* login top */
+
+
+.logintop
+  position: absolute
+  top: 0px
+  right: 0px
+  width: 244px
+  background: #fff
+  z-index: 2000
+  height: 50px
+  display: none
+  
+  .links
+    margin-top: 20px
+    color: #333
+    font-size: 14px
+    margin-right: 40px
+    text-align: right
+    
+    a, a:hover, a:active, a:visited, a:link
+      font-weight: 600
+      color: #333
+      
+  .top-login-overlay
+    width: 244px
+    background: url(/assets/navbar/search-bg.png)
+    z-index: 2000
+    right: 0px
+    top: 50px
+    position: absolute
+    padding: 40px 20px 20px 20px
+    display: none
+    
+    input
+      background: transparent
+      font-size: 13px
+      font-family: 'Open Sans', sans-serif
+      border: 1px solid #828081
+      color: #fff
+      padding: 5px 10px
+  
+  .small
+    font-size: 10px
+    color: #fff
+    
+    a, a:link, a:visited, a:hover, a:active 
+      color: #fff
+      
+
+.welcome
+  width: 800px
+  height: 100%
+  background: #fff
+  margin-left: 214px
+  margin-top: 50px
+  position: absolute
+  top: 0px
+  left: 0px
+  z-index: 1000
+  display: none
+
+  .hdr
+    background: #4f4f4f
+    color: #fff
+    padding-left: 65px
+    height: 22px
+    font-size: 13px
+    line-height: 22px
+
+  .about
+    padding: 65px
+    
+    .logo
+      width: 160px
+      height: 180px
+      background: url(/assets/navbar/tree.svg)
+      background-size: 160px 180px
+      float: right
+      
+    .mission
+      float: left
+      width: 400px
+      font-size: 25px
+      line-height: 30px
+      font-weight: 700
+      color: #000
+      margin-top: 50px
+      
+      b 
+        font-size: 35px
+        text-transform: uppercase
+        line-height: 35px
+        color: #a0a0a0
+      
+    .about-text
+      font-size: 14px
+      line-height: 22px
+      margin-top: 40px
+
+
+
+

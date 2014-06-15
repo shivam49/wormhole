@@ -11,7 +11,9 @@
     "login",
     "lumberyard",
     "notificationspage",
-    "scripts"
+    "scripts",
+    "registration",
+    "inbox"
 
   ],
   "main": "index.js",
