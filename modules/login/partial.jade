@@ -1,5 +1,5 @@
 .showhidestuff
-  | TOGGLE 
+  | TOGGLE
   a(href='#', class="show-profile") profile
   a(href='#', class="show-login") login
   a(href='#', class="show-articlepage") article page
@@ -16,41 +16,53 @@
   .home-btn-holder
      a(href='#', class="home-btn-join") Join
      a(href='#', class="home-btn-login") Login
-     
+
    .home-overlay
      .home-overlay-hdr Join eekoh
        .close-btn X
-     .home-overlay-service.facebook Sign in with Facebook 
-     .home-overlay-service.google Sign in with Google 
-     .home-overlay-service.twitter Sign in with Twitter 
-     .home-overlay-service.email Sign in with E-mail 
-     
+     .home-overlay-service.facebook: a(href='/auth/facebook') Sign in with Facebook
+     .home-overlay-service.google: a(href='/auth/google') Sign in with Google
+     .home-overlay-service.twitter: a(href='/auth/twitter') Sign in with Twitter
+     .home-overlay-service.email.home-btn-join Sign in with E-mail
+
    .home-overlay-register
      .home-overlay-register-hdr Sign up with e-mail
        .close-btn X
-     input(type="text", id="firstname", name="firstname", placeholder="First Name", class="error")
-     input(type="text", id="lastname", name="lastname", placeholder="Last Name")
-     input(type="text", id="email", name="email", placeholder="E-mail address")
-     input(type="password", id="password", name="password", placeholder="Password (6 or more characters)")
-     input(type="password", id="passwordagain", name="passwordagain", placeholder="Re-enter password")
-     input(type="text", id="location", name="location", placeholder="Location")
-     .tree
-     .tree-personalize 
+     form(action='/register', method='post')
+      input(type='hidden', name='_csrf', value=csrf)
+      input(type="text", id="firstname", name="first_name", placeholder="First Name", class="error")
+      input(type="text", id="lastname", name="last_name", placeholder="Last Name")
+      input(type="text", id="email", name="email", placeholder="E-mail address")
+      input(type="password", id="password", name="password", placeholder="Password (6 or more characters)")
+      input(type="password", id="passwordagain", name="password_confirm", placeholder="Re-enter password")
+      select(name='gender', required)
+       option(value='Male') Male
+       option(value='Female') Female
+      input(name='dob', type='text', placeholder='Date of Birth (DD/MM/YYYY)', required)
+      input(name='education', type='text', required, placeholder='Education')
+      input(name='work', type='text', required, placeholder='Workplace')
+      input(name='position', type='text', required, placeholder='Work position')
+      //-input(type="text", id="location", name="location", placeholder="Location")
+     //.
+      .tree
+       .tree-personalize
        label
        input(type='checkbox', name='checkbox', value='test')
        | Let eekoh personalize your experience.
-     
+
      button(type="submit", value="Sign up", class="btn") Sign up
      .register-terms
-       | By creating an account, I accept eekoh's 
+       | By creating an account, I accept eekoh's
        a(href='#', class="home-btn-login") Terms and Policy
 
    .home-overlay-login
      .home-overlay-register-hdr Login
        .close-btn X
-     input(type="text", id="email", name="email", placeholder="E-mail address")
-     input(type="password", id="password", name="password", placeholder="Password")
-     button(type="submit", value="Sign up", class="btn") Login
+     form(action='/login', method='post')
+      input(type='hidden', name='_csrf', value=csrf)
+      input(type="text", id="username", name="username", placeholder="E-mail/Username")
+      input(type="password", id="password", name="password", placeholder="Password")
+      button(type="submit", value="Sign up", class="btn") Login
      .register-terms
        a(href='#', class="home-btn-password") Forgot your password?
 
@@ -63,14 +75,16 @@
 .logintop
   .links
     a(href="#", class="about") What is eekoh?
-    | &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;   
+    | &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
     a(href="#", class="show-login-overlay") Log In
   .top-login-overlay
-    input(type="text", id="login-email", name="email", placeholder="E-mail address")
+   form(action='/login', method='post')
+    input(type='hidden', name='_csrf', value=csrf)
+    input(type="text", id="login-email", name="username", placeholder="E-mail/Username")
     input(type="password", id="login-password", name="password", placeholder="Password")
     .small
       input(type="checkbox", name="use-fullname", class="checkbox")
-      | Keep me logged in | 
+      | Keep me logged in |
       a(href="#") Forgot password?
     button(type="submit", value="Login", class="btn") Login
 
