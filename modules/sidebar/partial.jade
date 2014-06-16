@@ -1,13 +1,14 @@
 .sidebar-wrap
   .sidebar
-    .sidebar-profile
-      .sidebar-profile-photo
-        a(href='/profile')
-          img(src='http://1.bp.blogspot.com/-eh7B7qlNR6U/ULc8ofWeg7I/AAAAAAAAXyg/Bj195OomDLw/s640/cute_cat_bath_07.jpg', alt='Profile Photo')
-      .sidebar-profile-info
-        h3.title Helen Liu
-        | Director of Design at eekoh
-        | Ranking: xx / xx
+    if authenticated
+      .sidebar-profile
+        .sidebar-profile-photo
+          a(href='/profile')
+            img(src='http://1.bp.blogspot.com/-eh7B7qlNR6U/ULc8ofWeg7I/AAAAAAAAXyg/Bj195OomDLw/s640/cute_cat_bath_07.jpg', alt='Profile Photo')
+        .sidebar-profile-info
+          h3.title Helen Liu
+          | Director of Design at eekoh
+          | Ranking: xx / xx
 
     .sidebar-nav
     
