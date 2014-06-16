@@ -33,14 +33,35 @@
     a(href="#") Connections
     a(href="#") Interests
   .article-page-discuss
-    .photo
-      img(src="http://1up.fm/wp/wp-content/uploads/2014/02/Lakers.png", width="55", height="50")
-    .content
-      .name
-        a(href="#") Lil Meowzers
-      .comment
-        input(type="text", placeholder="Enter your comment..", name="article-comment", id="article-comment")
-        button(value="Comment") Comment
+    .comment
+      .photo
+        img(src="http://1up.fm/wp/wp-content/uploads/2014/02/Lakers.png", width="55", height="50")
+      .info
+        .name
+          a(href="#") Postman Pat
+        .time
+          | &nbsp;&nbsp;>&nbsp;&nbsp; 5 minutes
+        .text Woohooo hello yaaaaaay!
+      .clear
+      .links
+        a(href="#", class="reply") Reply
+        a(href="#", class="like") Like
+        a(href="#", class="dislike") Dislike
+        a(href="#", class="flag") Flag
+        a(href="#", class="share") Share
+
+    .comment-answer
+      .photo
+        img(src="http://1up.fm/wp/wp-content/uploads/2014/02/Lakers.png", width="55", height="50")
+      .content
+        .name
+          a(href="#") Lil Meowzers
+        .comment-input
+          input(type="text", placeholder="Enter your comment..", name="article-comment", id="article-comment")
+        .comment-button
+          button(value="Comment") Comment
+        .clear
+      .clear
 
 .article-page-sidebar
   .source-holder
