@@ -6,7 +6,7 @@
     .holder
       .info
         | <b>Adjust photo</b>
-        | <br>Drag your photo to the blue square to size. 
+        | <br>Drag your photo to the blue square to size.
         a(href="#") Change photo.
       .photos
         .bigone
@@ -17,59 +17,70 @@
       .cancel Cancel
       .save Save
       .clear
-              
+
 .registration-nav
   a(href="#", id="reg01" class="active") Step 1 - Complete your profile
   a(href="#", id="reg02") Step 2 - Choose your topics
   a(href="#", id="reg03") Step 3 - Add connections
 
 .registration-page
-  .label First Name*:
-  .input
-    input(type="text", id="firstname")
-  .clear
-  .label Last Name*:
-  .input
-    input(type="text", id="lastname")
-  .clear
-  .label Screen Name:
-  .input.checkbox
-    input(type="text", id="screenname")
-    input(type="checkbox", name="use-fullname", class="checkbox")
-    | Use full name
-    input(type="checkbox", name="use-screenname", class="checkbox")
-    | Use screen name
-   .clear
-  .label E-mail:
-  .input
-    input(type="text", id="email")
-  .clear
-  .label Gender:
-  .input
-    input(type="text", id="gender")
-  .clear
-  .label Date of birth*:
-  .input
-    input(type="text", id="dob")
-  .clear
-  .label Education:
-  .input
-    input(type="text", id="education")
-  .clear
-  .label Work:
-  .input
-    input(type="text", id="work")
-  .clear
-  .label Position:
-  .input
-    input(type="text", id="position")
-  .clear
-  .edit-photo
-  .buttons
-    .save Save
-    .cancel Cancel
+  form(action='/register', method='post')
+    input(type='hidden', name='_csrf', value=csrf)
+    .label First Name*:
+    .input
+      input(name='first_name', type='text', placeolder='First Name', required)
     .clear
-
+    .label Last Name*:
+    .input
+      input(name='last_name', type='text', placeholder='Last Name', required)
+    .clear
+    .label Screen Name:
+    .input.checkbox
+      input(type="text", id="screenname")
+      input(type="checkbox", name="use-fullname", class="checkbox")
+      | Use full name
+      input(name='username', type='text')
+      | Use screen name
+     .clear
+    .label E-mail:
+    .input
+      input(name='email', type='email', placeholder='email@email.com', required)
+    .clear
+    .label Password:
+    .input
+      input(name='password', type='password', placeholder='Password (6 or more characters)', required)
+    .clear
+    .label Password (Confirm):
+    .input
+      input(name='password_confirm', type='password', placeholder='Re-enter password', required)
+    .clear
+    .label Gender:
+    .input
+      select(name='gender', required)
+        option(value='Male') Male
+        option(value='Female') Female
+    .clear
+    .label Date of birth*:
+    .input
+      input(name='dob', type='text', placeholder='DD/MM/YYYY', required)
+    .clear
+    .label Education:
+    .input
+      input(name='education', type='text', required)
+    .clear
+    .label Work:
+    .input
+      input(name='work', type='text', required)
+    .clear
+    .label Position:
+    .input
+      input(name='position', type='text', required)
+    .clear
+    .edit-photo
+    .buttons
+      input(type='submit', value='Save').save
+      .cancel Cancel
+      .clear
 
 .registration-page2
   .padding
