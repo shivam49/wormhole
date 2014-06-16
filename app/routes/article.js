@@ -3,13 +3,13 @@ var riak        = require(path.join(__dirname, '..', 'riak'));
 var elastic     = require(path.join(__dirname, '..', 'elastic'));
 var express     = require('express');
 var controller  = express.Router();
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+// var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 // var ensureLoggedOut = require('connect-ensure-login').ensureLoggedOut;
 var models = require(path.join(__dirname, '..', 'models'));
 
 var main = controller.route('/');
 
-main.get(ensureLoggedIn('/login'))
+main //.get(ensureLoggedIn('/login'))
 .get(function (req, res, next) {
   function response(articles) {
     res.render('articles', {
