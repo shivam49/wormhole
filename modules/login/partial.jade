@@ -73,22 +73,6 @@
      input(type="text", id="email", name="email", placeholder="E-mail address")
      button(type="submit", value="Sign up", class="btn") Request new password
 
-.logintop
-  .links
-    a(href="#", class="about") What is eekoh?
-    | &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-    a(href="#", class="show-login-overlay") Log In
-  .top-login-overlay
-   form(action='/login', method='post')
-    input(type='hidden', name='_csrf', value=csrf)
-    input(type="text", id="login-email", name="username", placeholder="E-mail/Username")
-    input(type="password", id="login-password", name="password", placeholder="Password")
-    .small
-      input(type="checkbox", name="use-fullname", class="checkbox")
-      | Keep me logged in |
-      a(href="#") Forgot password?
-    button(type="submit", value="Login", class="btn") Login
-
 .welcome
   .hdr What is eekoh?
   .about
