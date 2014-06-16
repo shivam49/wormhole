@@ -33,6 +33,7 @@
       input(type="text", id="firstname", name="first_name", placeholder="First Name", class="error")
       input(type="text", id="lastname", name="last_name", placeholder="Last Name")
       input(type="text", id="email", name="email", placeholder="E-mail address")
+      input(type="text", id="username", name="username", placeholder="Username (optional)")
       input(type="password", id="password", name="password", placeholder="Password (6 or more characters)")
       input(type="password", id="passwordagain", name="password_confirm", placeholder="Re-enter password")
       select(name='gender', required)
@@ -43,17 +44,17 @@
       input(name='work', type='text', required, placeholder='Workplace')
       input(name='position', type='text', required, placeholder='Work position')
       //-input(type="text", id="location", name="location", placeholder="Location")
-     //.
-      .tree
-       .tree-personalize
-       label
-       input(type='checkbox', name='checkbox', value='test')
-       | Let eekoh personalize your experience.
+      //.
+       .tree
+        .tree-personalize
+        label
+        input(type='checkbox', name='checkbox', value='test')
+        | Let eekoh personalize your experience.
 
-     button(type="submit", value="Sign up", class="btn") Sign up
-     .register-terms
-       | By creating an account, I accept eekoh's
-       a(href='#', class="home-btn-login") Terms and Policy
+      input(type="submit", value="Sign up", class="btn")
+      .register-terms
+        | By creating an account, I accept eekoh's
+        a(href='#', class="home-btn-login") Terms and Policy
 
    .home-overlay-login
      .home-overlay-register-hdr Login
