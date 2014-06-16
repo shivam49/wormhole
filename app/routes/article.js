@@ -18,7 +18,7 @@ main.get(ensureLoggedIn('/login'))
   }
 
   elastic.search({
-    index: 'articles6',
+    index: 'articles12',
     size: 49
   }).then(response, next);
 })
