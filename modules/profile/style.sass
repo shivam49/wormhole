@@ -273,69 +273,126 @@ $max-width: auto
   top: 0px
   left: 0px
   z-index: 1000
-  display: none
   
   .profile-content-padding
     padding: 10px
+    
+    .menu
+      margin: 20px 0px
+      font-weight: 600
+    
+      a, a:link, a:visited, a:hover, a:active
+        margin-left: 50px
+        color: #000
+        font-weight: 400
+        
+        &.active 
+          font-weight: 700
   
   .links
     @include outer-container
     
-    div.type
-      @include span-columns(1)
-      background: red
-      width: span(1)
-      height: 80px
-      position: relative
+    .col 
+      width: 110px
+      float: left 
+ 
+      .type
+        //@include span-columns(1)
+        //width: span(1)
+        height: 80px
+        position: relative
+        width: 100px
+        margin-left: 10px
+        margin-bottom: 10px
       
-      &.news
-        background: #050708
+        &.news
+          background: #050708
 
-      &.entertainment
-        background: #d65255
+        &.entertainment
+          background: #d65255
 
-      &.politics
-        background: #635ca3
+        &.politics
+          background: #635ca3
 
-      &.sports
-        background: #6bc048
+        &.sports
+          background: #6bc048
 
-      &.lifestyle
-        background: #e97f4b
+        &.lifestyle
+          background: #e97f4b
 
-      &.edutech
-        background: #5680c1
+        &.edutech
+          background: #5680c1
 
-      &.business
-        background: #afadad
+        &.business
+          background: #afadad
         
-      .name
-        position: absolute
-        bottom: 0px
-        height: 20px
-        width: 100%
-        left: 0px
-        background: #000
-        opacity: 0.8 
-        color: #fff
-        text-align: center
-        line-height: 20px
-        font-size: 13px
+        .name
+          position: absolute
+          bottom: 0px
+          height: 20px
+          width: 100%
+          left: 0px
+          color: #fff
+          text-align: center
+          line-height: 20px
+          font-size: 13px
+
+          &.entertainment
+            background: #9f3d3f
+          
+          &.politics
+            background: #494377
       
-      .number
-        font-size: 40px
-        font-weight: 700
-        font-style: normal
-        position: absolute
-        top: 0px
-        height: 60px
-        left: 0px
-        line-height: 60px
-        text-align: center
-        width: 100%
-        opacity: 0.5
+          &.sports
+            background: #508e35
+      
+          &.lifestyle
+            background: #ad5e38
+      
+          &.edutech
+            background: #4a5f8c
+      
+          &.business
+            background: #828081
+          
+          &.news
+            background: #505253
+      
+        .number
+          font-size: 40px
+          font-weight: 700
+          font-style: normal
+          position: absolute
+          top: 0px
+          height: 60px
+          left: 0px
+          line-height: 60px
+          text-align: center
+          width: 100%
+          opacity: 0.5
         
+          &.news
+            opacity: 1
+        
+      .type:first-child
+        margin-left: 0px
 
+      .type:hover
+        cursor: pointer
+      
+      a.brand
+        background: #fff
+        text-align: center
+        position: relative
+        
+        img
+          display: block
+          margin: 5px
+          border: 1px solid #ccc
+          padding: 5px
+
+      a.brand:hover
+        cursor: pointer
     
     
     

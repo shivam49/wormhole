@@ -52,6 +52,12 @@ script(type='text/javascript').
     $('.top-login-overlay').slideToggle();
   });
 
+  $('.show-inbox').click(function() {
+    $('.inbox-nav').toggle();
+    $('.inbox-list-top').toggle();
+    $('.inbox').toggle();
+    $('.inbox-list').toggle();
+  });
 
   $('.home-btn-join').click(function() {
     $('.home-overlay').slideToggle();
@@ -114,10 +120,12 @@ script(type='text/javascript').
     var bodywidth = $('.profile-top').width();
     var newwidth = bodywidth - 761;
     var otherwidth = bodywidth - 455;
+    var currentwidth = otherwidth - 263
     console.log( "bodywidth", newwidth);
     $("#profile-top-content").width(newwidth);
     $("#profile-top-menu").width(newwidth);
-    $(".article-page, .lumberyard-nav, .profile-content, .lumberyard, .notifications-nav, .registration-page, .registration-page2, .registration-page3").width(otherwidth);
+    $(".inbox .current, .inbox-nav, .chatbox, .chatbox-btns").width(currentwidth);
+    $(".article-page, .lumberyard-nav, .profile-content, .lumberyard, .notifications-nav, .registration-page, .registration-page2, .registration-page3, .inbox").width(otherwidth);
   };
 
   $(document).ready(resize);
