@@ -17,12 +17,12 @@
   "facebook": {
     "id": "717340098325774",
     "secret": "bebd3c1ccbb2b264006cfb462316c4e9",
-    "callbackUrl": "http://127.0.0.1:8000/auth/facebook/callback"
+    "callbackUrl": "http://beta.eekoh.me/auth/facebook/callback"
   },
   "google": {
     "id": "115489730074.apps.googleusercontent.com",
     "secret": "Aq9at97pYtfAB8Hm-y1FYzgB",
     "email": "115489730074@developer.gserviceaccount.com",
-    "callbackUrl": "http://127.0.0.1:8000/auth/google/callback"
+    "callbackUrl": "http://beta.eekoh.me/auth/google/callback"
   }
 }

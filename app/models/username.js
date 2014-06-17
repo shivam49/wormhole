@@ -11,6 +11,12 @@ function Model(sequelize, DataType) {
     },
     username: {
       type: DataType.STRING
+    },
+    name_first: {
+      type: DataType.STRING
+    },
+    name_last: {
+      type: DataType.STRING
     }
   }, {
     classMethods: {

@@ -5,4 +5,4 @@ var path      = require('path');
 var defaults  = require(path.join(__dirname, 'config.json'));
 var config    = require(path.join(__dirname, (process.env.NODE_ENV || 'dev') + '.json'));
 
-module.exports = _.extend(config, defaults);
+module.exports = _.merge(defaults, config);

@@ -81,6 +81,8 @@ function errorHandler(err, req, res, next) {
     }
   }
 
+  console.error(error);
+
   res.format({
     text: function() {
       res.send(error.message);
