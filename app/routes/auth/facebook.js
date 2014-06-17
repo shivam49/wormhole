@@ -61,13 +61,27 @@ function facebookStrategy() {
           };
 
           models.UserEmail.findOrCreate({
-            // fk_id_user: user.id,
-            fk_id_email: email.id,
-            // fk_id_verifier: verifier.id,
-            auth_profile: JSON.stringify(authProfile)
+            // fk_id_user: user.id_user,
+            fk_id_email: email.id_email
+          },
+          {
+            // fk_id_verifier: verifier.id_verifier,
+            fk_id_email: email.id_email
           }).complete(function (err, userEmail) {
-            userEmail.user = user;
-            populateNames(err, userEmail);
+            if (err) {
+              return done(err);
+            }
+
+            userEmail.auth_profile = JSON.stringify(authProfile);
+
+            userEmail.save(['auth_profile']).complete(function (err, userEmail) {
+              if (err) {
+                return done(err);
+              }
+
+              userEmail.user = user;
+              populateNames(err, userEmail);
+            });
           });
         });
       }
