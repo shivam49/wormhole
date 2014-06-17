@@ -3,6 +3,11 @@
 var $ = require('jquery');
 
 $(function () {
+  $('.show-login-overlay').click(function (e) {
+    e.preventDefault();
+    $('.top-login-overlay').toggle();
+  });
+
 	$('img.svg2').each(function () {
 		var $img = $(this);
 		var imgID = $img.attr('id');
