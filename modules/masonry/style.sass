@@ -32,42 +32,66 @@
         .svg
           width: 100px
           height: 100px
+          background-color: #FFF !important
+
+          &.brick-img
+            -webkit-background-size: cover !important
+            -moz-background-size: cover !important
+            -o-background-size: cover !important
+            background-size: cover !important
+
          
     &.two_one
-      height: auto
-      min-height: 150px
-      width: 200px
-
-      a
-        .svg
-          width: 200px
-          height: 100px
-
-    &.three_one
-      height: auto
-      min-height: 150px
-      width: 300px
-      
-      a
-        .svg
-          width: 300px
-          height: 100px
-
-    &.two_two
       height: auto
       min-height: 200px
       width: 200px
 
       a
         .svg
-          width: 200px
-          height: 200px
+          min-width: 200px
+          min-height: 100px
 
+          &.brick-img
+            -webkit-background-size: cover !important
+            -moz-background-size: cover !important
+            -o-background-size: cover !important
+            background-size: cover !important
+
+
+
+    &.three_one
+      height: auto
+      min-height: 200px
+      width: 300px
+      
+      a
+        .svg
+          min-width: 300px
+          min-height: 100px
+
+          &.brick-img
+            -webkit-background-size: cover !important
+            -moz-background-size: cover !important
+            -o-background-size: cover !important
+            background-size: cover !important
+
+    &.two_two
+      height: auto
+      min-height: 300px
+      width: 200px
+
+      a
+        .svg
+          min-width: 200px
+          min-height: 200px
+         
         &.brick-img
           -webkit-background-size: cover !important
           -moz-background-size: cover !important
           -o-background-size: cover !important
           background-size: cover !important
+
+          
       
     .content
       padding: 8px
