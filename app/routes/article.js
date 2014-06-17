@@ -1,3 +1,6 @@
+
+/* jshint camelcase: false */
+
 var async       = require('async');
 var http        = require('http');
 var request     = require('request');
@@ -66,10 +69,16 @@ main //.get(ensureLoggedIn('/login'))
   // Alex.. change this..
   var articleHash = req.body.articleHash || '';
 
-  models.Record.create({
+  var data = {
     action: 'article_add',
     articleHash: articleHash
-  }).complete(function (/* err */) {
+  };
+
+  if (req.user) {
+    data.id_user = req.user.id_user;
+  }
+
+  models.Record.create(data).complete(function (/* err */) {
     // if (err) {
       // eventually we'll want some sort of lib logger (bunyan?)
     // }
