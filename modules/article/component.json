@@ -11,6 +11,11 @@
 	"styles": [
 		"style.sass"
 	],
-	"images": [
+  "images": [
+    "article-system.svg",
+    "article-page.svg",
+    "article-chop.svg",
+    "article-discuss.svg",
+    "article-share.svg"
 	]
 }
