@@ -20,9 +20,11 @@ passport.deserializeUser(function (user, done) {
 
 // load our strategies
 utils.bootstrap(path.join(__dirname, 'auth')).forEach(function (file) {
-  var ctrl = require(path.join(__dirname, 'auth', file));
-  if (ctrl.stack) {
-    controller.stack = controller.stack.concat(ctrl.stack);
+  if (file !== 'local.js') {
+    var ctrl = require(path.join(__dirname, 'auth', file));
+    if (ctrl.stack) {
+      controller.stack = controller.stack.concat(ctrl.stack);
+    }
   }
 });
 
