@@ -10,7 +10,7 @@ var models  = require(path.join(__dirname, 'app', 'models'));
 var app     = express();
 var http    = require('http');
 
-http.globalAgent.maxSockets = http.globalAgent.maxSockets + 100;
+http.globalAgent.maxSockets = http.globalAgent.maxSockets + 1000;
 
 // initialize the controllers
 app = require(path.join(__dirname, 'app', 'routes'))(app);
