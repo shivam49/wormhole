@@ -14,6 +14,13 @@ function Model(sequelize, DataType) {
     },
     articleHash: {
       type: DataType.STRING
+    },
+    id_user: {
+      type: DataType.STRING
+    },
+    created_at: {
+      type: DataType.DATE,
+      defaultValue: DataType.NOW
     }
   }, {
     classMethods: {
@@ -22,7 +29,8 @@ function Model(sequelize, DataType) {
     },
     tableName:  'record', // defaults to plural form
     underscored: true,
-    createdAt: 'created_at',
+    timestamps: false,
+    createdAt: false,
     updatedAt: false
   });
 
