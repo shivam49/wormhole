@@ -2,7 +2,6 @@
 /* jshint camelcase: false */
 
 var async       = require('async');
-var http        = require('http');
 var request     = require('request');
 var path        = require('path');
 var riak        = require(path.join(__dirname, '..', 'riak'));
@@ -12,8 +11,6 @@ var controller  = express.Router();
 // var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 // var ensureLoggedOut = require('connect-ensure-login').ensureLoggedOut;
 var models = require(path.join(__dirname, '..', 'models'));
-
-http.globalAgent.maxSockets = http.globalAgent.maxSockets + 100;
 
 var main = controller.route('/');
 
