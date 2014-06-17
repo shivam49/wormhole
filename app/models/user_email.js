@@ -36,6 +36,10 @@ function Model(sequelize, DataType) {
     password: {
       type: DataType.STRING,
       defaultValue: '' // we don't always need a password with things like oAuth etc...
+    },
+    auth_profile: {
+      type: DataType.STRING,
+      defaultValue: ''
     }
   }, {
     classMethods: {
