@@ -19,35 +19,18 @@ function searchRoute(req, res, next) {
 
   var search = req.params.words || req.body.words;
 
-  if (!! ~search.indexOf('@')) {
-    request('http://mobileapp.eekoh.me/fb.php?email=' + search, function (err, response, body) {
-      elastic.search({
-        index: 'articles12',
-        type: 'article',
-        size: 200,
-        body: {
-          query: {
-            match: {
-              article_text: body.toString()
-            }
-          }
-        }
-      }).then(response, next);
-    });
-  } else {
-    elastic.search({
-      index: 'articles12',
-      type: 'article',
-      size: 200,
-      body: {
-        query: {
-          match: {
-            article_text: search
-          }
+  elastic.search({
+    index: 'articles12',
+    type: 'article',
+    size: 200,
+    body: {
+      query: {
+        match: {
+          article_text: search
         }
       }
-    }).then(response, next);
-  }
+    }
+  }).then(response, next);
 
   function getImageClass(i, done) {
     if (/\/\d+$/.test(i._source.image)) {
