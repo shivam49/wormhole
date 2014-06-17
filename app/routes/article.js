@@ -46,10 +46,9 @@ main //.get(ensureLoggedIn('/login'))
   }
 
   function response(articles) {
-    console.log(typeof articles.hits.hits);
     async.map(articles.hits.hits, getImageClass, function (err, results) {
       if (err) {
-        return next();
+        return next(err);
       }
 
       res.render('articles', {
@@ -90,14 +89,10 @@ main //.get(ensureLoggedIn('/login'))
 
 controller.route('/article/:article')
 .get(function (req, res, next) {
-  function response(err, article) {
-    if (err) {
-      return next(err);
-    }
-
+  function response(article) {
     models.Record.create({
       action: 'article_viewed',
-      articleHash: JSON.stringify(article)
+      articleHash: req.params.article
     }).complete(function () {
       /* error logging concept goes here */
     });
@@ -107,8 +102,11 @@ controller.route('/article/:article')
     });
   }
 
-  console.log(req.params.article);
-  riak.get('clean_text6', req.params.article, response);
+  elastic.get({
+    index: 'articles12',
+    type: 'article',
+    id: req.params.article
+  }).then(response, next);
 });
 
 module.exports = ['/', controller];
