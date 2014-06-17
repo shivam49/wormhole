@@ -2,15 +2,15 @@
   - for (var i = 0; i < Object.keys(articles).length; ++i) {
     - var category = [articles[i]._source.category]    
     - var brick = ['brick-img']
-    - var url = '/article/'+[articles[i]._source.article_id]
-      if articles[i]._source.image
-        - var image = ['background:url(http://vps.eekoh.me/cache.php?url='+encodeURIComponent(articles[i]._source.image)+') no-repeat center center;']
-      else
+      if articles[i].noImage
         - var image = ['background:url(/assets/masonry/noImage-'+articles[i]._source.category+'.svg) no-repeat center center;']
-      .brick.two_one(class='masonry-'+category)
-        a(href=url)
+      else
+        - var image = ['background:url(' + articles[i]._source.image + ') no-repeat center center;']
+      - var classes = [ 'masonry-' + articles[i]._source.category, articles[i].imageClass ]
+      .brick(class=classes)
+        a(href='/article/' + articles[i]._id)
           .svg(class=brick style=image)
           .content(class='border-'+category)
             .title!= articles[i]._source.title
-            .description!= articles[i]._source.description
+            .description!= articles[i]._source.Description
   - }
