@@ -119,7 +119,21 @@ controller.route('/lifestyle').get(getArticles);
 
 controller.route('/article/:article')
 .get(function (req, res, next) {
-  function response(article) {
+  function getRelated(article) {
+    elastic.mlt({
+      index: 'articles12',
+      type: 'article',
+      id: article._id
+    }, function (err, results) {
+      if (err) {
+        return next(err);
+      }
+
+      response(article, results);
+    });
+  }
+
+  function response(article, related) {
     models.Record.create({
       action: 'article_viewed',
       articleHash: req.params.article
@@ -128,7 +142,8 @@ controller.route('/article/:article')
     });
 
     res.render('article', {
-      article: article
+      article: article,
+      related: related
     });
   }
 
@@ -136,7 +151,7 @@ controller.route('/article/:article')
     index: 'articles12',
     type: 'article',
     id: req.params.article
-  }).then(response, next);
+  }).then(getRelated, next);
 });
 
 module.exports = ['/', controller];

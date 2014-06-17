@@ -17,7 +17,8 @@ app = require(path.join(__dirname, 'app', 'routes'))(app);
 
 function loadModels(fn) {
   // we'll want to get rid of force true eventually...
-  models.sequelize.sync({force: true}).complete(fn);
+  // models.sequelize.sync({force: true}).complete(fn);
+  fn();
 }
 
 function errorHandler(err, req, res, next) {

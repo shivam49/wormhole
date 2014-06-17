@@ -55,12 +55,25 @@ function googleStrategy() {
         }
 
         models.UserEmail.findOrCreate({
-          fk_id_user: user.id,
-          fk_id_email: email.id,
-          fk_id_verifier: verifier.id
+          fk_id_user: user.id_user,
+          fk_id_email: email.id_email,
+          fk_id_verifier: verifier.id_verifier
         }).complete(function (err, userEmail) {
-          userEmail.user = user;
-          populateNames(err, userEmail);
+          var authProfile = {
+            accessToken: accessToken,
+            id: profile.id
+          };
+
+          userEmail.auth_profile = JSON.stringify(authProfile);
+
+          userEmail.save(['auth_profile']).complete(function (err, userEmail) {
+            if (err) {
+              return done(err);
+            }
+
+            userEmail.user = user;
+            populateNames(err, userEmail);
+          });
         });
       });
     }
