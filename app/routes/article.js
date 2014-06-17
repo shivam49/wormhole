@@ -14,7 +14,6 @@ var models = require(path.join(__dirname, '..', 'models'));
 
 var main = controller.route('/');
 
-function getArticles(req, res, next) {
   function getImageClass(i, done) {
     if (/\/\d+$/.test(i._source.image)) {
       var image = i._source.image.match(/\/\d+$/)[0];
@@ -44,6 +43,7 @@ function getArticles(req, res, next) {
     // var url = 'http://riak.internal.eekoh.me/masonry'
   }
 
+function getArticles(req, res, next) {
   function response(articles) {
     async.map(articles.hits.hits, getImageClass, function (err, results) {
       if (err) {
@@ -56,7 +56,38 @@ function getArticles(req, res, next) {
     });
   }
 
-  if (req.url !== '/') {
+  if (req.url === '/news') {
+    elastic.search({
+      index: 'articles12',
+      size: 200,
+      body: {
+        query: {
+          match: {
+            article_text: [
+              'apple',
+              'amazon',
+              'snapchat',
+              'gasoline',
+              'oz',
+              'ukraine',
+              'iraq',
+              'tony gwynn',
+              'general motors',
+              'games of thrones',
+              'kardashian',
+              'fifa',
+              'obama',
+              'berry',
+              'kings',
+              'spurs',
+            ].join(' '),
+          }
+        }
+      },
+      minimum_should_match: 1,
+      boost: 10
+    }).then(response, next);
+  } else if (req.url !== '/') {
     var topic = req.url.substr(1);
     elastic.search({
       index: 'articles12',
