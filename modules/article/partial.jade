@@ -2,16 +2,18 @@
   .article-page-hdr
     .photo
       - var image = /\/\d+$/.exec(article._source.image)
+      - var category = article._source.article_category
       if image
         img(src='http://riak.internal.eekoh.me/article' + image.toString())
     .info
       .name= article._source.title
-      .divider
+      .divider(class='divider-'+category)
       // .author
       //   | by 
       //   a(href="#", class="system") Ali
       // .date May 28, 2014 at 10:13 am
-      .source Source: espn.com
+      .source(class='link-'+category) By: 
+        a espn.com
     .social
       a(href="#", class="system") 
       a(href="#", class="page") 
