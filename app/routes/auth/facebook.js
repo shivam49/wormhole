@@ -134,7 +134,7 @@ controller.use(function (req, res, next) {
 controller
   .route('/facebook')
   .get(passport.authenticate('facebook', {
-    scope: ['email', 'user_likes']
+    scope: ['email']
   }));
 
 controller
