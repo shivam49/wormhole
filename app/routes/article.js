@@ -141,9 +141,15 @@ controller.route('/article/:article')
       /* error logging concept goes here */
     });
 
+    async.map(related.hits.hits, getImageClass, function (err, results) {
+      if (err) {
+        return next(err);
+      }
+
     res.render('article', {
       article: article,
-      related: related
+        related: results
+      });
     });
   }
 

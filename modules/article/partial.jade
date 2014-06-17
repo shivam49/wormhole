@@ -12,8 +12,8 @@
       //   | by 
       //   a(href="#", class="system") Ali
       // .date May 28, 2014 at 10:13 am
-      .source(class='link-'+category) By: 
-        a espn.com
+      // .source(class='link-'+category) By: 
+      //   a espn.com
     .social
       a(href="#", class="system") 
       a(href="#", class="page") 
@@ -57,20 +57,15 @@
   //     img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="65", height="50")
   //   .clear
   .related-hdr  Related Articles
-    a(href="#") View all
+    // a(href="#") View all
 
-  .related-article
-    .image
-      img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="242", height="120")
-    .hdr Why hello there
-      .arrow
-    .excerpt Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! 
-
-  .related-article
-    .image
-      img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="242", height="120")
-    .hdr Why hello there
-      .arrow
-    .excerpt Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! 
-    
-    
+  each rArticle in related
+    .related-article
+      a(href='/article/' + rArticle._id)
+        .image
+          - var image = /\/\d+$/.exec(rArticle._source.image)
+          if image
+            img(src='http://riak.internal.eekoh.me/article' + image.toString())
+        .hdr= rArticle._source.title
+          .arrow
+        .excerpt= rArticle._source.description
