@@ -73,8 +73,9 @@ function facebookStrategy() {
             }
 
             userEmail.auth_profile = JSON.stringify(authProfile);
+            userEmail.fk_id_user = user.id_user;
 
-            userEmail.save(['auth_profile']).complete(function (err, userEmail) {
+            userEmail.save(['auth_profile', 'fk_id_user']).complete(function (err, userEmail) {
               if (err) {
                 return done(err);
               }
