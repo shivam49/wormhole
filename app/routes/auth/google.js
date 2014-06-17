@@ -124,7 +124,7 @@ function googleStrategy() {
           done(err, userEmail.user);
         });
       }
-    })
+    });
   }
 
   return new GoogleStrategy({

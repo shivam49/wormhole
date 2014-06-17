@@ -117,7 +117,7 @@ function facebookStrategy() {
           done(err, userEmail.user);
         });
       }
-    })
+    });
   }
 
   return new FacebookStrategy({
