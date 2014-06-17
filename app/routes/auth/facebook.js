@@ -60,9 +60,9 @@ function facebookStrategy() {
         };
 
         models.UserEmail.findOrCreate({
-          fk_id_user: user.id,
+          // fk_id_user: user.id,
           fk_id_email: email.id,
-          fk_id_verifier: verifier.id,
+          // fk_id_verifier: verifier.id,
           auth_profile: JSON.stringify(authProfile)
         }).complete(function (err, userEmail) {
           userEmail.user = user;
