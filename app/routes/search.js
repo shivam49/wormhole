@@ -1,3 +1,6 @@
+
+/* jshint camelcase: false */
+
 var _           = require('lodash');
 var path        = require('path');
 var elastic     = require(path.join(__dirname, '..', 'elastic'));
@@ -7,9 +10,14 @@ var async       = require('async');
 var request     = require('request');
 
 function searchRoute(req, res, next) {
-  if (_.isUndefined(req.params.words) || !_.isString(req.params.words)) {
+  var noParams = _.isUndefined(req.params.words) || !_.isString(req.params.words);
+  var noBody = _.isUndefined(req.body.words) || !_.isString(req.body.words);
+
+  if (noParams && noBody) {
     return res.redirect('/');
   }
+
+  var search = req.params.words || req.body.words;
 
   elastic.search({
     index: 'articles12',
@@ -18,7 +26,7 @@ function searchRoute(req, res, next) {
     body: {
       query: {
         match: {
-          article_text: req.params.words
+          article_text: search
         }
       }
     }
