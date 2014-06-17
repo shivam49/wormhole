@@ -6,8 +6,7 @@ var controller  = express.Router();
 var async       = require('async');
 var request     = require('request');
 
-controller.route('/:words')
-.get(function (req, res, next) {
+function searchRoute(req, res, next) {
   if (_.isUndefined(req.params.words) || !_.isString(req.params.words)) {
     return res.redirect('/');
   }
@@ -15,7 +14,7 @@ controller.route('/:words')
   elastic.search({
     index: 'articles12',
     type: 'article',
-    size: 49,
+    size: 200,
     body: {
       query: {
         match: {
@@ -29,14 +28,14 @@ controller.route('/:words')
     if (/\/\d+$/.test(i._source.image)) {
       var image = i._source.image.match(/\/\d+$/)[0];
       request('http://riak.internal.eekoh.me/masonry' + image + '.json', function (err, resp, body) {
-        if (! err && resp.statusCode == 200) {
+        if (! err && resp.statusCode === 200) {
           var data = JSON.parse(body);
           if (data.noImage) {
             i.noImage = true;
             i.imageClass = 'one_one';
           } else {
             i.imageClass = data.imageClass;
-            i._source.image = 'http://riak.internal.eekoh.me/masonry' + image
+            i._source.image = 'http://riak.internal.eekoh.me/masonry' + image;
           }
           return done(null, i);
         } else {
@@ -46,7 +45,7 @@ controller.route('/:words')
         }
       });
     } else {
-      i._source.image = 'http://vps.eekoh.me/cache.php?url=' + encodeURIComponent(i._source.image)
+      i._source.image = 'http://vps.eekoh.me/cache.php?url=' + encodeURIComponent(i._source.image);
       i.noImage = true;
       i.imageClass = 'one_one';
       return done(null, i);
@@ -65,6 +64,9 @@ controller.route('/:words')
       });
     });
   }
-});
+}
+
+controller.route('/:words')
+.get(searchRoute).post(searchRoute);
 
 module.exports = ['/search', controller];

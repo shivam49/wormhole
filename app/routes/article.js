@@ -67,12 +67,12 @@ function getArticles(req, res, next) {
           }
         }
       },
-      size: 49
+      size: 200
     }).then(response, next);
   } else {
     elastic.search({
       index: 'articles12',
-      size: 49
+      size: 200
     }).then(response, next);
   }
 }
