@@ -3,10 +3,10 @@
     - var category = [articles[i]._source.category]    
     - var brick = ['brick-img']
       if articles[i].noImage
-        - var image = ['background:url(/assets/masonry/noImage-'+articles[i]._source.category+'.svg) no-repeat center center;']
+        - var image = ['background:url(/assets/masonry/noImage-'+articles[i]._source.article_category+'.svg) no-repeat center center;']
       else
         - var image = ['background:url(' + articles[i]._source.image + ') no-repeat center center;']
-      - var classes = [ 'masonry-' + articles[i]._source.category, articles[i].imageClass ]
+      - var classes = [ 'masonry-' + articles[i]._source.article_category, articles[i].imageClass ]
       .brick(class=classes)
         a(href='/article/' + articles[i]._id)
           .svg(class=brick style=image)

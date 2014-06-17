@@ -2,12 +2,9 @@
 /* jshint camelcase: false */
 
 var passport = require('passport');
-var _ = require('lodash');
-var moment = require('moment');
 var express = require('express');
 var controller = express.Router();
 var path = require('path');
-var models = require(path.join(__dirname, '..', 'models'));
 var localStrategy = require(path.join(__dirname, 'auth', 'local')).localStrategy;
 
 controller.route('/logout')
