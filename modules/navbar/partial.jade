@@ -23,7 +23,7 @@
       .links
         a(href="#", class="about") What is eekoh?
         | &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-        a(href="#", class="show-login-overlay") Log In
+        a(href="/auth/facebook", class="show-login-overlay") Log In
       .top-login-overlay
        form(action='/login', method='post')
         input(type='hidden', name='_csrf', value=csrf)
