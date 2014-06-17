@@ -1,15 +1,16 @@
-
 .article-page
   .article-page-hdr
     .photo
-      img(src="http://1up.fm/wp/wp-content/uploads/2014/02/Lakers.png", width="176", height="176")
+      - var image = /\/\d+$/.exec(article._source.image)
+      if image
+        img(src='http://riak.internal.eekoh.me/article' + image.toString())
     .info
-      .name Lakers
+      .name= article._source.title
       .divider
-      .author
-        | by 
-        a(href="#", class="system") Ali
-      .date May 28, 2014 at 10:13 am
+      // .author
+      //   | by 
+      //   a(href="#", class="system") Ali
+      // .date May 28, 2014 at 10:13 am
       .source Source: espn.com
     .social
       a(href="#", class="system") 
@@ -19,16 +20,16 @@
       a(href="#", class="chop") 
     .clear
   .article-page-content
-    p= '| '+article
-  .article-page-brands-hdr Choose brands to receive deals
-  .article-page-brands
-    .brand
-      img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
-    .brand
-      img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
-    .brand
-      img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
-    .clear
+    p!= article._source.article_text
+  // .article-page-brands-hdr Choose brands to receive deals
+  // .article-page-brands
+  //   .brand
+  //     img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
+  //   .brand
+  //     img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
+  //   .brand
+  //     img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
+  //   .clear
   .article-page-discuss-hdr
     a(href="#") Everyone
     a(href="#") Connections
