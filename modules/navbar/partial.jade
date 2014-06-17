@@ -2,8 +2,9 @@
   a(href='/', class="brand-wrap")
   .search-wrap
     .form-wrap
-      form(name='input', action='/search', method='post')
+      form(name='input', action='/search/', method='post')
         input(type='text', name='words', placeholder='Discover ...' id="searchbar")
+        input(type='hidden', name='_csrf', value=csrf)
         // button(type='submit', class='btn-link')
         //   != svg('/assets/navbar/search.svg')
   .tree

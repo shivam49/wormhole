@@ -74,6 +74,7 @@ function searchRoute(req, res, next) {
   }
 }
 
+controller.route('/').post(searchRoute);
 controller.route('/:words')
 .get(searchRoute).post(searchRoute);
 
