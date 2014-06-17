@@ -2,7 +2,6 @@
 /* jshint camelcase: false */
 
 var async       = require('async');
-var http        = require('http');
 var request     = require('request');
 var path        = require('path');
 var riak        = require(path.join(__dirname, '..', 'riak'));
@@ -13,12 +12,9 @@ var controller  = express.Router();
 // var ensureLoggedOut = require('connect-ensure-login').ensureLoggedOut;
 var models = require(path.join(__dirname, '..', 'models'));
 
-http.globalAgent.maxSockets = http.globalAgent.maxSockets + 100;
-
 var main = controller.route('/');
 
-main //.get(ensureLoggedIn('/login'))
-.get(function (req, res, next) {
+function getArticles(req, res, next) {
   function getImageClass(i, done) {
     if (/\/\d+$/.test(i._source.image)) {
       var image = i._source.image.match(/\/\d+$/)[0];
@@ -60,11 +56,28 @@ main //.get(ensureLoggedIn('/login'))
     });
   }
 
-  elastic.search({
-    index: 'articles12',
-    size: 49
-  }).then(response, next);
-})
+  if (req.url !== '/') {
+    var topic = req.url.substr(1);
+    elastic.search({
+      index: 'articles12',
+      body: {
+        query: {
+          match: {
+            article_category: topic
+          }
+        }
+      },
+      size: 49
+    }).then(response, next);
+  } else {
+    elastic.search({
+      index: 'articles12',
+      size: 49
+    }).then(response, next);
+  }
+}
+
+main.get(getArticles)
 .post(function (req, res) {
   // Alex.. change this..
   var articleHash = req.body.articleHash || '';
@@ -95,6 +108,14 @@ main //.get(ensureLoggedIn('/login'))
     }
   });
 });
+
+controller.route('/news').get(getArticles);
+controller.route('/entertainment').get(getArticles);
+controller.route('/politics').get(getArticles);
+controller.route('/sports').get(getArticles);
+controller.route('/edutech').get(getArticles);
+controller.route('/business').get(getArticles);
+controller.route('/lifestyle').get(getArticles);
 
 controller.route('/article/:article')
 .get(function (req, res, next) {
