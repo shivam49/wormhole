@@ -11,111 +11,113 @@ var FacebookStrategy  = require('passport-facebook');
 
 function facebookStrategy() {
   function buildFacebookProfile(accessToken, refreshToken, profile, done) {
-    var email;
+    process.nextTick(function() {
+      var email;
 
-    // check for an email first
-    if (!Array.isArray(profile.emails) ||
-        profile.emails.length < 1 ||
-        typeof profile.emails[0].value !== 'string') {
-      return done('No emails found.');
-    }
-
-    // findOrCreate email entry
-    models.Email.findOrCreate({
-      email: profile.emails[0].value
-    }).complete(findUserId);
-
-    function findUserId(err, _email) {
-      if (err) {
-        return done(err);
+      // check for an email first
+      if (!Array.isArray(profile.emails) ||
+          profile.emails.length < 1 ||
+          typeof profile.emails[0].value !== 'string') {
+        return done('No emails found.');
       }
 
-      email = _email;
+      // findOrCreate email entry
+      models.Email.findOrCreate({
+        email: profile.emails[0].value
+      }).complete(findUserId);
 
-      if (email.isNewRecord) {
-        createUser();
-      } else {
-        findUser(email);
-      }
-    }
-
-    function createUser() {
-      models.User.create({}).complete(associateEmail);
-    }
-
-    // create UserEmail with a new user
-    function associateEmail(err, user) {
-      if (err) {
-        return done(err);
-      }
-
-      findVerifier('facebook', function (err, verifier) {
+      function findUserId(err, _email) {
         if (err) {
           return done(err);
         }
 
-        var authProfile = {
-          accessToken: accessToken,
-          id: profile.id
-        };
+        email = _email;
 
-        models.UserEmail.findOrCreate({
-          // fk_id_user: user.id,
-          fk_id_email: email.id,
-          // fk_id_verifier: verifier.id,
-          auth_profile: JSON.stringify(authProfile)
-        }).complete(function (err, userEmail) {
-          userEmail.user = user;
-          populateNames(err, userEmail);
-        });
-      });
-    }
+        if (email.isNewRecord) {
+          createUser();
+        } else {
+          findUser(email);
+        }
+      }
 
-    function findVerifier(type, fn) {
-      models.Verifier.findOrCreate({
-        verifier: type
-      }).complete(fn);
-    }
+      function createUser() {
+        models.User.create({}).complete(associateEmail);
+      }
 
-    function findUser(email) {
-      findVerifier('facebook', function (err, verifier) {
+      // create UserEmail with a new user
+      function associateEmail(err, user) {
         if (err) {
           return done(err);
         }
 
-        models.UserEmail.find({
-          where: {
-            fk_id_email: email.id,
-            fk_id_verifier: verifier.id
-          },
-          include: [models.User]
-        }).complete(function (err, userEmail) {
+        findVerifier('facebook', function (err, verifier) {
           if (err) {
             return done(err);
           }
 
-          if (!userEmail) {
-            return createUser();
-          }
+          var authProfile = {
+            accessToken: accessToken,
+            id: profile.id
+          };
 
-          populateNames(null, userEmail);
+          models.UserEmail.findOrCreate({
+            // fk_id_user: user.id,
+            fk_id_email: email.id,
+            // fk_id_verifier: verifier.id,
+            auth_profile: JSON.stringify(authProfile)
+          }).complete(function (err, userEmail) {
+            userEmail.user = user;
+            populateNames(err, userEmail);
+          });
         });
-      });
-    }
-
-    function populateNames(err, userEmail) {
-      if (err) {
-        return done(err);
       }
 
-      models.UserName.findOrCreate({
-        id_username: userEmail.fk_id_user,
-        name_first: profile.name.givenName,
-        name_last: profile.name.familyName
-      }).complete(function (err) {
-        done(err, userEmail.user);
-      });
-    }
+      function findVerifier(type, fn) {
+        models.Verifier.findOrCreate({
+          verifier: type
+        }).complete(fn);
+      }
+
+      function findUser(email) {
+        findVerifier('facebook', function (err, verifier) {
+          if (err) {
+            return done(err);
+          }
+
+          models.UserEmail.find({
+            where: {
+              fk_id_email: email.id,
+              fk_id_verifier: verifier.id
+            },
+            include: [models.User]
+          }).complete(function (err, userEmail) {
+            if (err) {
+              return done(err);
+            }
+
+            if (!userEmail) {
+              return createUser();
+            }
+
+            populateNames(null, userEmail);
+          });
+        });
+      }
+
+      function populateNames(err, userEmail) {
+        if (err) {
+          return done(err);
+        }
+
+        models.UserName.findOrCreate({
+          id_username: userEmail.fk_id_user,
+          name_first: profile.name.givenName,
+          name_last: profile.name.familyName
+        }).complete(function (err) {
+          done(err, userEmail.user);
+        });
+      }
+    })
   }
 
   return new FacebookStrategy({
