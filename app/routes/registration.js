@@ -89,19 +89,19 @@ controller.route('/registration')
   }
 
   function checkForUsername() {
-    models.UserName.find({
-      username: req.body.username.toLowerCase()
-    }).complete(function (err, row) {
-      if (err) {
-        return next(err);
-      }
+    // models.UserName.find({
+    //   username: req.body.username.toLowerCase()
+    // }).complete(function (err, row) {
+    //   if (err) {
+    //     return next(err);
+    //   }
 
-      if (row) {
-        return next('This username already exists.');
-      }
+    //   if (row) {
+    //     return next('This username already exists.');
+    //   }
 
       createAccount();
-    });
+    // });
   }
 
   function createAccount() {
@@ -163,7 +163,7 @@ controller.route('/registration')
         }
 
         models.sequelize.query(
-          'UPDATE user_email SET password=crypt(?, gen_salt(\'bf\', 10)) WHERE id_user_email=?',
+          'UPDATE user_passports SET secret=crypt(?, gen_salt(\'bf\', 10)) WHERE id=?',
           null,
           { raw: true },
           [req.body.password, userEmail.id_user_email]
@@ -270,6 +270,38 @@ controller.route('/registration')
     return models.User.create({});
   }
 });
+
+function register(user_passports, error_codes, req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+
+  models.UserPassports.registerWithEmail(req.body || {}, function (err, user) {
+    if (err) {
+      return next(err);
+    }
+
+    req.logIn(user, function (err) {
+      if (err) {
+        return next(err);
+      }
+
+      req.user = user;
+      strategies.loginUser(user, req, res, res.jsonDone);
+    });
+  });
+}
+
+function login(req, res, next) {
+  passport.authenticate('local', {badRequestMessage: 'Missing email and/or password.'}, function (err, user, info) {
+    if (!!err || !user) return res.jsonDone(err || info.message);
+
+    strategies.loginUser(user, req, res, res.jsonDone);
+      // res.jsonDone(err, info);
+    // });
+  })(req, res, next);
+}
+exports.login = login;
 
 module.exports = ['/', controller];
 

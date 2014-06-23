@@ -17,8 +17,8 @@ app = require(path.join(__dirname, 'app', 'routes'))(app);
 
 function loadModels(fn) {
   // we'll want to get rid of force true eventually...
-  // models.sequelize.sync({force: true}).complete(fn);
-  fn();
+  models.sequelize.sync({force: true}).complete(fn);
+  // fn();
 }
 
 function errorHandler(err, req, res, next) {
@@ -81,7 +81,8 @@ function errorHandler(err, req, res, next) {
     }
   }
 
-  console.error(error);
+  console.error(error.message);
+  console.error(error.stack);
 
   res.format({
     text: function() {
@@ -103,6 +104,7 @@ function notFoundHandler(req, res) {
 
 function startServer(err) {
   if (err) {
+    console.error(err);
     throw err;
   }
 

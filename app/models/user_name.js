@@ -12,7 +12,7 @@ function Model(sequelize, DataType) {
     fk_id_user: {
       type: DataType.INTEGER,
       references: 'user',
-      referencesKey: 'id_user'
+      referencesKey: 'id'
     },
     fk_id_usernames: {
       type: DataType.INTEGER,
