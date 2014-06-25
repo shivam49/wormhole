@@ -1,48 +1,48 @@
 .showhidestuff
   | TOGGLE
-  a(href='#', class="show-profile") profile
-  a(href='#', class="show-login") login
-  a(href='#', class="show-articlepage") article page
-  a(href='#', class="show-lumberyard") lumberyard
-  a(href='#', class="show-notifications") notifications
-  a(href='#', class="show-registration") registration 01
-  a(href='#', class="show-registration2") registration 02
-  a(href='#', class="show-registration3") registration 03
-  a(href='#', class="show-inbox") inbox
-  a(href='#', class="show-logintop") welcome + login top
+  a(href='#').show-profile profile
+  a(href='#').show-login login
+  a(href='#').show-articlepage article page
+  a(href='#').show-lumberyard lumberyard
+  a(href='#').show-notifications notifications
+  a(href='#').show-registration registration 01
+  a(href='#').show-registration2 registration 02
+  a(href='#').show-registration3 registration 03
+  a(href='#').show-inbox inbox
+  a(href='#').show-logintop welcome + login top
 
 .home
   .home-logo
   .home-btn-holder
-     a(href='#', class="home-btn-join") Join
-     a(href='#', class="home-btn-login") Login
+     a(href='#', data-target='.home-overlay').home-btn-join.splash-modal Join
+     a(href='#', data-target='.home-overlay-login').home-btn-login.splash-modal Login
 
-   .home-overlay
+   .home-overlay.splash-overlay
      .home-overlay-hdr Join eekoh
        .close-btn X
      .home-overlay-service.facebook: a(href='/auth/facebook') Sign in with Facebook
      .home-overlay-service.google: a(href='/auth/google') Sign in with Google
      .home-overlay-service.twitter: a(href='/auth/twitter') Sign in with Twitter
-     .home-overlay-service.email.home-btn-join Sign in with E-mail
+     .home-overlay-service.email.home-btn-join: a(href='#', data-target='.home-overlay-register').splash-modal Sign in with E-mail
 
-   .home-overlay-register
+   .home-overlay-register.splash-overlay
      .home-overlay-register-hdr Sign up with e-mail
        .close-btn X
      form(action='/register', method='post')
       input(type='hidden', name='_csrf', value=csrf)
-      input(type="text", id="firstname", name="first_name", placeholder="First Name", class="error")
-      input(type="text", id="lastname", name="last_name", placeholder="Last Name")
-      input(type="text", id="email", name="email", placeholder="E-mail address")
-      input(type="text", id="username", name="username", placeholder="Username (optional)")
-      input(type="password", id="password", name="password", placeholder="Password (6 or more characters)")
-      input(type="password", id="passwordagain", name="password_confirm", placeholder="Re-enter password")
-      select(name='gender', required)
+      input#first_name(type="text", name="first_name", placeholder="First Name", required)
+      input#last_name(type="text", name="last_name", placeholder="Last Name", required)
+      input#email(type="email", name="email", placeholder="E-mail address", required)
+      input#username(type="text", name="username", placeholder="Username (optional)")
+      input#password(type="password", name="password", placeholder="Password (6 or more characters)", required)
+      input#passwordagain(type="password", name="password_confirm", placeholder="Re-enter password", required)
+      select#gender(name='gender', required)
        option(value='Male') Male
        option(value='Female') Female
-      input(name='dob', type='text', placeholder='Date of Birth (DD/MM/YYYY)', required)
-      input(name='education', type='text', required, placeholder='Education')
-      input(name='work', type='text', required, placeholder='Workplace')
-      input(name='position', type='text', required, placeholder='Work position')
+      input#dob(name='dob', type='text', placeholder='Date of Birth (DD/MM/YYYY)', required)
+      input#education(name='education', type='text', required, placeholder='Education')
+      input#work(name='work', type='text', required, placeholder='Workplace')
+      input#position(name='position', type='text', required, placeholder='Work position')
       //-input(type="text", id="location", name="location", placeholder="Location")
       //.
        .tree
@@ -51,12 +51,12 @@
         input(type='checkbox', name='checkbox', value='test')
         | Let eekoh personalize your experience.
 
-      input(type="submit", value="Sign up", class="btn")
+      input(type="submit", value="Sign up").btn
       .register-terms
         | By creating an account, I accept eekoh's
-        a(href='#', class="home-btn-login") Terms and Policy
+        a(href='#').home-btn-login Terms and Policy
 
-   .home-overlay-login
+   .home-overlay-login.splash-overlay
      .home-overlay-register-hdr Login
        .close-btn X
      form(action='/login', method='post')
@@ -65,9 +65,9 @@
       input(type="password", id="password", name="password", placeholder="Password")
       button(type="submit", value="Sign up", class="btn") Login
      .register-terms
-       a(href='#', class="home-btn-password") Forgot your password?
+       a(href='#', data-target='.home-overlay-password').home-btn-password.splash-modal Forgot your password?
 
-   .home-overlay-password
+   .home-overlay-password.splash-overlay
      .home-overlay-register-hdr Forgot your password?
        .close-btn X
      input(type="text", id="email", name="email", placeholder="E-mail address")

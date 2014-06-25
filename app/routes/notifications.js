@@ -1,13 +1,4 @@
-var path        = require('path');
-var riak        = require(path.join(__dirname, '..', 'riak'));
-var elastic     = require(path.join(__dirname, '..', 'elastic'));
-var express     = require('express');
-var controller  = express.Router();
 
-controller.route('/notifications')
-.get(function (req, res, next) {
+exports.index = function (req, res) {
   res.render('notifications');
- });
-
-
-module.exports = ['/', controller];
+};

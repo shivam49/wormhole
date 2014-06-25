@@ -68,13 +68,13 @@ function localStrategy(username, password, done) {
           return done(null, false, { message: 'Your account has been disabled.' });
         }
 
-        models.sequelize.query(
-          'SELECT (password = crypt(?, password)) AS pswmatch FROM user_email WHERE id_user_email=?', null,
-          { raw: true, plain: true },
-          [password, userEmail.id_user_email]
-        ).complete(function (err, query) {
-          checkForPassword(err, query, userEmail.user);
-        });
+          models.sequelize.query(
+            'SELECT (password = crypt(?, password)) AS pswmatch FROM user_email WHERE id_user_email=?', null,
+            { raw: true, plain: true },
+            [password, userEmail.id_user_email]
+          ).complete(function (err, query) {
+            checkForPassword(err, query, userEmail.user);
+          });
       });
     }
 

@@ -4,12 +4,10 @@
 var _           = require('lodash');
 var path        = require('path');
 var elastic     = require(path.join(__dirname, '..', 'elastic'));
-var express     = require('express');
-var controller  = express.Router();
 var async       = require('async');
 var request     = require('request');
 
-function searchRoute(req, res, next) {
+exports.index = function(req, res, next) {
   var noParams = _.isUndefined(req.params.words) || !_.isString(req.params.words);
   var noBody = _.isUndefined(req.body.words) || !_.isString(req.body.words);
 
@@ -89,10 +87,4 @@ function searchRoute(req, res, next) {
       });
     });
   }
-}
-
-controller.route('/').post(searchRoute);
-controller.route('/:words')
-.get(searchRoute).post(searchRoute);
-
-module.exports = ['/search', controller];
+};

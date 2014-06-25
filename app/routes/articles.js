@@ -1,58 +1,25 @@
 
 /* jshint camelcase: false */
 
+var _           = require('lodash');
 var async       = require('async');
 var request     = require('request');
 var path        = require('path');
-var riak        = require(path.join(__dirname, '..', 'riak'));
 var elastic     = require(path.join(__dirname, '..', 'elastic'));
-var express     = require('express');
-var controller  = express.Router();
-// var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
-// var ensureLoggedOut = require('connect-ensure-login').ensureLoggedOut;
-var models = require(path.join(__dirname, '..', 'models'));
+var models      = require(path.join(__dirname, '..', 'models'));
 
-var main = controller.route('/');
-
-  function getImageClass(i, done) {
-    if (/\/\d+$/.test(i._source.image)) {
-      var image = i._source.image.match(/\/\d+$/)[0];
-      request('http://riak.internal.eekoh.me/masonry' + image + '.json', function (err, resp, body) {
-        if (! err && resp.statusCode == 200) {
-          var data = JSON.parse(body);
-          if (data.noImage) {
-            i.noImage = true;
-            i.imageClass = 'one_one';
-          } else {
-            i.imageClass = data.imageClass;
-            i._source.image = 'http://riak.internal.eekoh.me/masonry' + image
-          }
-          return done(null, i);
-        } else {
-          i.noImage = true;
-          i.imageClass = 'one_one';
-          return done(null, i);
-        }
-      });
-    } else {
-      i._source.image = 'http://vps.eekoh.me/cache.php?url=' + encodeURIComponent(i._source.image)
-      i.noImage = true;
-      i.imageClass = 'one_one';
-      return done(null, i);
-    }
-    // var url = 'http://riak.internal.eekoh.me/masonry'
+exports.index = function(req, res, next) {
+  function imageClasses(articles) {
+    async.map(articles.hits.hits, getImageClass, response);
   }
 
-function getArticles(req, res, next) {
-  function response(articles) {
-    async.map(articles.hits.hits, getImageClass, function (err, results) {
-      if (err) {
-        return next(err);
-      }
+  function response(err, results) {
+    if (err) {
+      return next(err);
+    }
 
-      res.render('articles', {
-        articles: results
-      });
+    res.render('articles', {
+      articles: results
     });
   }
 
@@ -86,7 +53,7 @@ function getArticles(req, res, next) {
       },
       minimum_should_match: 1,
       boost: 10
-    }).then(response, next);
+    }).then(imageClasses, next);
   } else if (req.url !== '/') {
     var topic = req.url.substr(1);
     elastic.search({
@@ -99,19 +66,18 @@ function getArticles(req, res, next) {
         }
       },
       size: 200
-    }).then(response, next);
+    }).then(imageClasses, next);
   } else {
     elastic.search({
       index: 'articles12',
       size: 200
-    }).then(response, next);
+    }).then(imageClasses, next);
   }
-}
+};
 
-main.get(getArticles)
-.post(function (req, res) {
+exports.create = function(req, res) {
   // Alex.. change this..
-  var articleHash = req.body.articleHash || '';
+  var articleHash = _.isString(req.body.articleHash) ? req.body.articleHash : '';
 
   var data = {
     action: 'article_add',
@@ -138,18 +104,9 @@ main.get(getArticles)
       res.json(true);
     }
   });
-});
+};
 
-controller.route('/news').get(getArticles);
-controller.route('/entertainment').get(getArticles);
-controller.route('/politics').get(getArticles);
-controller.route('/sports').get(getArticles);
-controller.route('/edutech').get(getArticles);
-controller.route('/business').get(getArticles);
-controller.route('/lifestyle').get(getArticles);
-
-controller.route('/article/:article')
-.get(function (req, res, next) {
+exports.retrieve = function (req, res, next) {
   function getRelated(article) {
     elastic.mlt({
       index: 'articles12',
@@ -189,6 +146,36 @@ controller.route('/article/:article')
     type: 'article',
     id: req.params.article
   }).then(getRelated, next);
-});
+};
 
-module.exports = ['/', controller];
+// # private #
+
+function getImageClass(i, done) {
+  if (!(/\/\d+$/.test(i._source.image))) {
+    i._source.image = 'http://vps.eekoh.me/cache.php?url=' + encodeURIComponent(i._source.image);
+    i.noImage = true;
+    i.imageClass = 'one_one';
+    return done(null, i);
+  }
+
+  var image = i._source.image.match(/\/\d+$/)[0];
+  request('http://riak.internal.eekoh.me/masonry' + image + '.json', function (err, resp, body) {
+    if (!err && resp.statusCode === 200) {
+      var data = JSON.parse(body);
+      if (data.noImage) {
+        i.noImage = true;
+        i.imageClass = 'one_one';
+      } else {
+        i.imageClass = data.imageClass;
+        i._source.image = 'http://riak.internal.eekoh.me/masonry' + image;
+      }
+    } else {
+      i.noImage = true;
+      i.imageClass = 'one_one';
+    }
+
+    done(null, i);
+  });
+
+  // var url = 'http://riak.internal.eekoh.me/masonry'
+}

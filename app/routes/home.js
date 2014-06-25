@@ -2,8 +2,6 @@
 /* jshint camelcase: false */
 
 var passport = require('passport');
-var express = require('express');
-var controller = express.Router();
 var path = require('path');
 // var localStrategy = require(path.join(__dirname, 'auth', 'local')).localStrategy;
 
@@ -11,7 +9,7 @@ var strategies  = require(path.join(__dirname, 'auth', 'strategies'));
 
 exports.facebook = passport.authenticate('facebook', {scope: ['email', 'user_about_me']});
 
-function login(req, res, next) {
+exports.login = function(req, res, next) {
   passport.authenticate('local', {
     failureFlash: true,
     failureRedirect: '/login',
@@ -23,21 +21,13 @@ function login(req, res, next) {
 
     strategies.loginUser(user, req, res, res.jsonDone);
   })(req, res, next);
-}
-exports.login = login;
+};
 
-controller.route('/logout')
-.get(logOut);
+exports.splash = function(req, res) {
+  res.render('splash');
+};
 
-controller.route('/login')
-.get(function (req, res) {
-  res.render('auth');
-})
-.post(login);
-
-function logOut(req, res) {
+exports.logout = function(req, res) {
   req.logout();
   res.redirect('/');
-}
-
-module.exports = ['/', controller];
+};

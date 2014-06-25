@@ -4,6 +4,9 @@
 	"paths": [
 		"../vendor"
 	],
+  "local": [
+    "jquery"
+  ],
 	"main": "index.js",
 	"scripts": [
 		"index.js"

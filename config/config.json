@@ -1,6 +1,12 @@
 {
+  "elastic": {
+    "log": null
+  },
   "express": {
     "sessions": {
+      "redis": {
+        "prefix": "ee"
+      },
       "key": "sid",
       "secret": "changeme",
       "cookie": {

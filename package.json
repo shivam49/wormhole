@@ -43,6 +43,8 @@
     "connect-ensure-login": "^0.1.1",
     "yar": "^2.1.0",
     "passport-twitter": "^1.0.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "camel-case": "^0.1.0",
+    "connect-redis": "^2.0.0"
   }
 }
