@@ -10,9 +10,9 @@
     }
   },
   "facebook": {
-    "callbackUrl": "http://beta.eekoh.me/auth/facebook/callback"
+    "callbackUrl": "http://localhost:8000/auth/facebook/callback"
   },
   "google": {
-    "callbackUrl": "http://beta.eekoh.me/auth/google/callback"
+    "callbackUrl": "http://localhost:8000/auth/google/callback"
   }
 }
