@@ -1,5 +1,6 @@
 'use strict';
 
+var _      = require('lodash');
 var path   = require('path');
 var routes = require(path.join(__dirname, 'app', 'routes'));
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
@@ -10,7 +11,14 @@ var passport = require('passport');
 module.exports = function(app) {
   // # authentication routes (make sure this is before /splash)
 
-  app.get('/splash', ensureLoggedOut('/'), routes.home.splash);
+  app.get('/splash', function (req, res, next) {
+    // first let's check to see if we've already been to this page or not...
+    if (_.isString(req.cookies.seenSplash)) {
+      return res.redirect('/');
+    }
+
+    ensureLoggedOut('/')(req, res, next);
+  }, routes.home.splash);
 
   // google oauth
   app.get('/auth/google', ensureLoggedOut('/'), passport.authenticate('google', {
@@ -53,7 +61,15 @@ module.exports = function(app) {
   });
 
   // catch all
-  app.all('*', ensureLoggedIn('/splash'));
+  app.all('*', function (req, res, next) {
+    // if we have the seenSplash cookie.. just pass through
+    if (_.isString(req.cookies.seenSplash)) {
+      return next();
+    }
+
+    // otherwise, we should enforce splash if they're not logged in
+    ensureLoggedIn('/splash')(req, res, next);
+  });
 
   // # articles and main page
   ['/', '/news', '/entertainment', '/politics', '/sports', '/edutech', '/business', '/lifestyle'].forEach(articlePage);
