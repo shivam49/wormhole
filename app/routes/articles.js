@@ -164,14 +164,14 @@ function getImageClass(i, done) {
       var data = JSON.parse(body);
       if (data.noImage) {
         i.noImage = true;
-        i.imageClass = 'one_one';
+        i.imageClass = 'two_two';
       } else {
         i.imageClass = data.imageClass;
         i._source.image = 'http://riak.internal.eekoh.me/masonry' + image;
       }
     } else {
       i.noImage = true;
-      i.imageClass = 'one_one';
+      i.imageClass = 'two_two';
     }
 
     done(null, i);
