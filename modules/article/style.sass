@@ -1,33 +1,24 @@
 @import "bourbon/bourbon"
 @import "neat/neat"
 
-html, body
-  background-color: #FFF !important
-
 .article-page
   height: 100%
   background: #fff
   margin-left: 214px
-  margin-top: 50px
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  display: block
-  margin-right: 244px
+  margin-top: 51px
+  position: fixed
+  top: 0px
+  left: 0px
+  bottom: 0px
+  margin-right: 245px
 
   .article-page-hdr
     width: 100%
-    // height: 200px
-    background: linear-gradient(to right,  rgba(0,0,0,0.7) 0%,rgba(120,122,124,0.7) 30%,rgba(120,120,120,0.7) 65%,rgba(80,80,80,0.7) 100%) #000
-
+    height: auto
+    background: url(/assets/article/hdr-bg.png)
+    
     .photo
-      // width: 176px
-      // height: 176px
-      // background: blue
-      margin-top: 12px
-      margin-left: 12px
+      margin: 8px 0 0 10px
       position: relative
       float: left
       
@@ -35,7 +26,7 @@ html, body
       float: left
       color: #fff
       margin: 45px 0px 0px 75px
-      width: 340px
+      width: 435px
       
       .name
         font-size: 20px
@@ -43,28 +34,8 @@ html, body
         
       .divider
         height: 1px
+        background: #64af44
         margin: 13px 0px
-
-      .divider.divider-news
-        background-color: #000000 !important
-
-      .divider.divider-entertainment
-        background-color: #d55153 !important
-
-      .divider.divider-politics
-        background-color: #655aa7 !important
-      
-      .divider.divider-sports
-        background-color: #8cc63e !important
-
-      .divider.divider-edutech  
-        background-color: #5482c2 !important
-
-      .divider.divider-business  
-        background-color: #aeaeae !important
-
-      .divider.divider-lifestyle  
-        background-color: #e97e4a !important
         
       .author
         font-size: 13px
@@ -74,7 +45,7 @@ html, body
         a, a:link, a:visited, a:hover, a:active
           color: #fff
           font-weight: 600
-
+        
       .date
         font-size: 11px
         line-height: 11px
@@ -85,31 +56,7 @@ html, body
         font-size: 11px
         line-height: 11px
         margin-top: 5px
-        
-        &.link-news
-          color: #FFF !important
-
-        &.link-entertainment
-          color: #FFF !important
-
-        &.link-politics
-          color: #FFF !important
-      
-        &.link-sports
-          color: #FFF !important
-
-        &.link-edutech
-          color: #FFF !important
-
-        &.link-busines
-          color: #FFF !important
-
-        &.link-lifestyle
-          color: #FFF !important
-
-        a
-          color: #FFF
-
+        color: #a2a2a2
         
     .social
       float: right
@@ -121,63 +68,59 @@ html, body
         margin-bottom: 10px
       
       a.system
-        width: 34px
-        height: 34px
-        margin-left: 75px
-        background: url(/assets/article/article-system.svg)
+        width: 107px
+        height: 24px
+        background: url(/assets/article/social-system.png)
         display: block
 
       a.page
-        width: 34px
-        height: 34px
-        margin-left: 75px
-        background: url(/assets/article/article-page.svg)
+        width: 107px
+        height: 24px
+        background: url(/assets/article/social-page.png)
         display: block
       
       a.discuss
-        width: 34px
-        height: 34px
-        margin-left: 75px
-        background: url(/assets/article/article-discuss.svg)
+        width: 107px
+        height: 24px
+        background: url(/assets/article/social-discuss.png)
         display: block
 
       a.share
-        width: 34px
-        height: 34px
-        margin-left: 75px
-        background: url(/assets/article/article-share.svg)
+        width: 107px
+        height: 24px
+        background: url(/assets/article/social-share.png)
         display: block
 
       a.chop
-        width: 34px
-        height: 34px
-        margin-left: 75px
-        background: url(/assets/article/article-chop.svg)
+        width: 107px
+        height: 24px
+        background: url(/assets/article/social-chop.png)
         display: block
 
       a.system:hover
-        background: url(/assets/article/article-hover.svg)
+        background: url(/assets/article/social-system-hover.jpg)
 
       a.page:hover
-        background: url(/assets/article/article-hover.svg)
+        background: url(/assets/article/social-page-hover.jpg)
 
       a.discuss:hover
-        background: url(/assets/article/article-hover.svg)
+        background: url(/assets/article/social-discuss-hover.jpg)
 
       a.share:hover
-        background: url(/assets/article/article-hover.svg)
+        background: url(/assets/article/social-share-hover.jpg)
 
       a.chop:hover
-        background: url(/assets/article/article-hover.svg)
+        background: url(/assets/article/social-chop-hover.jpg)
       
       
     
   .article-page-content
-    padding: 40px 55px
+    padding: 10px
     font-size: 14px
     line-height: 20px
-    height: 450px
+    height: 332px
     overflow-y: scroll
+    margin-bottom: 10px
     
   .article-page-brands-hdr
     height: 30px
@@ -215,52 +158,108 @@ html, body
 
   .article-page-discuss
     padding: 20px 0px 0px 55px
+
+    .comment-answer
+      padding: 0px 40px
     
-    .photo
-      width: 55px
-      height: 50px
-      float: left
-      margin-right: 20px
+      .photo
+        width: 55px
+        height: 50px
+        float: left
+        margin-right: 20px
       
-    .content
-      float: left
+      .content
+        float: left
       
-      .name
-        font-size: 12px
+        .name
+          font-size: 12px
+          line-height: 12px
+        
+          a, a:link, a:visited, a:hover, a:active
+            font-weight: 600
+            color: #375169
+                
+        .comment-input
+          float: left
+      
+          input
+            margin-top: 5px
+            float: left
+            padding: 5px
+            font-family: 'Open Sans', sans-serif
+            font-size: 14px
+
+        .comment-button
+          float: left
+          
+          button 
+            @include button(simple, #333)
+            float: left
+            margin-top: 5px
+            margin-left: 20px
+            padding: 6px 10px 7px 10px
+            font-size: 14px
+            font-family: 'Open Sans', sans-serif
+
+    .comment
+      border-bottom: 1px solid #ccc
+      margin-bottom: 10px
+      padding-bottom: 10px
+
+      .photo
+        float: left
+        width: 55px
+        height: 50px
+        background: #ccc
+        margin-right: 20px
+       
+      .info 
+        float: left
+        font-size: 11px
+        line-height: 14px
+
+        .name
+          font-size: 12px
+          line-height: 12px
+          display: inline-block
+        
+          a, a:link, a:visited, a:hover, a:active
+            font-weight: 600
+            color: #375169
+            
+        .time
+          display: inline-block
+          font-size: 10px
+          color: #375169
+          font-size: 9px
+        
+        .text 
+          margin-top: 5px
+          
+      .links
+        text-align: center
         line-height: 12px
         
-        a, a:link, a:visited, a:hover, a:active
+        a, a:link, a:hover, a:visited, a:active
+          text-align: center
+          margin: 0px 20px
+          color: #333
+          font-size: 9px
           font-weight: 600
-          color: #000
-          
-      .comment
-      
-        input
-          width: 600px
-          margin-top: 5px
-          float: left
-          padding: 5px
-          font-family: 'Open Sans', sans-serif
-          font-size: 14px
-          
-        button 
-          @include button(simple, #333)
-          float: left
-          margin-top: 5px
-          margin-left: 20px
-          padding: 6px 10px 7px 10px
-          font-size: 14px
-          font-family: 'Open Sans', sans-serif
+
+
 
 .article-page-sidebar
-  position: absolute
-  top: 50px
+  position: fixed
+  margin-top: 51px
   width: 244px
   height: 100%
   background: #fff
+  top: 0px
   right: 0px
+  bottom: 0px
   border-left: 3px solid #fff
-
+  
   .source-holder
     background: #4f4f4f
     padding: 10px 10px 15px 10px
@@ -311,7 +310,7 @@ html, body
       position: relative
       
       .arrow
-        background: url(/assets/articles/arrow.svg)
+        background: url(/assets/article/arrow.png)
         background-repeat: no-repeat
         width: 20px
         height: 12px
