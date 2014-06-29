@@ -5,14 +5,12 @@ var path   = require('path');
 var routes = require(path.join(__dirname, 'app', 'routes'));
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 var ensureLoggedOut = require('connect-ensure-login').ensureLoggedOut;
-// var config          = require(path.join(__dirname, 'config'));
 var passport = require('passport');
 
 module.exports = function(app) {
   // # authentication routes (make sure this is before /splash)
 
   app.get('/splash', function (req, res, next) {
-    // first let's check to see if we've already been to this page or not...
     if (_.isString(req.cookies.seenSplash)) {
       return res.redirect('/');
     }
@@ -29,7 +27,7 @@ module.exports = function(app) {
     successFlash: true,
     successReturnToOrRedirect: '/',
     failureFlash: true,
-    failureRedirect: '/splash'
+    failureRedirect: '/'
   }));
 
   // facebook oauth
@@ -41,7 +39,7 @@ module.exports = function(app) {
     successFlash: true,
     successReturnToOrRedirect: '/',
     failureFlash: true,
-    failureRedirect: '/splash'
+    failureRedirect: '/'
   }));
 
   // twitter oauth
@@ -51,14 +49,26 @@ module.exports = function(app) {
     successFlash: true,
     successReturnToOrRedirect: '/',
     failureFlash: true,
-    failureRedirect: '/splash'
+    failureRedirect: '/'
   }));
 
+  // # logging in
   app.get('/logout', ensureLoggedIn('/splash'), function (req, res) {
     req.logout();
     req.session.destroy();
     res.redirect('/');
   });
+
+  app.post('/login', ensureLoggedOut('/'), passport.authenticate('local', {
+    successFlash: true,
+    successReturnToOrRedirect: '/',
+    failureFlash: true,
+    failureRedirect: '/'
+  }));
+
+  // # registration
+  app.get('/registration', ensureLoggedOut('/'), routes.registration.get);
+  app.post('/registration', ensureLoggedOut('/'), routes.registration.post);
 
   // catch all
   app.all('*', function (req, res, next) {

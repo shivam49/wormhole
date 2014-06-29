@@ -1,21 +1,15 @@
 
 /* jshint camelcase: false */
-
+var async = require('async');
 var _ = require('lodash');
 var moment = require('moment');
-var express = require('express');
-var controller = express.Router();
-var path = require('path');
-var models = require(path.join(__dirname, '..', 'models'));
+var bcrypt = require('bcrypt');
 
-controller.route('/registration')
-.get(function (req, res) {
+exports.get = function(req, res) {
   res.render('registration');
-})
-// todo:  move most of these validations straight into the models as well
-//        we'll want still want to keep these here though before we even reach
-//        sequelize/ORM lib
-.post(function (req, res, next) {
+};
+
+exports.post = function(req, res, next) {
   if (!_.isString(req.body.first_name) || _.isEmpty(req.body.first_name.trim())) {
     return next(new Error('You must enter in a first name.'));
   }
@@ -65,243 +59,138 @@ controller.route('/registration')
     return next(new Error('You must enter in a work/occupation position.'));
   }
 
-  // this must be kept at the bottom / last validation
-  if (_.isString(req.body.username) && !_.isEmpty(req.body.username.trim())) {
-    return checkForUsername();
-  }
+  checkUserName();
 
-  checkForEmail();
+  var User;
+  var token;
+  var userNamePassport;
 
-  function checkForEmail() {
-    models.Email.find({
-      email: req.body.username.toLowerCase()
-    }).complete(function (err, row) {
-      if (err) {
-        return next(err);
-      }
-
-      if (row) {
-        return next('This email address already exists. Please try logging in.');
-      }
-
-      createAccount();
-    });
-  }
-
-  function checkForUsername() {
-    // models.UserName.find({
-    //   username: req.body.username.toLowerCase()
-    // }).complete(function (err, row) {
-    //   if (err) {
-    //     return next(err);
-    //   }
-
-    //   if (row) {
-    //     return next('This username already exists.');
-    //   }
-
-      createAccount();
-    // });
-  }
-
-  function createAccount() {
-    var user;
-    var email;
-
-    createUser().complete(createEmail);
-
-    function createEmail(err, _user) {
-      if (err) {
-        return next(err);
-      }
-
-      user = _user;
-
-      models.Email.create({
-        email: req.body.email.toLowerCase().trim()
-      }).complete(createUserName);
-    }
-
-    function createUserName(err, _email) {
-      if (err) {
-        return next(err);
-      }
-
-      email = _email;
-
-      if (_.isEmpty(req.body.username.trim())) {
-        return createUserEmail();
-      }
-
-      models.UserName.create({
-        username: req.body.username.toLowerCase().trim()
-      }).complete(function (err, userName) {
-        if (err) {
-          return next(err);
-        }
-
-        models.UserUsername.create({
-          fk_id_user: user.id_user,
-          fk_id_username: userName.id_username
-        }).complete(createUserEmail);
-      });
-    }
-
-    function createUserEmail(err, userUserName) {
-      var data = {
-        fk_id_user: user.id_user,
-        fk_id_email: email.id_email
-      };
-
-      if (!_.isUndefined(userUserName) && !_.isNull(userUserName)) {
-        data.fk_id_username = userUserName.fk_id_username;
-      }
-
-      models.UserEmail.create(data).complete(function (err, userEmail) {
-        if (err) {
-          return next(err);
-        }
-
-        models.sequelize.query(
-          'UPDATE user_passports SET secret=crypt(?, gen_salt(\'bf\', 10)) WHERE id=?',
-          null,
-          { raw: true },
-          [req.body.password, userEmail.id_user_email]
-        ).complete(createAttributes);
-      });
-    }
-
-    function createAttributes(err) {
-      if (err) {
-        return next(err);
-      }
-
-      var chainer = new models.Sequelize.Utils.QueryChainer();
-      var date = moment(req.body.dob.trim());
-
-      // very important to not change the order of operations
-      // within chainer... unless you change the complete function
-
-      chainer.add(models.DOB.findOrCreate({
-        day: parseInt(date.format('D'), 10),
-        month: parseInt(date.format('M'), 10),
-        year: parseInt(date.format('YYYY'), 10)
-      }));
-
-      chainer.add(models.Position.findOrCreate({
-        position: req.body.position.trim()
-      }));
-
-      chainer.add(models.Employer.findOrCreate({
-        employer: req.body.work.trim()
-      }));
-
-      chainer.add(models.School.findOrCreate({
-        school: req.body.education.trim()
-      }));
-
-      chainer.add(models.UserNames.create({
-        name_first: req.body.first_name.trim(),
-        name_last: req.body.last_name.trim()
-      }));
-
-      chainer.run().complete(function (err, results) {
-        // todo:  Since this isn't important.. we should eventually use some
-        //        form of logging instead of straight up returning an error
-        //        and just letting the user continue
-        if (err) {
-          return next(err);
-        }
-
-        var chainer2 = new models.Sequelize.Utils.QueryChainer();
-
-        chainer2.add(models.UserDOB.create({
-          fk_id_user: user.id_user,
-          fk_id_dob: results[0].id_dob
-        }));
-
-        chainer2.add(models.UserEmployer.create({
-          fk_id_user: user.id_user,
-          fk_id_employer: results[2].id_employer,
-          fk_id_position: results[1].id_position
-        }));
-
-        chainer2.add(models.UserSchool.create({
-          fk_id_user: user.id_user,
-          fk_id_school: results[3].id_school
-        }));
-
-        chainer2.add(models.User_Name.create({
-          fk_id_user: user.id_user,
-          fk_id_usernames: results[4].id_name
-        }));
-
-        chainer2.run().complete(response);
-      });
-    }
-
-    function response(err) {
-      if (err) {
-        return next(err);
-      }
-
-      res.format({
-        html: html,
-        json: json
-      });
-    }
-
-    function html() {
-      req.flash('success', 'Your account has been created!');
+  function login(userId) {
+    req.db.get(['users', userId]).then(function (user) {
       req.login(user, function (err) {
         if (err) {
           return next(err);
         }
+
         res.redirect('/');
       });
+    }, next);
+  }
+
+  function findUserPassports() {
+    return req.db.find('user passports', {
+      method: 'email',
+      token: req.body.email
+    });
+  }
+
+  function findOrCreate(userPassports) {
+    if (!userPassports || !userPassports.length) {
+      return createUser();
     }
 
-    function json() {
-      res.json(user);
+    req.db.remove(['user passports', userNamePassport._id]);
+
+    return next(new Error('This e-mail address already exists.'));
+  }
+
+  function checkUserName() {
+    if (!(_.isString(req.body.username) && !_.isEmpty(req.body.username.trim()))) {
+      return findUserPassports().then(findOrCreate);
     }
+
+    req.db.find('user passports', {
+      method: 'username',
+      token: req.body.username.toLowerCase()
+    }).then(function (userPassport) {
+      if (userPassport && userPassport.length > 0 && !_.isUndefined(userPassport[0]._id)) {
+        return next(new Error('This username already exists.'));
+      }
+
+      userNamePassport = req.db.create('user passports', {
+        method: 'username',
+        token: req.body.username.toLowerCase()
+      });
+
+      findUserPassports().then(findOrCreate);
+    });
+  }
+
+  function password(pass, callback) {
+    bcrypt.genSalt(12, function (err, salt){
+      bcrypt.hash(pass, salt, callback);
+    });
   }
 
   function createUser() {
-    return models.User.create({});
-  }
-});
+    var fname   = req.body.first_name;
+    var lname   = req.body.last_name;
+    var emails  = req.body.email;
+    var id;
 
-function register(user_passports, error_codes, req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect('/');
+    req.db.create('users', {
+      first_name: fname,
+      last_name: lname
+    }).then(function (user) {
+      User = user;
+
+      var userId = User;
+      id = userId;
+
+      password(req.body.password, function (err, _token) {
+        if (err) {
+          return next(err);
+        }
+
+        token = _token;
+        req.db.create('user passports', {
+          user_id: userId,
+          method: 'email',
+          token: req.body.email,
+          secret: token,
+          email: Array.isArray(emails) && emails.length > 0 && !_.isEmpty(emails[0].trim()) ? emails[0] : ''
+        });
+
+        if (!(_.isString(req.body.username) && !_.isEmpty(req.body.username.trim()))) {
+          return createAttributes(id);
+        }
+
+        req.db.put(['user passports', userNamePassport._id, 'secret'], _token);
+        createAttributes(id);
+      });
+    });
   }
 
-  models.UserPassports.registerWithEmail(req.body || {}, function (err, user) {
-    if (err) {
-      return next(err);
+  function createAttributes(id) {
+    var date = moment(req.body.dob.trim());
+
+    // very important to not change the order of operations
+    // within chainer... unless you change the complete function
+
+    var data = {};
+
+    if (moment(date).isValid()) {
+      data.dob = {
+        day: parseInt(date.format('D'), 10),
+        month: parseInt(date.format('M'), 10),
+        year: parseInt(date.format('YYYY'), 10)
+      };
     }
 
-    req.logIn(user, function (err) {
+    data.position = req.body.position.trim();
+    data.education = req.body.education.trim();
+    data.work = req.body.work.trim();
+
+    async.each(Object.keys(data), function (key, fn) {
+      req.db.put(['users', User, key], data[key]).then(function() {
+        fn();
+      }, fn);
+    }, function (err) {
       if (err) {
         return next(err);
       }
 
-      req.user = user;
-      strategies.loginUser(user, req, res, res.jsonDone);
+      login(id);
     });
-  });
-}
-
-function login(req, res, next) {
-  passport.authenticate('local', {badRequestMessage: 'Missing email and/or password.'}, function (err, user, info) {
-    if (!!err || !user) return res.jsonDone(err || info.message);
-
-    strategies.loginUser(user, req, res, res.jsonDone);
-      // res.jsonDone(err, info);
-    // });
-  })(req, res, next);
-}
-exports.login = login;
-
-module.exports = ['/', controller];
-
+  }
+};

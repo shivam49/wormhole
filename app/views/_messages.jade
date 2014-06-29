@@ -1,11 +1,12 @@
 if messages
-  each arr, msgType in messages
-    if arr.length > 0
-      each message in arr
-        if msgType === 'error'
-          - msgType = 'danger'
-        .alert.alert-dismissable(class='alert-' + msgType)
-          //-button(type='button', data-dismiss='alert', aria-hidden='true').close: i.fa.fa-times-circle
-          != typeof message === "object" ? JSON.stringify(message) : message
+  .alert-messages(style='position:absolute;z-index:10000;top:50px;left:25%;width:50%;')
+    each arr, msgType in messages
+      if arr.length > 0
+        each message in arr
+          if msgType === 'error'
+            - msgType = 'danger'
+          .alert.alert-dismissable(class='alert-' + msgType)
+            //-button(type='button', data-dismiss='alert', aria-hidden='true').close: i.fa.fa-times-circle
+            != typeof message === "object" ? JSON.stringify(message) : message
   br
   br

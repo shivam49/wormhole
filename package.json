@@ -45,6 +45,7 @@
     "passport-twitter": "^1.0.2",
     "passport-local": "^1.0.0",
     "camel-case": "^0.1.0",
-    "connect-redis": "^2.0.0"
+    "connect-redis": "^2.0.0",
+    "bcrypt": "^0.7.8"
   }
 }
