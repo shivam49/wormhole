@@ -10778,10 +10778,6 @@ require.register("article/index.js", function(exports, require, module){
 
 var $ = require('jquery');
 
-$(function() {
-  console.log('article page index');
-});
-
 });
 require.register("articles/index.js", function(exports, require, module){
 'use strict';
@@ -10918,6 +10914,9 @@ require.alias("freewall/freewall.js", "freewall/index.js");
 require.alias("masonry/index.js", "masonry/index.js");
 require.alias("article/index.js", "core/deps/article/index.js");
 require.alias("article/index.js", "core/deps/article/index.js");
+require.alias("jquery/jquery-2.1.1.js", "article/deps/jquery/jquery-2.1.1.js");
+require.alias("jquery/jquery-2.1.1.js", "article/deps/jquery/index.js");
+require.alias("jquery/jquery-2.1.1.js", "jquery/index.js");
 require.alias("article/index.js", "article/index.js");
 require.alias("articles/index.js", "core/deps/articles/index.js");
 require.alias("articles/index.js", "core/deps/articles/index.js");
