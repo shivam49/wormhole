@@ -87,6 +87,9 @@ if (!module.parent) {
   }
 
   console.log('Server has started on port ' + port + '.');
+} else {
+  // for mocha
+  module.exports = app;
 }
 
 // for naught

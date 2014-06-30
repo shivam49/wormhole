@@ -6,7 +6,6 @@ var async       = require('async');
 var request     = require('request');
 var path        = require('path');
 var elastic     = require(path.join(__dirname, '..', 'elastic'));
-var models      = require(path.join(__dirname, '..', 'models'));
 
 exports.index = function(req, res, next) {
   function imageClasses(articles) {
@@ -79,31 +78,51 @@ exports.create = function(req, res) {
   // Alex.. change this..
   var articleHash = _.isString(req.body.articleHash) ? req.body.articleHash : '';
 
-  var data = {
-    action: 'article_add',
-    articleHash: articleHash
-  };
+  // insert into whichever database / method we're storing the articles then call...
+  record();
 
-  if (req.user) {
-    data.id_user = req.user.id_user;
+  function record() {
+    if (req.isAuthenticated()) {
+      return response();
+    }
+
+    var tr = req.db.transaction();
+
+    tr.find('articles created', {
+      article: articleHash,
+      user: req.user._id
+    }).then(function (_article) {
+      if (_article) {
+        var count = parseInt(_article.count, 10);
+        if (isNaN(count)) {
+          count = 0;
+        }
+
+        return tr.put(['articles created', _article._id, 'count'], (count+1));
+      } else {
+        return tr.create('articles created', {
+          article: articleHash,
+          user: req.user._id,
+          count: 1
+        });
+      }
+    });
+
+    tr.commit().then(response);
   }
 
-  models.Record.create(data).complete(function (/* err */) {
-    // if (err) {
-      // eventually we'll want some sort of lib logger (bunyan?)
-    // }
-  });
-
-  res.format({
-    html: function() {
-      req.flash('success', 'Your article has been submitted.');
-      res.redirect('back');
-    },
-    json: function() {
-      // Alex: place the newely generated article / JSON output here...
-      res.json(true);
-    }
-  });
+  function response() {
+    res.format({
+      html: function() {
+        req.flash('success', 'Your article has been submitted.');
+        res.redirect('back');
+      },
+      json: function() {
+        // Alex: place the newely generated article / JSON output here...
+        res.json(true);
+      }
+    });
+  }
 };
 
 exports.retrieve = function (req, res, next) {
@@ -117,25 +136,50 @@ exports.retrieve = function (req, res, next) {
         return next(err);
       }
 
-      response(article, results);
+      record(article, results);
+    });
+  }
+
+  function record(article, related) {
+    if (req.isAuthenticated()) {
+      return response(article, related);
+    }
+
+    var tr = req.db.transaction();
+
+    tr.find('articles viewed', {
+      article: req.params.article,
+      user: req.user._id
+    }).then(function (_article) {
+      if (_article) {
+        var count = parseInt(_article.count, 10);
+        if (isNaN(count)) {
+          count = 0;
+        }
+
+        return tr.put(['articles viewed', _article._id, 'count'], (count+1));
+      } else {
+        return tr.create('articles viewed', {
+          article: req.params.article,
+          user: req.user._id,
+          count: 1
+        });
+      }
+    });
+
+    tr.commit().then(function() {
+      response(article, related);
     });
   }
 
   function response(article, related) {
-    models.Record.create({
-      action: 'article_viewed',
-      articleHash: req.params.article
-    }).complete(function () {
-      /* error logging concept goes here */
-    });
-
     async.map(related.hits.hits, getImageClass, function (err, results) {
       if (err) {
         return next(err);
       }
 
-    res.render('article', {
-      article: article,
+      res.render('article', {
+        article: article,
         related: results
       });
     });

@@ -1,4 +1,10 @@
 {
+  "globals": {
+    "before": true,
+    "after": true,
+    "describe": true,
+    "it": true
+  },
   "bitwise": true,
   "camelcase": true,
   "curly": true,

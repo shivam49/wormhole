@@ -1,9 +1,6 @@
 var async       = require('async');
-var path        = require('path');
 var express     = require('express');
 var controller  = express.Router();
-
-var models = require(path.join(__dirname, '..', 'models'));
 
 controller.route('/')
 .get(function (req, res, next) {
@@ -37,25 +34,50 @@ controller.route('/')
   // Alex.. change this..
   var eekohHash = req.body.eekohHash || '';
 
-  models.Record.create({
-    action: 'eekoh_add',
-    articleHash: eekohHash
-  }).complete(function (/* err */) {
-    // if (err) {
-      // eventually we'll want some sort of lib logger (bunyan?)
-    // }
-  });
+  record();
 
-  res.format({
-    html: function() {
-      req.flash('success', 'Your eekoh system has been submitted.');
-      res.redirect('back');
-    },
-    json: function() {
-      // Alex: place the newely generated article / JSON output here...
-      res.json(true);
+  function record() {
+    if (req.isAuthenticated()) {
+      return response();
     }
-  });
+
+    var tr = req.db.transaction();
+
+    tr.find('eekoh added', {
+      article: eekohHash,
+      user: req.user._id
+    }).then(function (entry) {
+      if (entry) {
+        var count = parseInt(entry.count, 10);
+        if (isNaN(count)) {
+          count = 0;
+        }
+
+        return tr.put(['eekoh added', entry._id, 'count'], (count+1));
+      } else {
+        return tr.create('eekoh added', {
+          article: eekohHash,
+          user: req.user._id,
+          count: 1
+        });
+      }
+    });
+
+    tr.commit().then(response);
+  }
+
+  function response() {
+    res.format({
+      html: function() {
+        req.flash('success', 'Your eekoh system has been submitted.');
+        res.redirect('back');
+      },
+      json: function() {
+        // Alex: place the newely generated article / JSON output here...
+        res.json(true);
+      }
+    });
+  }
 });
 
 module.exports = ['/eekoh', controller];
