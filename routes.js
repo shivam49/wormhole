@@ -103,6 +103,9 @@ module.exports = function(app) {
   app.get('/search/:words', routes.search.index);
   app.post('/search', routes.search.index);
 
+  app.get('/eekoh', routes.eekoh.get);
+  app.post('/eekoh', routes.eekoh.post);
+
   function articlePage(route) {
     app.get(route, routes.articles.index);
   }

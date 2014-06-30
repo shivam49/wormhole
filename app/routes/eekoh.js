@@ -1,9 +1,6 @@
 var async       = require('async');
-var express     = require('express');
-var controller  = express.Router();
 
-controller.route('/')
-.get(function (req, res, next) {
+exports.get = function (req, res, next) {
   async.parallel({
     eekohs: function (fn) {
       // get a list of the user's eekohs...
@@ -29,8 +26,9 @@ controller.route('/')
       }
     });
   }
-})
-.post(function (req, res) {
+};
+
+exports.post = function (req, res) {
   // Alex.. change this..
   var eekohHash = req.body.eekohHash || '';
 
@@ -78,6 +76,4 @@ controller.route('/')
       }
     });
   }
-});
-
-module.exports = ['/eekoh', controller];
+};
