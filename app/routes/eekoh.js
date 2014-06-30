@@ -35,7 +35,7 @@ exports.post = function (req, res) {
   record();
 
   function record() {
-    if (req.isAuthenticated()) {
+    if (!req.isAuthenticated()) {
       return response();
     }
 

@@ -82,7 +82,7 @@ exports.create = function(req, res) {
   record();
 
   function record() {
-    if (req.isAuthenticated()) {
+    if (!req.isAuthenticated()) {
       return response();
     }
 
@@ -141,7 +141,7 @@ exports.retrieve = function (req, res, next) {
   }
 
   function record(article, related) {
-    if (req.isAuthenticated()) {
+    if (!req.isAuthenticated()) {
       return response(article, related);
     }
 
