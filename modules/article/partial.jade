@@ -21,9 +21,11 @@
       a(href="#", class="share") 
       a(href="#", class="chop") 
     .clear
+      
   .article-page-content
     p!= article._source.article_text  
-    .article-page-brands-hdr Choose brands to receive deals
+    .article-page-brands-hdr
+    .article-page-brands-title Choose brands to receive deals
     .article-page-brands
       .brand
         img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
@@ -79,14 +81,14 @@
     .clear
   .related-hdr  Related Articles
     a(href="#") View all
-
-  each rArticle in related
-    .related-article
-      a(href='/article/' + rArticle._id)
-        .image
-          - var image = /\/\d+$/.exec(rArticle._source.image)
-          if image
-            img(src='http://riak.internal.eekoh.me/article' + image.toString())
-        .hdr= rArticle._source.title
-          .arrow
-        .excerpt= rArticle._source.description
+  .related-wrap
+    each rArticle in related
+      .related-article
+        a(href='/article/' + rArticle._id)
+          .image
+            - var image = /\/\d+$/.exec(rArticle._source.image)
+            if image
+              img(src='http://riak.internal.eekoh.me/article' + image.toString())
+          .hdr= rArticle._source.title
+            .arrow
+          .excerpt= rArticle._source.description

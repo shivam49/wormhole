@@ -495,12 +495,11 @@
   border-bottom: 3px solid white;
   background: white;
   position: fixed;
-  top: 75px;
   z-index: 100;
   font-size: 12px;
   color: #4e4f50;
   position: fixed;
-  top: 74px;
+  top: 0;
   left: 214px;
   right: 0;
   bottom: 0; }
@@ -1394,7 +1393,9 @@
   top: 0px;
   left: 0px;
   bottom: 0px;
-  margin-right: 245px; }
+  margin-right: 245px;
+  overflow-y: scroll;
+  padding-bottom: 40px; }
   .article-page .article-page-hdr {
     width: 100%;
     height: auto;
@@ -1478,17 +1479,26 @@
     padding: 10px;
     font-size: 14px;
     line-height: 20px;
-    height: 332px;
-    overflow-y: scroll;
     margin-bottom: 10px; }
   .article-page .article-page-brands-hdr {
-    height: 30px;
+    height: 2px;
     background: #6bc048;
     color: white;
     line-height: 30px;
     padding-left: 50px;
     font-size: 14px;
-    font-weight: 600; }
+    font-weight: 600;
+    margin-top: 25px; }
+  .article-page .article-page-brands-title {
+    background: #6bc848;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    margin-top: -20px;
+    width: 50%; }
   .article-page .article-page-brands {
     padding: 20px 55px; }
     .article-page .article-page-brands .brand {
@@ -1667,6 +1677,13 @@
       color: #333333;
       font-weight: 600;
       float: right; }
+  .article-page-sidebar .related-wrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: 125px;
+    overflow-y: scroll;
+    margin-bottom: 40px; }
   .article-page-sidebar .related-article {
     background: #6cbf48;
     border-bottom: 3px solid white; }

@@ -11,62 +11,64 @@
   left: 0px
   bottom: 0px
   margin-right: 245px
+  overflow-y: scroll
+  padding-bottom: 40px
 
   .article-page-hdr
     width: 100%
     height: auto
     background: url(/assets/article/hdr-bg.png)
-    
+
     .photo
       margin: 8px 0 0 10px
       position: relative
       float: left
-      
+
     .info 
       float: left
       color: #fff
       margin: 45px 0px 0px 75px
       width: 435px
-      
+
       .name
         font-size: 20px
         font-weight: 600
-        
+
       .divider
         height: 1px
         background: #64af44
         margin: 13px 0px
-        
+
       .author
         font-size: 13px
         line-height: 13px
         color: #a2a2a2
-        
+
         a, a:link, a:visited, a:hover, a:active
           color: #fff
           font-weight: 600
-        
+
       .date
         font-size: 11px
         line-height: 11px
         margin-top: 10px
         color: #a2a2a2
-      
+
       .source 
         font-size: 11px
         line-height: 11px
         margin-top: 5px
         color: #a2a2a2
-        
+
     .social
       float: right
       width: 110px
       margin-top: 20px
       margin-right: 25px
-      
+
       a, a:visited, a:active, a:hover
         margin-bottom: 10px
-      
+
       a.system
         width: 107px
         height: 24px
@@ -78,7 +80,7 @@
         height: 24px
         background: url(/assets/article/social-page.png)
         display: block
-      
+
       a.discuss
         width: 107px
         height: 24px
@@ -111,29 +113,37 @@
 
       a.chop:hover
         background: url(/assets/article/social-chop-hover.jpg)
-      
-      
-    
+
   .article-page-content
     padding: 10px
     font-size: 14px
     line-height: 20px
-    height: 332px
-    overflow-y: scroll
     margin-bottom: 10px
-    
+
   .article-page-brands-hdr
-    height: 30px
+    height: 2px
     background: #6bc048
     color: #fff
     line-height: 30px
     padding-left: 50px
     font-size: 14px
     font-weight: 600
-    
+    margin-top: 25px
+
+  .article-page-brands-title
+    background: #6bc848
+    margin-left: auto
+    margin-right: auto
+    padding: 10px 20px
+    border-radius: 20px
+    color: #FFF
+    text-align: center
+    margin-top: -20px
+    width: 50%
+
   .article-page-brands
     padding: 20px 55px
-   
+
     .brand
       width: 172px
       height: 82px
@@ -141,7 +151,7 @@
       float: left
       margin-right: 10px
       border: 1px solid #c9c9c9
-      
+
   .article-page-discuss-hdr
     height: 30px
     background: #4c4e4e
@@ -291,6 +301,14 @@
       color: #333
       font-weight: 600
       float: right
+
+  .related-wrap
+    position: absolute
+    top: 0
+    bottom: 0
+    margin-top: 125px
+    overflow-y: scroll
+    margin-bottom: 40px
       
   .related-article
     background: #6cbf48
@@ -324,5 +342,5 @@
       color: #fff
       padding: 0px 10px 15px 10px
       line-height: 17px
-      
-      
+        
+        
