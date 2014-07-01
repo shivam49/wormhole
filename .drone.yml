@@ -6,8 +6,8 @@ env:
   - PG_USER=wormhole
   - PG_PASSWORD=e3en8hhe
 script:
-  - npm install -g mocha
-  - npm install
+  # - npm install -g mocha
+  # - npm install
   - mocha
 deploy:
   ssh:
