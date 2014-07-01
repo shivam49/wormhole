@@ -2,7 +2,7 @@
   a(href='/', class="brand-wrap")
   .search-wrap
     .form-wrap
-      form(name='input', action='/search/', method='post')
+      form(id='masonry-search', name='masonry-search', action='/search/', method='post')
         input(type='text', name='words', placeholder='Discover ...' id="searchbar")
         input(type='hidden', name='_csrf', value=csrf)
         // button(type='submit', class='btn-link')
@@ -35,24 +35,25 @@
           a(href="#") Forgot password?
         button(type="submit", value="Login", class="btn") Login
 
-// .submenu
-//   .submenu-holder
-//     .dropdown-menu Timeline
-//       .dropdown-burger
-//     .dropdown
-//       a(href='#') Timeline
-//       a(href='#') Trending
-//       a(href='#') Streams
-//       a(href='#') Lumberyard
-//       
-//     .calendar
-//       a(href='/' class="active") 22 apr
-//       a(href='/') 22 apr
-//       a(href='/') 22 apr
-//       a(href='/') 22 apr
-//       a(href='/') 22 apr
-//     .chat-status
-//        a(href='#') Chat
+ .submenu
+   .submenu-holder
+     .dropdown-menu Timeline
+       .dropdown-burger
+     .dropdown
+       .dropdown-bg
+        a(href='#') Timeline
+        a(href='#') Trending
+        a(href='#') Streams
+        a(href='#') Lumberyard
+       
+     .calendar
+       a(href='/' class="active") 22 apr
+       a(href='/') 22 apr
+       a(href='/') 22 apr
+       a(href='/') 22 apr
+       a(href='/') 22 apr
+     .chat-status
+        a(href='#') Chat
 
 // search results
 

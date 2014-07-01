@@ -502,7 +502,8 @@
   top: 0;
   left: 214px;
   right: 0;
-  bottom: 0; }
+  bottom: 0;
+  margin-top: 51px; }
   .profile-top .profile-top-photo {
     height: 130px;
     float: left;
@@ -1393,6 +1394,7 @@
   top: 0px;
   left: 0px;
   bottom: 0px;
+  right: 0;
   margin-right: 245px;
   overflow-y: scroll;
   padding-bottom: 40px; }

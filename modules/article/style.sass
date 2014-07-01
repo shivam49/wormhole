@@ -5,11 +5,12 @@
   height: 100%
   background: #fff
   margin-left: 214px
-  margin-top: 51px
+  margin-top: 75px
   position: fixed
   top: 0px
   left: 0px
   bottom: 0px
+  right: 0
   margin-right: 245px
   overflow-y: scroll
   padding-bottom: 40px
@@ -17,8 +18,15 @@
   .article-page-hdr
     width: 100%
     height: auto
-    background: url(/assets/article/hdr-bg.png)
-
+    background: #000000
+    background: -moz-linear-gradient(left,  #000000 32%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%)
+    background: -webkit-gradient(linear, left top, right top, color-stop(32%,#000000), color-stop(60%,#111111), color-stop(76%,#2b2b2b), color-stop(91%,#1c1c1c), color-stop(100%,#131313))
+    background: -webkit-linear-gradient(left,  #000000 32%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%)
+    background: -o-linear-gradient(left,  #000000 32%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%)
+    background: -ms-linear-gradient(left,  #000000 32%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%)
+    background: linear-gradient(to right,  #000000 32%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313',GradientType=1 )
+      
     .photo
       margin: 8px 0 0 10px
       position: relative
@@ -28,7 +36,7 @@
       float: left
       color: #fff
       margin: 45px 0px 0px 75px
-      width: 435px
+      width: 340px
 
       .name
         font-size: 20px
@@ -68,51 +76,56 @@
 
       a, a:visited, a:active, a:hover
         margin-bottom: 10px
+        -webkit-background-size: cover
+        -moz-background-size: cover
+        -o-background-size: cover
+        background-size: cover
+
 
       a.system
         width: 107px
         height: 24px
-        background: url(/assets/article/social-system.png)
+        background-image: url(/assets/article/social-system.png)
         display: block
 
       a.page
         width: 107px
         height: 24px
-        background: url(/assets/article/social-page.png)
+        background-image: url(/assets/article/social-page.png)
         display: block
 
       a.discuss
         width: 107px
         height: 24px
-        background: url(/assets/article/social-discuss.png)
+        background-image: url(/assets/article/social-discuss.png)
         display: block
 
       a.share
         width: 107px
         height: 24px
-        background: url(/assets/article/social-share.png)
+        background-image: url(/assets/article/social-share.png)
         display: block
 
       a.chop
         width: 107px
         height: 24px
-        background: url(/assets/article/social-chop.png)
+        background-image: url(/assets/article/social-chop.png)
         display: block
 
       a.system:hover
-        background: url(/assets/article/social-system-hover.jpg)
+        background-image: url(/assets/article/social-system-hover.png)
 
       a.page:hover
-        background: url(/assets/article/social-page-hover.jpg)
+        background-image: url(/assets/article/social-page-hover.png)
 
       a.discuss:hover
-        background: url(/assets/article/social-discuss-hover.jpg)
+        background-image: url(/assets/article/social-discuss-hover.png)
 
       a.share:hover
-        background: url(/assets/article/social-share-hover.jpg)
+        background-image: url(/assets/article/social-share-hover.png)
 
       a.chop:hover
-        background: url(/assets/article/social-chop-hover.jpg)
+        background-image: url(/assets/article/social-chop-hover.png)
 
   .article-page-content
     padding: 10px
@@ -134,12 +147,12 @@
     background: #6bc848
     margin-left: auto
     margin-right: auto
-    padding: 10px 20px
+    padding: 2px 20px
     border-radius: 20px
-    color: #FFF
+    color: white
     text-align: center
-    margin-top: -20px
-    width: 50%
+    margin-top: -13px
+    width: 260px
 
   .article-page-brands
     padding: 20px 55px
@@ -261,7 +274,7 @@
 
 .article-page-sidebar
   position: fixed
-  margin-top: 51px
+  margin-top: 75px
   width: 244px
   height: 100%
   background: #fff
@@ -296,37 +309,41 @@
     font-size: 12px
     padding: 10px
     line-height: 12px
-    
+
     a, a:link, a:visited, a:hover, a:hover
       color: #333
-      font-weight: 600
+      font-weight: normal
       float: right
-
+      background-image: url(/assets/sidebar/arrows.png)
+      background-repeat: no-repeat
+      background-position: 50px -333px
+      padding-right: 20px
+      
   .related-wrap
     position: absolute
     top: 0
     bottom: 0
-    margin-top: 125px
+    margin-top: 131px
     overflow-y: scroll
     margin-bottom: 40px
-      
+
   .related-article
     background: #6cbf48
     border-bottom: 3px solid #fff
-    
+
     .image 
       border-bottom: 3px solid #fff
-      
+
       img
         display: block
-    
+
     .hdr
       font-weight: 700
       color: #fff
       font-size: 14px
       padding: 5px 10px 0px 10px
       position: relative
-      
+
       .arrow
         background: url(/assets/article/arrow.png)
         background-repeat: no-repeat
@@ -336,11 +353,9 @@
         top: -12px
         left: 120px
         z-index: 100
-      
+
     .excerpt
       font-size: 12px
       color: #fff
       padding: 0px 10px 15px 10px
       line-height: 17px
-        
-        

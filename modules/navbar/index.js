@@ -30,6 +30,23 @@ $(function () {
 			// Replace image with new SVG
 			$img.replaceWith($svg);
 		});
-	});
+  });
+  
+  // Temporary function to display the search dropdown
+  $('#masonry-search').on('click', function(){
+    $('.search_results').fadeToggle();
+    console.log('hovered hater');
+  });
+
+  // Timeline dropdown
+  $('.dropdown-menu').on('click', function(){
+    // Toggle on menu click
+    $('.dropdown').fadeToggle();
+   
+    // Hide on mouseout
+    $('.dropdown').mouseleave(function() {
+      $('.dropdown').fadeOut();
+    });
+  });
 });
 
