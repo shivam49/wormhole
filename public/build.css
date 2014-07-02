@@ -5,17 +5,16 @@
 
 .chat-window {
   width: 241px;
-  height: 100%;
   position: fixed;
-  margin-top: 72px;
   background: white;
-  padding-top: 75px;
   top: -72px;
-  right: -261px;
+  right: 0;
+  bottom: 0;
   z-index: 50;
-  -webkit-box-shadow: -6px 8px 6px 0 #888888;
-  -moz-box-shadow: -6px 8px 6px 0 #888888;
-  box-shadow: -6px 8px 6px 0 #888888; }
+  border-left: #e9e9e9 solid 1px;
+  border-top: #e9e9e9 solid 1px;
+  margin-top: 147px;
+  display: none; }
   .chat-window .chat-window-seeall {
     width: 241px;
     height: 20px;
@@ -258,19 +257,23 @@
     .submenu .submenu-holder .dropdown-menu:hover {
       cursor: pointer; }
     .submenu .submenu-holder .dropdown {
-      width: 137px;
-      background: black;
+      width: 237px;
+      height: auto;
+      padding: 0 100px 100px 0;
       position: absolute;
       top: 25px;
       left: 214px;
-      opacity: 0.8;
-      padding: 10px 15px;
       display: none; }
-      .submenu .submenu-holder .dropdown a, .submenu .submenu-holder .dropdown a:link, .submenu .submenu-holder .dropdown a:visited, .submenu .submenu-holder .dropdown a:hover, .submenu .submenu-holder .dropdown a:active {
-        color: white;
-        font-size: 12px;
-        display: block;
-        margin-bottom: 3px; }
+      .submenu .submenu-holder .dropdown .dropdown-bg {
+        width: 137px;
+        background: black;
+        opacity: 0.8;
+        padding: 10px 15px; }
+        .submenu .submenu-holder .dropdown .dropdown-bg a, .submenu .submenu-holder .dropdown .dropdown-bg a:link, .submenu .submenu-holder .dropdown .dropdown-bg a:visited, .submenu .submenu-holder .dropdown .dropdown-bg a:hover, .submenu .submenu-holder .dropdown .dropdown-bg a:active {
+          color: white;
+          font-size: 12px;
+          display: block;
+          margin-bottom: 3px; }
     .submenu .submenu-holder .calendar {
       margin-left: 30px;
       margin-right: 244px;
@@ -503,7 +506,7 @@
   left: 214px;
   right: 0;
   bottom: 0;
-  margin-top: 51px; }
+  margin-top: 74px; }
   .profile-top .profile-top-photo {
     height: 130px;
     float: left;
@@ -1227,7 +1230,7 @@
   left: 0;
   margin-left: 214px;
   position: absolute;
-  margin-top: 48px; }
+  margin-top: 74px; }
   #freewall .brick {
     color: white;
     border: white solid 1px;
@@ -1389,7 +1392,7 @@
   height: 100%;
   background: white;
   margin-left: 214px;
-  margin-top: 51px;
+  margin-top: 75px;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -1401,7 +1404,14 @@
   .article-page .article-page-hdr {
     width: 100%;
     height: auto;
-    background: url(/assets/article/hdr-bg.png); }
+    background: black;
+    background: -moz-linear-gradient(left, black 32%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(32%, black), color-stop(60%, #111111), color-stop(76%, #2b2b2b), color-stop(91%, #1c1c1c), color-stop(100%, #131313));
+    background: -webkit-linear-gradient(left, black 32%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%);
+    background: -o-linear-gradient(left, black 32%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%);
+    background: -ms-linear-gradient(left, black 32%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%);
+    background: linear-gradient(to right, black 32%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#131313',GradientType=1 ); }
     .article-page .article-page-hdr .photo {
       margin: 8px 0 0 10px;
       position: relative;
@@ -1410,7 +1420,7 @@
       float: left;
       color: white;
       margin: 45px 0px 0px 75px;
-      width: 435px; }
+      width: 340px; }
       .article-page .article-page-hdr .info .name {
         font-size: 20px;
         font-weight: 600; }
@@ -1441,42 +1451,46 @@
       margin-top: 20px;
       margin-right: 25px; }
       .article-page .article-page-hdr .social a, .article-page .article-page-hdr .social a:visited, .article-page .article-page-hdr .social a:active, .article-page .article-page-hdr .social a:hover {
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover; }
       .article-page .article-page-hdr .social a.system {
         width: 107px;
         height: 24px;
-        background: url(/assets/article/social-system.png);
+        background-image: url(/assets/article/social-system.png);
         display: block; }
       .article-page .article-page-hdr .social a.page {
         width: 107px;
         height: 24px;
-        background: url(/assets/article/social-page.png);
+        background-image: url(/assets/article/social-page.png);
         display: block; }
       .article-page .article-page-hdr .social a.discuss {
         width: 107px;
         height: 24px;
-        background: url(/assets/article/social-discuss.png);
+        background-image: url(/assets/article/social-discuss.png);
         display: block; }
       .article-page .article-page-hdr .social a.share {
         width: 107px;
         height: 24px;
-        background: url(/assets/article/social-share.png);
+        background-image: url(/assets/article/social-share.png);
         display: block; }
       .article-page .article-page-hdr .social a.chop {
         width: 107px;
         height: 24px;
-        background: url(/assets/article/social-chop.png);
+        background-image: url(/assets/article/social-chop.png);
         display: block; }
       .article-page .article-page-hdr .social a.system:hover {
-        background: url(/assets/article/social-system-hover.jpg); }
+        background-image: url(/assets/article/social-system-hover.png); }
       .article-page .article-page-hdr .social a.page:hover {
-        background: url(/assets/article/social-page-hover.jpg); }
+        background-image: url(/assets/article/social-page-hover.png); }
       .article-page .article-page-hdr .social a.discuss:hover {
-        background: url(/assets/article/social-discuss-hover.jpg); }
+        background-image: url(/assets/article/social-discuss-hover.png); }
       .article-page .article-page-hdr .social a.share:hover {
-        background: url(/assets/article/social-share-hover.jpg); }
+        background-image: url(/assets/article/social-share-hover.png); }
       .article-page .article-page-hdr .social a.chop:hover {
-        background: url(/assets/article/social-chop-hover.jpg); }
+        background-image: url(/assets/article/social-chop-hover.png); }
   .article-page .article-page-content {
     padding: 10px;
     font-size: 14px;
@@ -1495,12 +1509,12 @@
     background: #6bc848;
     margin-left: auto;
     margin-right: auto;
-    padding: 10px 20px;
+    padding: 2px 20px;
     border-radius: 20px;
     color: white;
     text-align: center;
-    margin-top: -20px;
-    width: 50%; }
+    margin-top: -13px;
+    width: 260px; }
   .article-page .article-page-brands {
     padding: 20px 55px; }
     .article-page .article-page-brands .brand {
@@ -1645,7 +1659,7 @@
 
 .article-page-sidebar {
   position: fixed;
-  margin-top: 51px;
+  margin-top: 75px;
   width: 244px;
   height: 100%;
   background: white;
@@ -1677,13 +1691,17 @@
     line-height: 12px; }
     .article-page-sidebar .related-hdr a, .article-page-sidebar .related-hdr a:link, .article-page-sidebar .related-hdr a:visited, .article-page-sidebar .related-hdr a:hover, .article-page-sidebar .related-hdr a:hover {
       color: #333333;
-      font-weight: 600;
-      float: right; }
+      font-weight: normal;
+      float: right;
+      background-image: url(/assets/sidebar/arrows.png);
+      background-repeat: no-repeat;
+      background-position: 50px -333px;
+      padding-right: 20px; }
   .article-page-sidebar .related-wrap {
     position: absolute;
     top: 0;
     bottom: 0;
-    margin-top: 125px;
+    margin-top: 131px;
     overflow-y: scroll;
     margin-bottom: 40px; }
   .article-page-sidebar .related-article {
@@ -3133,3 +3151,6 @@ body {
 
 b {
   font-weight: 700; }
+
+input:focus {
+  outline: 0 !important; }

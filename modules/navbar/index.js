@@ -5,7 +5,7 @@ var $ = require('jquery');
 $(function () {
   $('.show-login-overlay').click(function (e) {
     e.preventDefault();
-    $('.top-login-overlay').toggle();
+    $('.top-login-overlay').fadeToggle();
   });
 
 	$('img.svg2').each(function () {
@@ -47,6 +47,11 @@ $(function () {
     $('.dropdown').mouseleave(function() {
       $('.dropdown').fadeOut();
     });
+  });
+  
+  // Toggle the chat hater
+  $('#chat-toggle').on('click', function(){
+    $('.chat-window').fadeToggle();
   });
 });
 

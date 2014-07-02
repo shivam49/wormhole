@@ -9435,7 +9435,7 @@ var $ = require('jquery');
 $(function () {
   $('.show-login-overlay').click(function (e) {
     e.preventDefault();
-    $('.top-login-overlay').toggle();
+    $('.top-login-overlay').fadeToggle();
   });
 
 	$('img.svg2').each(function () {
@@ -9460,7 +9460,29 @@ $(function () {
 			// Replace image with new SVG
 			$img.replaceWith($svg);
 		});
-	});
+  });
+  
+  // Temporary function to display the search dropdown
+  $('#masonry-search').on('click', function(){
+    $('.search_results').fadeToggle();
+    console.log('hovered hater');
+  });
+
+  // Timeline dropdown
+  $('.dropdown-menu').on('click', function(){
+    // Toggle on menu click
+    $('.dropdown').fadeToggle();
+   
+    // Hide on mouseout
+    $('.dropdown').mouseleave(function() {
+      $('.dropdown').fadeOut();
+    });
+  });
+  
+  // Toggle the chat hater
+  $('#chat-toggle').on('click', function(){
+    $('.chat-window').fadeToggle();
+  });
 });
 
 
