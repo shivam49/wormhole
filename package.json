@@ -34,7 +34,6 @@
     "method-override": "^2.0.2",
     "passport": "^0.2.0",
     "passport-google-oauth": "^0.1.5",
-    "pg": "^3.0.3",
     "request": "^2.34.0",
     "riak-js": "^0.10.2",
     "travelogue": "^2.0.0",
