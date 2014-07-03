@@ -63,10 +63,11 @@ gulp.task('watch', [ 'component' ], function () {
 
   gulp.watch([
     'component.json',
-    'modules/**/**/*.json',
-    'modules/**/**/*.js',
-    'modules/**/**/*.sass',
-    'modules/**/**/*.jade',
+    'modules/*/component.json',
+    'modules/*/*.json',
+    'modules/*/*.js',
+    'modules/*/*.sass',
+    'modules/*/*.jade',
     'app/views/*.jade'
   ], [ 'component' ]).on('change', function (file) {
     gutil.log(gutil.colors.blue('[Watch]'), file.path);
