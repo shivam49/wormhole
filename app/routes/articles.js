@@ -151,13 +151,13 @@ exports.retrieve = function (req, res, next) {
       article: req.params.article,
       user: req.user._id
     }).then(function (_article) {
-      if (_article) {
-        var count = parseInt(_article.count, 10);
+      if (_article && _article.length > 0) {
+        var count = parseInt(_article[0].count, 10);
         if (isNaN(count)) {
           count = 0;
         }
 
-        return tr.put(['articles viewed', _article._id, 'count'], (count+1));
+        return tr.put(['articles viewed', _article[0]._id, 'count'], (count+1));
       } else {
         return tr.create('articles viewed', {
           article: req.params.article,
