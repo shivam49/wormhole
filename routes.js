@@ -70,6 +70,10 @@ module.exports = function(app) {
   app.get('/registration', ensureLoggedOut('/'), routes.registration.get);
   app.post('/registration', ensureLoggedOut('/'), routes.registration.post);
 
+  // # API
+  app.get('/api/users', routes.api.users);
+  app.get('/api/users/:id/viewed', routes.api.viewed);
+
   // catch all
   app.all('*', function (req, res, next) {
     // if we have the seenSplash cookie.. just pass through
