@@ -16,6 +16,8 @@ function password(pass, callback) {
 }
 
 before(function (done) {
+  this.timeout(10000);
+
   var self = this;
   this.db = fowl;
   this.app = app;
