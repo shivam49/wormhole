@@ -5,7 +5,7 @@ var path      = require('path');
 var camelCase = require('camel-case');
 var routes    = {};
 
-_.each(fs.readdirSync(__dirname).filter(removeIndex), populateRoute);
+_.each(fs.readdirSync(__dirname).filter(dotFile).filter(removeIndex), populateRoute);
 
 module.exports = routes;
 
@@ -13,6 +13,10 @@ module.exports = routes;
 
 function populateRoute(route) {
   routes[camelCase(route.replace('.js', ''))] = require(path.join(__dirname, route));
+}
+
+function dotFile(filename) {
+  return filename.indexOf('.') !== 0;
 }
 
 function removeIndex(route) {
