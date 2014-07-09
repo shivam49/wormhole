@@ -3,7 +3,9 @@
     "before": true,
     "after": true,
     "describe": true,
-    "it": true
+    "it": true,
+    "beforeEach": true,
+    "afterEach": true
   },
   "bitwise": true,
   "camelcase": true,

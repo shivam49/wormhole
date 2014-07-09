@@ -35,7 +35,7 @@ exports.post = function(req, res, next) {
   }
 
   // check for "@" and "." if so it's an email
-  if (req.body.email.indexOf('@') === -1 && req.body.email.indexOf('.') === -1) {
+  if (req.body.email.indexOf('@') === -1 || req.body.email.indexOf('.') === -1) {
     return next(new Error('You must enter in a valid email address.'));
   }
 
@@ -68,7 +68,7 @@ exports.post = function(req, res, next) {
   function login(userId) {
     req.db.get(['users', userId]).then(function (user) {
       req.login(user, function (err) {
-        if (err) {
+        if (err && err.message) {
           return next(err);
         }
 
@@ -89,7 +89,9 @@ exports.post = function(req, res, next) {
       return createUser();
     }
 
-    req.db.remove(['user passports', userNamePassport._id]);
+    if (userNamePassport && userNamePassport._id) {
+      req.db.remove(['user passports', userNamePassport._id]);
+    }
 
     return next(new Error('This e-mail address already exists.'));
   }
@@ -107,12 +109,13 @@ exports.post = function(req, res, next) {
         return next(new Error('This username already exists.'));
       }
 
-      userNamePassport = req.db.create('user passports', {
+      req.db.create('user passports', {
         method: 'username',
         token: req.body.username.toLowerCase()
+      }).then(function (_userNamePassport) {
+        userNamePassport = _userNamePassport;
+        findUserPassports().then(findOrCreate);
       });
-
-      findUserPassports().then(findOrCreate);
     });
   }
 
@@ -151,11 +154,13 @@ exports.post = function(req, res, next) {
           email: Array.isArray(emails) && emails.length > 0 && !_.isEmpty(emails[0].trim()) ? emails[0] : ''
         });
 
-        if (!(_.isString(req.body.username) && !_.isEmpty(req.body.username.trim()))) {
+        if (_.isUndefined(userNamePassport)) {
           return createAttributes(id);
         }
 
-        req.db.put(['user passports', userNamePassport._id, 'secret'], _token);
+        req.db.put(['user passports', userNamePassport, 'secret'], _token);
+        req.db.put(['user passports', userNamePassport, 'user_id'], userId);
+
         createAttributes(id);
       });
     });

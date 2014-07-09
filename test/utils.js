@@ -15,6 +15,93 @@ function password(pass, callback) {
   });
 }
 
+// # delete all of our test accounts...
+before(function (done) {
+  this.timeout(10000);
+  fowl.find('user passports', {
+    method: 'email',
+    token: 'eekohtest@eekoh.me'
+  }).then(function (userPassport) {
+    if (!userPassport || userPassport.length < 1) {
+      return done();
+    }
+
+    userPassport.forEach(function (up) {
+      fowl.remove(['user passports', up._id]);
+    });
+
+    done();
+  });
+});
+
+before(function (done) {
+  this.timeout(10000);
+  fowl.find('user passports', {
+    method: 'email',
+    token: 'eekoh.test@eekoh.me'
+  }).then(function (userPassport) {
+    if (!userPassport || userPassport.length < 1) {
+      return done();
+    }
+
+    userPassport.forEach(function (up) {
+      fowl.remove(['user passports', up._id]);
+    });
+
+    done();
+  });
+});
+
+before(function (done) {
+  this.timeout(10000);
+  fowl.find('users', {
+    first_name: 'Eekoh',
+    last_name: 'Test'
+  }).then(function (user) {
+    if (!user || user.length < 1) {
+      return done();
+    }
+
+    user.forEach(function (u) {
+      fowl.remove(['users', u._id]);
+      fowl.find('user passports', {
+        user_id: u._id
+      }).then(function (passports) {
+        passports.forEach(function (p) {
+          fowl.remove(['user passports', p._id]);
+        });
+      });
+    });
+
+    done();
+  });
+});
+
+before(function (done) {
+  this.timeout(10000);
+  fowl.find('user passports', {
+    method: 'username',
+    token: 'eekohtestme'
+  }).then(function (userPassports) {
+    console.log(userPassports)
+    if (!userPassports || userPassports.length < 1) {
+      return done();
+    }
+
+    var tr = fowl.transaction();
+
+    userPassports.forEach(function (userPassport) {
+      tr.remove(['user passports', userPassport._id]);
+    });
+
+    tr.commit().then(function() {
+      done();
+    });
+  });
+});
+
+// # END: delete all of our test accounts...
+
 before(function (done) {
   this.timeout(10000);
 
@@ -56,6 +143,7 @@ before(function (done) {
             self.user = user;
             self.db.get(['user passports', userPassport]).then(function (userPassport) {
               self.userPassport = userPassport;
+              fowl.put(['user passports', userPassport._id, 'user_id'], user._id);
               done();
             });
           });

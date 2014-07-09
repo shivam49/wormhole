@@ -10,17 +10,11 @@ var passport = require('passport');
 module.exports = function(app) {
   // # authentication routes (make sure this is before /splash)
 
-  app.get('/splash', function (req, res, next) {
-    if (_.isString(req.cookies.seenSplash)) {
-      return res.redirect('/');
-    }
-
-    ensureLoggedOut('/')(req, res, next);
-  }, routes.home.splash);
+  app.get('/splash', ensureLoggedOut('/'), routes.home.splash);
 
   // google oauth
   app.get('/auth/google', ensureLoggedOut('/'), passport.authenticate('google', {
-    scope: ['profile', 'email']
+    scope: ['profile', 'email', 'https://www.googleapis.com/auth/plus.login']
   }));
 
   app.get('/auth/google/callback', ensureLoggedOut('/'), passport.authenticate('google', {
@@ -59,11 +53,17 @@ module.exports = function(app) {
     res.redirect('/');
   });
 
+  // this is purely a placeholder until we get the page up and running
+  // this is really for testing/mocha
+  app.get('/login', ensureLoggedOut('/'), function (req, res) {
+    res.redirect('/');
+  });
+
   app.post('/login', ensureLoggedOut('/'), passport.authenticate('local', {
     successFlash: true,
     successReturnToOrRedirect: '/',
     failureFlash: true,
-    failureRedirect: '/'
+    failureRedirect: '/login'
   }));
 
   // # registration
