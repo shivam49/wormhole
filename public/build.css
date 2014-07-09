@@ -1254,7 +1254,7 @@ input[type="text"]:focus {
     #freewall .brick.one_one {
       height: auto;
       min-height: 200px;
-      width: 100px; }
+      width: 200px; }
       #freewall .brick.one_one a .svg {
         width: 100%;
         height: 100px;
@@ -1294,7 +1294,7 @@ input[type="text"]:focus {
       width: 200px; }
       #freewall .brick.two_two a .svg {
         width: 100%;
-        min-height: 200px;
+        min-height: 206px;
         background-color: white !important; }
         #freewall .brick.two_two a .svg.brick-img {
           -webkit-background-size: cover !important;
@@ -1306,10 +1306,9 @@ input[type="text"]:focus {
       width: 100%;
       line-height: 100%;
       display: block;
-      border-top: 2px white solid !important;
-      height: auto;
+      height: 109px;
       position: relative; }
-      #freewall .brick .content:before {
+      #freewall .brick .content.top:before {
         border: solid transparent;
         content: " ";
         height: 0;
@@ -1322,7 +1321,7 @@ input[type="text"]:focus {
         border-bottom-color: white;
         border-width: 11pt;
         margin-left: -11pt; }
-      #freewall .brick .content:after {
+      #freewall .brick .content.top:after {
         border: solid transparent;
         content: " ";
         height: 0;
@@ -1333,8 +1332,32 @@ input[type="text"]:focus {
         left: 50%;
         border-color: rgba(255, 255, 255, 0);
         border-width: 8pt;
-        margin-left: -8pt;
-        border-bottom-color: black; }
+        margin-left: -8pt; }
+      #freewall .brick .content.bottom:before {
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        top: 100%;
+        left: 50%;
+        border-color: rgba(255, 255, 255, 0);
+        border-top-color: white;
+        border-width: 11pt;
+        margin-left: -11pt; }
+      #freewall .brick .content.bottom:after {
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        top: 100%;
+        left: 50%;
+        border-color: rgba(255, 255, 255, 0);
+        border-width: 8pt;
+        margin-left: -8pt; }
       #freewall .brick .content .title {
         color: white;
         font-weight: bold;
@@ -1359,38 +1382,92 @@ input[type="text"]:focus {
 
 .masonry-news {
   background-color: black; }
-  .masonry-news a .content:after {
-    border-bottom-color: black !important; }
 
 .masonry-entertainment {
   background-color: #d55153; }
-  .masonry-entertainment a .content:after {
-    border-bottom-color: #d55153 !important; }
 
 .masonry-politics {
   background-color: #655aa7; }
-  .masonry-politics a .content:after {
-    border-bottom-color: #655aa7 !important; }
 
 .masonry-sports {
   background-color: #8cc63e; }
-  .masonry-sports a .content:after {
-    border-bottom-color: #8cc63e !important; }
 
 .masonry-edutech {
   background-color: #5482c2; }
-  .masonry-edutech a .content:after {
-    border-bottom-color: #5482c2 !important; }
 
 .masonry-business {
   background-color: #aeaeae; }
-  .masonry-business a .content:after {
-    border-bottom-color: #aeaeae !important; }
 
 .masonry-lifestyle {
   background-color: #e97e4a; }
-  .masonry-lifestyle a .content:after {
+
+.masonry-news a .content.top:after {
+  border-bottom-color: black !important; }
+
+.masonry-entertainment a .content.top {
+  border-top: 2px white solid !important; }
+  .masonry-entertainment a .content.top:after {
+    border-bottom-color: #d55153 !important; }
+
+.masonry-politics a .content.top {
+  border-top: 2px white solid !important; }
+  .masonry-politics a .content.top:after {
+    border-bottom-color: #655aa7 !important; }
+
+.masonry-sports a .content.top {
+  border-top: 2px white solid !important; }
+  .masonry-sports a .content.top:after {
+    border-bottom-color: #8cc63e !important; }
+
+.masonry-edutech a .content.top {
+  border-top: 2px white solid !important; }
+  .masonry-edutech a .content.top:after {
+    border-bottom-color: #5482c2 !important; }
+
+.masonry-business a .content.top {
+  border-top: 2px white solid !important; }
+  .masonry-business a .content.top:after {
+    border-bottom-color: #aeaeae !important; }
+
+.masonry-lifestyle a .content.top {
+  border-top: 2px white solid !important; }
+  .masonry-lifestyle a .content.top:after {
     border-bottom-color: #e97e4a !important; }
+
+.masonry-news a .content.bottom {
+  border-bottom: 2px white solid !important; }
+  .masonry-news a .content.bottom:after {
+    border-top-color: black !important; }
+
+.masonry-entertainment a .content.bottom {
+  border-bottom: 2px white solid !important; }
+  .masonry-entertainment a .content.bottom:after {
+    border-top-color: #d55153 !important; }
+
+.masonry-politics a .content.bottom {
+  border-bottom: 2px white solid !important; }
+  .masonry-politics a .content.bottom:after {
+    border-top-color: #655aa7 !important; }
+
+.masonry-sports a .content.bottom {
+  border-bottom: 2px white solid !important; }
+  .masonry-sports a .content.bottom:after {
+    border-top-color: #8cc63e !important; }
+
+.masonry-edutech a .content.bottom {
+  border-bottom: 2px white solid !important; }
+  .masonry-edutech a .content.bottom:after {
+    border-top-color: #5482c2 !important; }
+
+.masonry-business a .content.bottom {
+  border-bottom: 2px white solid !important; }
+  .masonry-business a .content.bottom:after {
+    border-top-color: #aeaeae !important; }
+
+.masonry-lifestyle a .content.bottom {
+  border-bottom: 2px white solid !important; }
+  .masonry-lifestyle a .content.bottom:after {
+    border-top-color: #e97e4a !important; }
 
 * {
   -webkit-box-sizing: border-box;

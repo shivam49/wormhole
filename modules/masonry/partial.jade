@@ -1,16 +1,27 @@
 #freewall
+  - var position = 'bottom'
   - for (var i = 0; i < Object.keys(articles).length; ++i) {
-    - var category = [articles[i]._source.category]    
+    - var category = [articles[i]._source.article_category]
     - var brick = ['brick-img']
       if articles[i].noImage
         - var image = ['background:url(/assets/masonry/noImage-'+articles[i]._source.article_category+'.svg) no-repeat center center;']
       else
         - var image = ['background:url(' + articles[i]._source.image + ') no-repeat center center;']
+      
       - var classes = [ 'masonry-' + articles[i]._source.article_category, articles[i].imageClass ]
       .brick(class=classes)
         a(href='/article/' + articles[i]._id)
-          .svg(class=brick style=image)
-          .content(class='border-'+category)
-            .title!= articles[i]._source.title
-            .description!= articles[i]._source.description
+
+          if position == 'bottom'
+            .svg(class=brick style=image)
+            .content(class='border-'+category+' top')
+              .title!= articles[i]._source.title
+              .description!= articles[i]._source.description
+            - var position = 'top'
+          else
+            .content(class='border-'+category+' bottom')
+              .title!= articles[i]._source.title
+              .description!= articles[i]._source.description
+            .svg(class=brick style=image)
+            - var position = 'bottom'
   - }

@@ -26,7 +26,7 @@
     &.one_one
       height: auto
       min-height: 200px
-      width: 100px
+      width: 200px
 
       a
         .svg
@@ -80,7 +80,7 @@
       a
         .svg
           width: 100%
-          min-height: 200px
+          min-height: 206px
           background-color: #FFF !important
 
           &.brick-img
@@ -94,37 +94,66 @@
       width: 100%
       line-height: 100%
       display: block
-      border-top: 2px #FFF solid !important
-      height: auto
+      height: 109px
       position: relative
+      
+      &.top
+      
+        &:before
+          border: solid transparent
+          content: " "
+          height: 0
+          width: 0
+          position: absolute
+          pointer-events: none
+          bottom: 100%
+          left: 50%
+          border-color: rgba(255, 255, 255, 0)
+          border-bottom-color: #fff
+          border-width: 11pt
+          margin-left: -11pt
 
-      &:before
-        border: solid transparent
-        content: " "
-        height: 0
-        width: 0
-        position: absolute
-        pointer-events: none
-        bottom: 100%
-        left: 50%
-        border-color: rgba(255, 255, 255, 0)
-        border-bottom-color: #fff
-        border-width: 11pt
-        margin-left: -11pt
+        &:after
+          border: solid transparent
+          content: " "
+          height: 0
+          width: 0
+          position: absolute
+          pointer-events: none
+          bottom: 100%
+          left: 50%
+          border-color: rgba(255, 255, 255, 0)
+          border-width: 8pt
+          margin-left: -8pt
 
-      &:after
-        border: solid transparent
-        content: " "
-        height: 0
-        width: 0
-        position: absolute
-        pointer-events: none
-        bottom: 100%
-        left: 50%
-        border-color: rgba(255, 255, 255, 0)
-        border-width: 8pt
-        margin-left: -8pt
-        border-bottom-color: #000
+      &.bottom
+
+        &:before
+          border: solid transparent
+          content: " "
+          height: 0
+          width: 0
+          position: absolute
+          pointer-events: none
+          top: 100%
+          left: 50%
+          border-color: rgba(255, 255, 255, 0)
+          border-top-color: #fff
+          border-width: 11pt
+          margin-left: -11pt
+
+        &:after
+          border: solid transparent
+          content: " "
+          height: 0
+          width: 0
+          position: absolute
+          pointer-events: none
+          top: 100%
+          left: 50%
+          border-color: rgba(255, 255, 255, 0)
+          border-width: 8pt
+          margin-left: -8pt
 
       .title
         color: #FFFFFF
@@ -149,64 +178,159 @@
         overflow: hidden
         text-overflow: ellipsis
 
+
+
+
 .masonry-news
   background-color: #000000
 
-  a
-    .content
-
-      &:after
-        border-bottom-color: #000000 !important
-
 .masonry-entertainment
   background-color: #d55153
-  
-  a
-    .content
-
-      &:after
-        border-bottom-color: #d55153 !important
 
 .masonry-politics
   background-color: #655aa7
-  
-  a
-    .content
-
-      &:after
-        border-bottom-color: #655aa7 !important
 
 .masonry-sports
   background-color: #8cc63e
-  
-  a
-    .content
-
-      &:after
-        border-bottom-color: #8cc63e !important
 
 .masonry-edutech
   background-color: #5482c2
- 
-  a
-    .content
-
-      &:after
-        border-bottom-color: #5482c2 !important
 
 .masonry-business
   background-color: #aeaeae
-  
-  a
-    .content
 
-      &:after
-        border-bottom-color: #aeaeae !important
 
-.masonry-lifestyle
+.masonry-lifestyle  
   background-color: #e97e4a
+
+
+
+
+.masonry-news 
   a
     .content
+      &.top
+        &:after
+          border-bottom-color: #000000 !important
 
-      &:after
-        border-bottom-color: #e97e4a !important
+.masonry-entertainment 
+  a
+    .content
+      &.top
+        border-top: 2px #FFF solid !important
+
+        &:after
+          border-bottom-color: #d55153 !important
+
+.masonry-politics 
+  a
+    .content
+      &.top
+        border-top: 2px #FFF solid !important
+
+        &:after
+          border-bottom-color: #655aa7 !important
+
+.masonry-sports 
+  a
+    .content
+      &.top
+        border-top: 2px #FFF solid !important
+
+        &:after
+          border-bottom-color: #8cc63e !important
+
+.masonry-edutech 
+  a
+    .content
+      &.top
+        border-top: 2px #FFF solid !important
+
+        &:after
+          border-bottom-color: #5482c2 !important
+
+.masonry-business 
+  a
+    .content
+      &.top
+        border-top: 2px #FFF solid !important
+
+        &:after
+          border-bottom-color: #aeaeae !important
+
+.masonry-lifestyle 
+  a
+    .content
+      &.top
+        border-top: 2px #FFF solid !important
+
+        &:after
+          border-bottom-color: #e97e4a !important
+
+
+
+
+
+.masonry-news
+  a
+    .content
+      &.bottom
+        border-bottom: 2px #FFF solid !important
+
+        &:after
+          border-top-color: #000000 !important
+
+.masonry-entertainment 
+  a
+    .content
+      &.bottom
+        border-bottom: 2px #FFF solid !important
+
+        &:after
+          border-top-color: #d55153 !important
+
+
+.masonry-politics 
+  a
+    .content
+      &.bottom
+        border-bottom: 2px #FFF solid !important
+
+        &:after
+          border-top-color: #655aa7 !important
+
+.masonry-sports 
+  a
+    .content
+      &.bottom
+        border-bottom: 2px #FFF solid !important
+
+        &:after
+          border-top-color: #8cc63e !important
+
+.masonry-edutech 
+  a
+    .content
+      &.bottom
+        border-bottom: 2px #FFF solid !important
+
+        &:after
+          border-top-color: #5482c2 !important
+
+.masonry-business 
+  a
+    .content
+      &.bottom
+        border-bottom: 2px #FFF solid !important
+
+        &:after
+          border-top-color: #aeaeae !important
+
+.masonry-lifestyle 
+  a
+    .content
+      &.bottom
+        border-bottom: 2px #FFF solid !important
+        
+        &:after
+          border-top-color: #e97e4a !important
