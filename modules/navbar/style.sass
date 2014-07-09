@@ -8,6 +8,12 @@ $textcolor: #fff
 $smalltext: 10px
 $biggertext: 12px
 
+*:focus  
+  outline: 0
+input[type="text"]:focus
+  border-color: #b6b6b7 !important
+  box-shadow: none !important
+
 /* Navbar */
 .navbar
   background-color: $bg-color
@@ -210,6 +216,7 @@ $biggertext: 12px
       top: 25px
       left: 214px
       display: none
+      z-index: 1000
 
       .dropdown-bg
         width: 137px

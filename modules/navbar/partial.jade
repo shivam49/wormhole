@@ -3,7 +3,7 @@
   .search-wrap
     .form-wrap
       form(id='masonry-search', name='masonry-search', action='/search/', method='post')
-        input(type='text', name='words', placeholder='Discover ...' id="searchbar")
+        input(type='text', name='words', placeholder='Discover ...' id="searchbar" autocomplete="off")
         input(type='hidden', name='_csrf', value=csrf)
         // button(type='submit', class='btn-link')
         //   != svg('/assets/navbar/search.svg')
