@@ -1,0 +1,75 @@
+@import "bourbon/bourbon"
+@import "neat/neat"
+
+$grid-columns: 24
+$max-width: auto
+$bg-color: #fff
+$textcolor: #fff
+$smalltext: 10px
+$biggertext: 12px
+
+/* Navbar */
+.navbar
+  background-color: $bg-color
+  height: 50px
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 100
+
+  .brand-wrap
+    width: 215px
+    height: 50px
+    position: absolute
+    background-image: url(/assets/navbar/logo.svg)
+    background-repeat: no-repeat
+    background-size: 100px auto
+    background-position: center center
+    top: 0px
+    left: 0px	
+
+.submenu
+  background: #4f5051
+  height: 25px
+  width: 100%
+  position: fixed
+  top: 50px
+  left: 0px
+  border-bottom: 3px solid $textcolor
+  z-index: 50
+  font-size: 14px
+  line-height: 22px
+  color: $textcolor
+
+  .submenu-holder
+    width: 100%
+    position: relative
+    height: 22px
+    font-family: 'Open Sans', sans-serif
+
+.registration-nav
+  position: absolute
+  height: 22px
+  background: #4e4f50
+  left: 211px
+  font-size: 12px
+  line-height: 22px
+  width: 800px
+  
+  a, a:visited, a:link, a:hover, a:active
+    display: inline-block
+    width: 250px
+    height: 22px
+    color: #ccc
+    text-align: center
+    background: url('/assets/registration/icon-divider.png')
+    background-size: 23px 44px
+    background-position: right center
+    background-repeat: no-repeat
+    
+    &.active 
+      color: #fff
+      font-weight: 700
+      font-size: 13px
+
+
