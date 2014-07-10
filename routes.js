@@ -71,6 +71,7 @@ module.exports = function(app) {
   app.post('/registration', ensureLoggedOut('/'), routes.registration.post);
 
   // # API
+  app.get('/api/jwt', routes.api.jwt);
   app.get('/api/user', routes.api.user);
   app.get('/api/users', routes.api.users);
   app.get('/api/users/:id/eekoh', routes.api.eekoh);
