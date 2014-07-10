@@ -82,7 +82,7 @@ exports.create = function(req, res) {
   record();
 
   function record() {
-    if (!req.isAuthenticated()) {
+    if (! req.isAuthenticated()) {
       return response();
     }
 
@@ -147,22 +147,22 @@ exports.retrieve = function (req, res, next) {
 
     var tr = req.db.transaction();
 
-    tr.find('articles viewed', {
-      article: req.params.article,
-      user: req.user._id
-    }).then(function (_article) {
-      if (_article && _article.length > 0) {
-        var count = parseInt(_article[0].count, 10);
-        if (isNaN(count)) {
-          count = 0;
-        }
-
-        return tr.put(['articles viewed', _article[0]._id, 'count'], (count+1));
-      } else {
-        return tr.create('articles viewed', {
-          article: req.params.article,
-          user: req.user._id,
-          count: 1
+    var keyPath = [ 'user', req.user._id, 'eekoh', req.params.article ];
+    tr.get(keyPath).then(function (article) {
+      if (! article) {
+        return tr.put(keyPath, {
+          _id: req.params.article,
+          type: 'viewed',
+          count: 1,
+          createdAt: +new Date(),
+          lastModified: +new Date()
+        });
+      } else if (article.type === 'viewed') {
+        return tr.put(keyPath, {
+          _id: req.params.article,
+          type: 'viewed',
+          count: article.count + 1,
+          lastModified: +new Date()
         });
       }
     });
@@ -179,6 +179,7 @@ exports.retrieve = function (req, res, next) {
       }
 
       res.render('article', {
+        hash: req.params.article,
         article: article,
         related: results
       });
@@ -190,6 +191,30 @@ exports.retrieve = function (req, res, next) {
     type: 'article',
     id: req.params.article
   }).then(getRelated, next);
+};
+
+exports.addToSystem = function (req, res, next) {
+  if (! req.isAuthenticated()) {
+    return next();
+  }
+
+  var tr = req.db.transaction();
+
+  var keyPath = [ 'user', req.user._id, 'eekoh', req.params.article ];
+  tr.get(keyPath).then(function (article) {
+    if (! article || article.type === 'viewed') {
+      return tr.remove(keyPath).put(keyPath, {
+        _id: req.params.article,
+        type: 'added',
+        createdAt: +new Date(),
+        lastModified: +new Date()
+      });
+    }
+  });
+
+  tr.commit().then(function () {
+    res.redirect('back');
+  }, next);
 };
 
 // # private #

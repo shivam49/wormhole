@@ -1,3 +1,7 @@
+exports.user = function (req, res) {
+  res.json(req.user._id);
+};
+
 exports.users = function (req, res) {
   req.db.find('users', function () {
     return true;
@@ -6,9 +10,9 @@ exports.users = function (req, res) {
   });
 };
 
-exports.viewed = function (req, res) {
-  req.db.find('articles viewed', {
-    user: req.params.id
+exports.eekoh = function (req, res) {
+  req.db.find([ 'user', req.user._id, 'eekoh' ], function () { 
+    return true;
   }).then(function (articles) {
     res.json(articles);
   });

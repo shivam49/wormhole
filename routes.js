@@ -71,8 +71,9 @@ module.exports = function(app) {
   app.post('/registration', ensureLoggedOut('/'), routes.registration.post);
 
   // # API
+  app.get('/api/user', routes.api.user);
   app.get('/api/users', routes.api.users);
-  app.get('/api/users/:id/viewed', routes.api.viewed);
+  app.get('/api/users/:id/eekoh', routes.api.eekoh);
 
   // catch all
   app.all('*', function (req, res, next) {
@@ -89,6 +90,7 @@ module.exports = function(app) {
   ['/', '/news', '/entertainment', '/politics', '/sports', '/edutech', '/business', '/lifestyle'].forEach(articlePage);
   app.post('/', routes.articles.create);
   app.get('/article/:article', routes.articles.retrieve);
+  app.get('/article/:article/add', routes.articles.addToSystem);
 
   // # inbox
   app.get('/inbox', routes.inbox.index);
