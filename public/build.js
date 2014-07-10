@@ -10787,6 +10787,7 @@ $(function() {
     delay:     0,
     gutterY:   '.0',
     gutterX:   '.0',
+    cellH:     'auto',
     onResize:  function() {
       wall.fitWidth();
     }

@@ -1242,60 +1242,60 @@ input[type="text"]:focus {
   margin-top: 74px; }
   #freewall .brick {
     color: white;
-    border: white solid 1px;
+    border-left: white solid 1px;
+    border-right: white solid 1px;
     overflow: visible;
     height: auto;
-    padding: 0;
-    min-height: 150px; }
+    padding: 0; }
     #freewall .brick:after {
       content: "";
       display: table;
       clear: both; }
     #freewall .brick.one_one {
-      height: auto;
-      min-height: 200px;
+      height: 200px !important;
       width: 200px; }
       #freewall .brick.one_one a .svg {
         width: 100%;
         height: 100px;
-        background-color: white !important; }
+        background-color: white !important;
+        border: 1px solid white; }
         #freewall .brick.one_one a .svg.brick-img {
           -webkit-background-size: cover !important;
           -moz-background-size: cover !important;
           -o-background-size: cover !important;
           background-size: cover !important; }
     #freewall .brick.two_one {
-      height: auto;
-      min-height: 200px;
+      height: 200px !important;
       width: 200px; }
       #freewall .brick.two_one a .svg {
         width: 100%;
-        min-height: 100px; }
+        min-height: 100px;
+        border: 1px solid white; }
         #freewall .brick.two_one a .svg.brick-img {
           -webkit-background-size: cover !important;
           -moz-background-size: cover !important;
           -o-background-size: cover !important;
           background-size: cover !important; }
     #freewall .brick.three_one {
-      height: auto;
-      min-height: 200px;
+      height: 200px !important;
       width: 300px; }
       #freewall .brick.three_one a .svg {
         width: 100%;
-        min-height: 100px; }
+        min-height: 100px;
+        border: 1px solid white; }
         #freewall .brick.three_one a .svg.brick-img {
           -webkit-background-size: cover !important;
           -moz-background-size: cover !important;
           -o-background-size: cover !important;
           background-size: cover !important; }
     #freewall .brick.two_two {
-      height: auto;
-      min-height: 300px;
+      height: 300px !important;
       width: 200px; }
       #freewall .brick.two_two a .svg {
         width: 100%;
-        min-height: 206px;
-        background-color: white !important; }
+        min-height: 200px;
+        background-color: white !important;
+        border: 1px solid white; }
         #freewall .brick.two_two a .svg.brick-img {
           -webkit-background-size: cover !important;
           -moz-background-size: cover !important;
@@ -1306,8 +1306,9 @@ input[type="text"]:focus {
       width: 100%;
       line-height: 100%;
       display: block;
-      height: 109px;
-      position: relative; }
+      height: 100px;
+      position: relative;
+      border: 1px solid white; }
       #freewall .brick .content.top:before {
         border: solid transparent;
         content: " ";
@@ -1404,70 +1405,44 @@ input[type="text"]:focus {
 .masonry-news a .content.top:after {
   border-bottom-color: black !important; }
 
-.masonry-entertainment a .content.top {
-  border-top: 2px white solid !important; }
-  .masonry-entertainment a .content.top:after {
-    border-bottom-color: #d55153 !important; }
+.masonry-entertainment a .content.top:after {
+  border-bottom-color: #d55153 !important; }
 
-.masonry-politics a .content.top {
-  border-top: 2px white solid !important; }
-  .masonry-politics a .content.top:after {
-    border-bottom-color: #655aa7 !important; }
+.masonry-politics a .content.top:after {
+  border-bottom-color: #655aa7 !important; }
 
-.masonry-sports a .content.top {
-  border-top: 2px white solid !important; }
-  .masonry-sports a .content.top:after {
-    border-bottom-color: #8cc63e !important; }
+.masonry-sports a .content.top:after {
+  border-bottom-color: #8cc63e !important; }
 
-.masonry-edutech a .content.top {
-  border-top: 2px white solid !important; }
-  .masonry-edutech a .content.top:after {
-    border-bottom-color: #5482c2 !important; }
+.masonry-edutech a .content.top:after {
+  border-bottom-color: #5482c2 !important; }
 
-.masonry-business a .content.top {
-  border-top: 2px white solid !important; }
-  .masonry-business a .content.top:after {
-    border-bottom-color: #aeaeae !important; }
+.masonry-business a .content.top:after {
+  border-bottom-color: #aeaeae !important; }
 
-.masonry-lifestyle a .content.top {
-  border-top: 2px white solid !important; }
-  .masonry-lifestyle a .content.top:after {
-    border-bottom-color: #e97e4a !important; }
+.masonry-lifestyle a .content.top:after {
+  border-bottom-color: #e97e4a !important; }
 
-.masonry-news a .content.bottom {
-  border-bottom: 2px white solid !important; }
-  .masonry-news a .content.bottom:after {
-    border-top-color: black !important; }
+.masonry-news a .content.bottom:after {
+  border-top-color: black !important; }
 
-.masonry-entertainment a .content.bottom {
-  border-bottom: 2px white solid !important; }
-  .masonry-entertainment a .content.bottom:after {
-    border-top-color: #d55153 !important; }
+.masonry-entertainment a .content.bottom:after {
+  border-top-color: #d55153 !important; }
 
-.masonry-politics a .content.bottom {
-  border-bottom: 2px white solid !important; }
-  .masonry-politics a .content.bottom:after {
-    border-top-color: #655aa7 !important; }
+.masonry-politics a .content.bottom:after {
+  border-top-color: #655aa7 !important; }
 
-.masonry-sports a .content.bottom {
-  border-bottom: 2px white solid !important; }
-  .masonry-sports a .content.bottom:after {
-    border-top-color: #8cc63e !important; }
+.masonry-sports a .content.bottom:after {
+  border-top-color: #8cc63e !important; }
 
-.masonry-edutech a .content.bottom {
-  border-bottom: 2px white solid !important; }
-  .masonry-edutech a .content.bottom:after {
-    border-top-color: #5482c2 !important; }
+.masonry-edutech a .content.bottom:after {
+  border-top-color: #5482c2 !important; }
 
-.masonry-business a .content.bottom {
-  border-bottom: 2px white solid !important; }
-  .masonry-business a .content.bottom:after {
-    border-top-color: #aeaeae !important; }
+.masonry-business a .content.bottom:after {
+  border-top-color: #aeaeae !important; }
 
-.masonry-lifestyle a .content.bottom {
-  border-bottom: 2px white solid !important; }
-  .masonry-lifestyle a .content.bottom:after {
-    border-top-color: #e97e4a !important; }
+.masonry-lifestyle a .content.bottom:after {
+  border-top-color: #e97e4a !important; }
 
 * {
   -webkit-box-sizing: border-box;

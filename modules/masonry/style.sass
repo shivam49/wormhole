@@ -16,16 +16,15 @@
 
   .brick
     color: #FFF
-    border: #FFF solid 1px
+    border-left: #FFF solid 1px
+    border-right: #FFF solid 1px
     overflow: visible
     height: auto
     padding: 0
-    min-height: 150px
     @include clearfix
 
     &.one_one
-      height: auto
-      min-height: 200px
+      height: 200px !important
       width: 200px
 
       a
@@ -33,6 +32,7 @@
           width: 100%
           height: 100px
           background-color: #FFF !important
+          border: 1px solid #FFF
 
           &.brick-img
             -webkit-background-size: cover !important
@@ -41,14 +41,14 @@
             background-size: cover !important
 
     &.two_one
-      height: auto
-      min-height: 200px
+      height: 200px !important
       width: 200px
 
       a
         .svg
           width: 100%
           min-height: 100px
+          border: 1px solid #FFF
 
           &.brick-img
             -webkit-background-size: cover !important
@@ -57,14 +57,14 @@
             background-size: cover !important
 
     &.three_one
-      height: auto
-      min-height: 200px
+      height: 200px !important
       width: 300px
 
       a
         .svg
           width: 100%
           min-height: 100px
+          border: 1px solid #FFF
 
           &.brick-img
             -webkit-background-size: cover !important
@@ -73,15 +73,15 @@
             background-size: cover !important
 
     &.two_two
-      height: auto
-      min-height: 300px
+      height: 300px !important
       width: 200px
 
       a
         .svg
           width: 100%
-          min-height: 206px
+          min-height: 200px
           background-color: #FFF !important
+          border: 1px solid #FFF
 
           &.brick-img
             -webkit-background-size: cover !important
@@ -94,8 +94,9 @@
       width: 100%
       line-height: 100%
       display: block
-      height: 109px
+      height: 100px
       position: relative
+      border: 1px solid #FFF
       
       &.top
       
@@ -210,6 +211,8 @@
   a
     .content
       &.top
+        //border-top: 2px #FFF solid !important
+
         &:after
           border-bottom-color: #000000 !important
 
@@ -217,7 +220,7 @@
   a
     .content
       &.top
-        border-top: 2px #FFF solid !important
+        //border-top: 2px #FFF solid !important
 
         &:after
           border-bottom-color: #d55153 !important
@@ -226,7 +229,7 @@
   a
     .content
       &.top
-        border-top: 2px #FFF solid !important
+        //border-top: 2px #FFF solid !important
 
         &:after
           border-bottom-color: #655aa7 !important
@@ -235,7 +238,7 @@
   a
     .content
       &.top
-        border-top: 2px #FFF solid !important
+        //border-top: 2px #FFF solid !important
 
         &:after
           border-bottom-color: #8cc63e !important
@@ -244,7 +247,7 @@
   a
     .content
       &.top
-        border-top: 2px #FFF solid !important
+        //border-top: 2px #FFF solid !important
 
         &:after
           border-bottom-color: #5482c2 !important
@@ -253,7 +256,7 @@
   a
     .content
       &.top
-        border-top: 2px #FFF solid !important
+        //border-top: 2px #FFF solid !important
 
         &:after
           border-bottom-color: #aeaeae !important
@@ -262,7 +265,7 @@
   a
     .content
       &.top
-        border-top: 2px #FFF solid !important
+        //border-top: 2px #FFF solid !important
 
         &:after
           border-bottom-color: #e97e4a !important
@@ -275,7 +278,7 @@
   a
     .content
       &.bottom
-        border-bottom: 2px #FFF solid !important
+        //border-bottom: 2px #FFF solid !important
 
         &:after
           border-top-color: #000000 !important
@@ -284,7 +287,7 @@
   a
     .content
       &.bottom
-        border-bottom: 2px #FFF solid !important
+        //border-bottom: 2px #FFF solid !important
 
         &:after
           border-top-color: #d55153 !important
@@ -294,7 +297,7 @@
   a
     .content
       &.bottom
-        border-bottom: 2px #FFF solid !important
+        //border-bottom: 2px #FFF solid !important
 
         &:after
           border-top-color: #655aa7 !important
@@ -303,7 +306,7 @@
   a
     .content
       &.bottom
-        border-bottom: 2px #FFF solid !important
+        //border-bottom: 2px #FFF solid !important
 
         &:after
           border-top-color: #8cc63e !important
@@ -312,7 +315,7 @@
   a
     .content
       &.bottom
-        border-bottom: 2px #FFF solid !important
+        //border-bottom: 2px #FFF solid !important
 
         &:after
           border-top-color: #5482c2 !important
@@ -321,7 +324,7 @@
   a
     .content
       &.bottom
-        border-bottom: 2px #FFF solid !important
+        //border-bottom: 2px #FFF solid !important
 
         &:after
           border-top-color: #aeaeae !important
@@ -330,7 +333,7 @@
   a
     .content
       &.bottom
-        border-bottom: 2px #FFF solid !important
+        //border-bottom: 2px #FFF solid !important
         
         &:after
           border-top-color: #e97e4a !important
