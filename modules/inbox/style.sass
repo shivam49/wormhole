@@ -1,0 +1,272 @@
+@import "bourbon/bourbon"
+@import "neat/neat"
+
+.inbox-nav
+  position: absolute
+  height: 22px
+  background: #4e4f50
+  top: 50px
+  left: 211px
+  z-index: 2000
+  font-size: 12px
+  line-height: 22px
+  border-left: 3px solid #fff
+  
+  .connections
+    width: 220px
+    padding-left: 20px
+    border-right: 3px solid #fff
+    color: #fff
+    float: left
+    
+  .current
+    float: left
+    padding-left: 20px
+    color: #fff
+    
+    .status 
+      width: 10px
+      height: 10px
+      float: left 
+      margin-right: 10px
+      margin-top: 6px
+      
+      &.online
+        background: #78c358
+
+      &.away
+        background: #fffc00
+
+      &.offline
+        background: #c10000
+
+.inbox-list-top
+  position: absolute
+  height: 22px
+  background: #4e4f50
+  top: 50px
+  right: 0px
+  z-index: 2000
+  font-size: 12px
+  line-height: 22px
+  width: 284px
+  background: #4e4f50
+  border-left: 3px solid #fff
+
+.inbox
+  height: 100%
+  background: #fff
+  margin-left: 212px
+  margin-top: 74px
+  position: absolute
+  top: 0px
+  left: 0px
+  z-index: 1000
+  
+  .connections
+    width: 219px
+    height: 100%
+    border: 1px solid #ccc
+    margin-left: 1px
+    float: left
+    padding: 10px
+
+    input
+      font-size: 13px
+      padding: 3px 5px
+
+    .connection
+      border-bottom: 1px solid #ccc
+      margin-bottom: 5px
+      padding-bottom: 5px
+
+      .photo
+        width: 65px
+        height: 60px
+        border: 1px solid #ccc
+        float: left 
+        background: blue
+      
+      .info 
+        float: left 
+        font-size: 10px
+        line-height: 12px
+        margin-left: 10px
+        overflow: hidden
+        
+        .name
+          font-weight: 600
+          line-height: 18px 
+        
+        .meta 
+          font-weight: 400
+          font-size: 9px
+    
+  .current
+    height: 100%
+    border: 1px solid #ccc
+    margin-left: 1px
+    float: left
+    
+    .entry
+      padding: 10px
+      position: relative
+      margin-bottom: 10px
+           
+      .photo
+        width: 40px
+        height: 35px
+        float: left
+        background: red 
+        border: 1px solid #ccc
+        margin-right: 10px
+        
+      .meta
+        float: left
+        height: 25px
+        font-size: 12px
+        line-height: 15px
+        
+        .name
+          
+          a, a:link, a:active, a:hover, a:visited
+            color: #59618e
+            font-weight: 600
+          
+        .time
+          position: absolute
+          top: 10px
+          right: 10px
+          color: #ccc
+        
+      .text
+        margin-top: 5px
+
+    .chatbox
+      position: absolute
+      bottom: 10px
+      height: 130px
+      border-top: 3px solid #ccc
+      
+      .padding 
+        padding: 30px
+        
+        textarea
+          font-size: 13px
+          padding: 3px 5px
+          color: #ccc
+          height: 50px
+
+    .chatbox-btns
+      height: 40px
+      background: #b6b6b6
+      position: absolute
+      bottom: 0px
+      text-align: right
+      
+      a, a:link, a:visited, a:active, a:hover
+        display: inline-block
+        height: 40px
+        color: #fff
+        border-left: 1px solid #fff
+        text-align: right
+        font-size: 12px
+        font-weight: 600
+        line-height: 40px
+        padding: 0px 20px
+
+.inbox-list
+  height: 100%
+  border: 1px solid #ccc
+  margin-left: 1px
+  width: 281px
+  position: absolute
+  top: 74px
+  right: 0px
+  z-index: 1000
+  display: none 
+  
+  .notifications-messages-hdr
+    color: #fff
+    font-size: 11px
+    width: 281px
+    height: 21px
+    background: #4e4f50
+    padding: 0px 10px
+    line-height: 21px
+    position: relative
+    
+    a, a:link, a:visited, a:hover, a:active
+      color: #fff
+      text-decoration: none
+      margin-left: 15px
+      
+  .notifications-messages-seeall
+    width: 288px
+    height: 20px
+    background: #f2f2f2
+    position: absolute
+    bottom: 0px
+    line-height: 20px
+    z-index: 100
+    text-align: center
+    font-size: 11px
+    
+    a, a:link, a:visited, a:hover, a:active
+      color: #000
+  
+  .notifications-messages-entry
+    width: 275px
+    padding: 5px 10px
+    margin: 0px auto
+    border-bottom: 1px solid #ccc
+    
+    .notifications-messages-name
+      font-size: 12px
+      max-width: 195px
+      line-height: 14px
+      margin-bottom: 4px
+      font-weight: 700
+    
+      a, a:link, a:visited, a:hover, a:active
+        color: #000
+        text-decoration: none
+    
+    .notifications-messages-content
+    
+      .notifications-messages-photo
+        width: 50px
+        height: 50px
+        float: left
+        margin-right: 10px
+        -webkit-border-radius: 3px
+        -moz-border-radius: 3px
+        border-radius: 3px
+
+        img
+          -webkit-border-radius: 3px
+          -moz-border-radius: 3px
+          border-radius: 3px
+          width: 50px
+          height: 50px
+        
+      .notifications-messages-info
+        float: left
+        width: 195px
+
+        .notifications-messages-date
+          font-size: 9px
+          line-height: 12px
+          margin-bottom: 3px
+          background-image: url(/assets/notifications/icon-chat-blue.svg)
+          background-size: 18px 12px
+          background-repeat: no-repeat
+          padding-left: 22px
+          
+          a, a:link, a:visited, a:hover, a:active
+            color: #000
+        
+        .notifications-messages-body
+          line-height: 14px
+          font-size: 11px
+

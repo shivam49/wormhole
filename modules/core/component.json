@@ -1,0 +1,42 @@
+{
+  "name": "app",
+  "local": [
+    "chatwindow",
+    "navbar",
+    "profile",
+    "notifications",
+    "sidebar",
+    "masonry",
+    "article",
+    "articles",
+    "login",
+    "lumberyard",
+    "notificationspage",
+    "scripts",
+    "registration",
+    "inbox"
+
+  ],
+  "main": "index.js",
+  "styles": [
+    "reset.sass",
+    "style.sass"
+  ],
+  "scripts": [
+    "index.js"
+  ],
+  "fonts": [
+    "fonts/proxima_nova_bold.eot",
+    "fonts/proxima_nova_bold.svg",
+    "fonts/proxima_nova_bold.ttf",
+    "fonts/proxima_nova_bold.woff",
+    "fonts/proxima_nova_regular.eot",
+    "fonts/proxima_nova_regular.svg",
+    "fonts/proxima_nova_regular.ttf",
+    "fonts/proxima_nova_regular.woff",
+    "fonts/proxima_nova_semibold.eot",
+    "fonts/proxima_nova_semibold.svg",
+    "fonts/proxima_nova_semibold.ttf",
+    "fonts/proxima_nova_semibold.woff"
+  ]
+}

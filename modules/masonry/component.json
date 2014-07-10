@@ -1,0 +1,27 @@
+{
+	"name": "masonry",
+	"version": "0.0.1",
+	"paths": [
+		"../vendor"
+	],
+	"local": [
+		"jquery",
+		"freewall"
+	],
+	"main": "index.js",
+	"scripts": [
+		"index.js"
+	],
+	"styles": [
+		"style.sass"
+	],
+	"images": [
+		"noImage-news.svg",
+		"noImage-business.svg",
+		"noImage-edutech.svg",
+		"noImage-entertainment.svg",
+		"noImage-politics.svg",
+		"noImage-sports.svg",
+		"noImage-lifestyle.svg"
+	]
+}

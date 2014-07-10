@@ -1,0 +1,182 @@
+@import "bourbon/bourbon"
+@import "neat/neat"
+
+$nav-news: #000000
+$nav-entertainment: #d45255
+$nav-politics: #635ba2
+$nav-sports: #6bc048
+$nav-edutech: #5680c1
+$nav-business: #afadad
+$nav-lifestyle: #e77f4b
+
+$grid-columns: 8
+$max-width: auto
+
+.sidebar-wrap
+  width: 214px
+  margin: 50px 0px 0px 0px
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background: #e9e9e9
+  border-right: 3px solid #fff
+  z-index: 100
+
+  .sidebar
+    @include outer-container
+    height: auto
+    
+    h3
+      &.title
+        font-weight: 700
+        font-size: 24px
+        color: #505151
+        font-family: 'Open Sans', sans-serif
+        font-weight: 700
+
+    ul
+      li
+        list-style: none
+        
+    .sidebar-nav
+      padding: 30px 5px 0px 30px
+        
+
+      a, a:link, a:visited
+        color: #505152
+        padding: 1px 1px 1px 22px
+        background-image: url(/assets/sidebar/arrows.png)
+        background-repeat: no-repeat
+        background-position: 7px -326px
+        width: 150px
+        display: block
+        margin-bottom: 10px
+        z-index: 100
+        font-size: 18px
+        line-height: 24px
+
+      a.news
+        margin-top: 10px
+        background-position: 7px -458px
+
+      a.entertainment
+        background-position: 7px 6px
+  
+      a.politics
+        background-position: 7px -50px
+
+      a.sports
+        background-position: 7px -105px
+
+      a.edutech
+        background-position: 7px -160px
+
+      a.business
+        background-position: 7px -215px
+
+      a.lifestyle
+        background-position: 7px -271px
+
+      a.following
+        background-position: 7px -433px
+        padding-left: 30px
+
+      a.following:hover
+        background-position: 7px -433px
+        color: #000
+
+      a:hover
+        background-image: url(/assets/sidebar/arrows.png)
+        background-repeat: no-repeat
+        background-position: 7px -381px
+        color: #fff
+     
+      .news:hover
+        background-color: $nav-news
+        background-position: 7px -476px
+
+      .entertainment:hover
+        background-color: $nav-entertainment
+
+      .politics:hover
+        background-color: $nav-politics
+
+      .sports:hover
+        background-color: $nav-sports
+
+      .edutech:hover
+        background-color: $nav-edutech
+
+      .business:hover
+        background-color: $nav-business
+
+      .lifestyle:hover
+        background-color: $nav-lifestyle
+
+
+
+    .sidebar-profile
+      border-bottom: 3px solid #fff
+    
+      .sidebar-profile-photo
+        width: 100px
+        padding: 2px 
+        border: 1px solid #333
+        margin: 15px auto
+        
+        img
+          width: 100px
+          height: auto
+          display: block
+        
+      .sidebar-profile-info
+        margin: 0px 15px 15px 15px
+        font-size: 12px
+        line-height: 15px
+
+        h3
+          &.title
+            font-weight: 700
+            font-size: 16px
+            color: #505151
+            line-height: 18px
+
+    .sidebar-stage
+      height: 25px
+      width: 211px
+      background: #d9d8d7
+      position: absolute
+      bottom: 0px
+      left: 0px
+      text-align: center
+      font-size: 15px
+      font-weight: normal
+      color: #7B7C7C
+
+    .sidebar-stage-icon
+      height: 92px
+      width: 211px
+      position: absolute
+      bottom: 25px
+      left: 0px
+      z-index: -1
+      
+      &.sprout
+        background: url(/assets/sidebar/tree-01-sprout.png) no-repeat
+        background-position: center center
+
+      &.bonsai
+        background: url(/assets/sidebar/tree-02-bonsai.png) no-repeat
+
+      &.evergreen
+        background: url(/assets/sidebar/tree-03-evergreen.png) no-repeat
+
+      &.sequoia
+        background: url(/assets/sidebar/tree-04-sequoia.png) no-repeat
+
+      &.redwood
+        background: url(/assets/sidebar/tree-05-redwood.svg) no-repeat
+        background-position: center center
+        

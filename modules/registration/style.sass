@@ -1,0 +1,380 @@
+@import "bourbon/bourbon"
+@import "neat/neat"
+
+.registration-nav
+  position: absolute
+  height: 22px
+  background: #4e4f50
+  top: 0
+  left: 211px
+  font-size: 12px
+  line-height: 22px
+  width: 800px
+  
+  a, a:visited, a:link, a:hover, a:active
+    display: inline-block
+    width: 250px
+    height: 22px
+    color: #ccc
+    text-align: center
+    background: url('/assets/registration/icon-divider.png')
+    background-size: 23px 44px
+    background-position: right center
+    background-repeat: no-repeat
+    
+    &.active 
+      color: #fff
+      font-weight: 700
+      font-size: 13px
+
+.registration-page
+  height: 100%
+  background: #fff
+  margin-left: 214px
+  margin-top: 75px
+  position: absolute
+  top: 0px
+  left: 0px
+  right: 0px
+  bottom: 0px
+  padding-left: 100px
+  padding-top: 60px
+
+  .label
+    font-size: 14px
+    font-weight: 600
+    color: #333
+    float: left
+    width: 165px
+    margin-bottom: 30px
+    font-size: 13px
+    
+  .input
+    float: left
+    width: 250px
+    margin-bottom: 20px
+    
+    input
+      padding: 5px
+      color: #333
+      font-size: 12px
+      
+  .checkbox
+    font-size: 9px
+    
+  .edit-photo
+    width: 136px
+    height: 125px
+    background: url(/assets/registration/icon-editphoto.png)
+    position: absolute
+    top: 60px
+    left: 550px
+
+  .edit-photo:hover
+    cursor: pointer
+    
+  .buttons 
+    position: absolute
+    left: 550px
+    top: 600px
+    font-size: 13px
+    
+    .save
+      width: 80px
+      height: 25px
+      background: #000
+      color: #fff
+      text-align: center
+      float: left 
+      margin-right: 20px  
+      
+    .cancel
+      width: 80px
+      height: 25px
+      background: #ccc
+      color: #fff
+      text-align: center
+      float: left    
+
+.overlay
+  width: 100%
+  height: 100%
+  background: #000
+  opacity: 0.90
+  position: fixed
+  top: 0px
+  left: 0px
+  z-index: 5000  
+  display: none
+  
+  .overlay-photo
+    width: 600px
+    height: 420px
+    position: absolute
+    z-index: 6000 
+    top: 50%
+    left: 50%
+    margin: -210px 0px 0px -300px
+    background: #fff
+    
+    .hdr
+      height: 30px
+      background: #ccc
+      color: #fff
+      line-height: 30px
+      font-weight: 600
+      padding-left: 10px
+      
+      a, a:link, a:visited, a:hover, a:active
+        display: inline-block
+        float: right
+        font-size: 15px
+        font-weight: 700
+        color: #fff
+        margin-right: 10px
+      
+    .holder
+      padding: 20px 30px
+      
+      .info 
+        font-size: 12px
+        line-height: 16px
+        
+        b 
+          font-size: 14px
+
+      .photos
+        margin-top: 20px
+      
+        .bigone
+          width: 255px
+          height: 225px
+          background: red
+          float: left
+          margin-left: 30px
+          margin-right: 40px
+          
+        .smallone
+          width: 188px
+          height: 170px
+          background: blue
+          float: left
+      
+    .divider
+      width: 600px
+      background: #ccc
+      height: 1px
+      margin-top: 20px
+ 
+.buttons 
+  font-size: 13px
+  margin-top: 10px
+    
+  .save
+    width: 80px
+    height: 25px
+    background: #000
+    color: #fff
+    text-align: center
+    float: right 
+    margin-right: 20px
+        
+  .cancel
+    width: 80px
+    height: 25px
+    background: #ccc
+    color: #fff
+    text-align: center
+    float: right
+    margin-right: 20px    
+        
+  .save:hover, .cancel:hover
+    opacity: 0.8 
+    cursor: pointer
+
+  .skip
+    width: 80px
+    height: 25px
+    background: #fff
+    color: #333
+    text-align: center
+    float: right
+    margin-right: 20px    
+
+.padding
+  padding-left: 40px
+
+.registration-page2
+  width: 800px
+  height: 100%
+  background: #fff
+  margin-left: 214px
+  margin-top: 75px
+  position: absolute
+  top: 0px
+  left: 0px
+  z-index: 1000
+  display: none
+
+  .hdr
+    margin: 20px 0px
+  
+  .links
+    margin-bottom: 20px
+    
+    .type
+      width: 115px
+      width: span(1)
+      height: 90px
+      position: relative
+      margin-right: 10px
+      float: left
+
+      &.news
+        background: #050708
+
+      &.entertainment
+        background: #d65255
+
+      &.politics
+        background: #635ca3
+
+      &.sports
+        background: #6bc048
+
+      &.lifestyle
+        background: #e97f4b
+
+      &.edutech
+        background: #5680c1
+
+      &.business
+        background: #afadad
+        
+      .icon-add
+        position: absolute
+        top: 3px
+        right: 3px
+        background: url(/assets/registration/icon-plus.png)
+        background-repeat: no-repeat
+        background-size: 11px
+        width: 11px
+        height: 11px
+
+      .name
+        position: absolute
+        bottom: 0px
+        height: 20px
+        width: 100%
+        left: 0px
+        color: #fff
+        text-align: center
+        line-height: 20px
+        font-size: 13px
+
+        &.entertainment
+          background: #9f3d3f
+          
+        &.politics
+          background: #494377
+      
+        &.sports
+          background: #508e35
+      
+        &.lifestyle
+          background: #ad5e38
+      
+        &.edutech
+          background: #4a5f8c
+      
+        &.business
+          background: #828081
+
+      .number
+        font-size: 35px
+        font-weight: 700
+        font-style: normal
+        position: absolute
+        top: 0px
+        height: 70px
+        left: 0px
+        line-height: 70px
+        text-align: center
+        width: 100%
+        opacity: 0.4
+        color: #333
+
+    .type:hover
+      cursor: pointer
+
+.registration-page3
+  width: 800px
+  height: 100%
+  background: #fff
+  margin-left: 214px
+  margin-top: 75px
+  position: absolute
+  top: 0px
+  left: 0px
+  z-index: 1000
+  display: none
+
+  .hdr
+    margin: 20px 0px
+    
+  .connections
+    width: 725px
+    
+    .connection
+      padding: 20px
+      border-bottom: 2px solid #ccc
+      height: 90px
+      font-size: 13px
+
+    .logo
+      width: 63px
+      height: 50px
+      border: 1px solid #ccc
+      float: left
+      margin-right: 25px
+      background-repeat: no-repeat
+      
+      &.facebook
+        background: url(/assets/registration/icon-facebook.png)
+        background-size: 63px 50px
+
+      &.google
+        background: url(/assets/registration/icon-google.png)
+        background-size: 63px 50px
+
+      &.twitter
+        background: url(/assets/registration/icon-twitter.png)
+        background-size: 63px 50px
+
+      &.pinterest
+        background: url(/assets/registration/icon-pinterest.png)
+        background-size: 63px 50px
+
+      &.instagram
+        background: url(/assets/registration/icon-instagram.png)
+        background-size: 63px 50px
+
+      &.linkedin
+        background: url(/assets/registration/icon-linkedin.png)
+        background-size: 63px 50px
+
+
+      
+    .name
+      float: left
+      height: 50px
+      line-height: 50px
+      
+    .link
+      float: right
+      height: 50px
+      line-height: 50px
+      
+      a, a:link a:visited, a:hover a:active
+        color: #000
+        font-weight: 600

@@ -1,0 +1,26 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'gulp' ]
+2 info using npm@1.5.0-alpha-1
+3 info using node@v0.10.29
+4 verbose node symlink /usr/local/bin/node
+5 verbose cache add [ 'gulp', null ]
+6 verbose cache add spec="gulp" args=["gulp",null]
+7 verbose cache add local package /www/wormhole/gulp
+8 silly lockFile 9750c68d-gulp gulp
+9 verbose lock gulp /Users/patrickgorrell/.npm/9750c68d-gulp.lock
+10 silly lockFile 9750c68d-gulp gulp
+11 silly lockFile 9750c68d-gulp gulp
+12 error addLocal Could not install gulp
+13 error Error: ENOENT, open 'gulp/package.json'
+14 error If you need help, you may report this *entire* log,
+14 error including the npm and node versions, at:
+14 error     <http://github.com/npm/npm/issues>
+15 error System Darwin 13.3.0
+16 error command "node" "/usr/local/bin/npm" "install" "-g" "gulp"
+17 error cwd /www/wormhole
+18 error node -v v0.10.29
+19 error npm -v 1.5.0-alpha-1
+20 error path gulp/package.json
+21 error code ENOENT
+22 error errno 34
+23 verbose exit [ 34, true ]

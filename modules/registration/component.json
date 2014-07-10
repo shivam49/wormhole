@@ -1,0 +1,16 @@
+{
+	"name": "registration",
+	"version": "0.0.1",
+	"paths": [
+		"../vendor"
+	],
+	"main": "index.js",
+	"scripts": [
+		"index.js"
+	],
+	"styles": [
+		"style.sass"
+	],
+	"images": [
+	]
+}

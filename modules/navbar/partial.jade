@@ -1,0 +1,112 @@
+.navbar
+  a(href='/', class="brand-wrap")
+  .search-wrap
+    .form-wrap
+      form(id='masonry-search', name='masonry-search', action='/search/', method='post')
+        input(type='text', name='words', placeholder='Discover ...' id="searchbar" autocomplete="off")
+        input(type='hidden', name='_csrf', value=csrf)
+        // button(type='submit', class='btn-link')
+        //   != svg('/assets/navbar/search.svg')
+  .tree
+  if authenticated
+    .action-wrap
+      .action-container
+        .messages
+          .active 13
+        .notifications
+          .active 21
+        .deals
+          .active 57
+        .settings
+  else
+    .logintop
+      .links
+        a(href="#", class="about") What is eekoh?
+        | &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+        a(href="/auth/facebook", class="show-login-overlay") Log In
+      .top-login-overlay
+       form(action='/login', method='post')
+        input(type='hidden', name='_csrf', value=csrf)
+        input(type="text", id="login-email", name="username", placeholder="E-mail/Username")
+        input(type="password", id="login-password", name="password", placeholder="Password")
+        .small
+          input(type="checkbox", name="use-fullname", class="checkbox")
+          | Keep me logged in |
+          a(href="#") Forgot password?
+        button(type="submit", value="Login", class="btn") Login
+
+ .submenu
+   .submenu-holder
+     .dropdown-menu Timeline
+       .dropdown-burger
+     .dropdown
+       .dropdown-bg
+        a(href='#') Timeline
+        a(href='#') Trending
+        a(href='#') Streams
+        a(href='#') Lumberyard
+       
+     .calendar
+       a(href='/' class="active") 22 apr
+       a(href='/') 22 apr
+       a(href='/') 22 apr
+       a(href='/') 22 apr
+       a(href='/') 22 apr
+     .chat-status
+        a(id='chat-toggle', href='#') Chat
+
+.search_results
+  .search-hdr Eekoh Page
+  .search-entries
+
+    .search-entry
+      .search-entry-img
+        a(href='/page')
+          img(src='https://positivecoach.org/common/cms/images/Lakers%20Logo%20%20Lot%204%203%20of%203.gif', width="50", height="40")
+      .search-entry-info
+        .search-entry-info-hdr
+          a(href='/page') LA Lakers eekoh page
+        .search-entry-info-rank 1 / 452
+      a(href='/page', class="search-entry-icon follow")
+      .clear
+
+    .search-entry
+      .search-entry-img
+        a(href='/page')
+          img(src='https://positivecoach.org/common/cms/images/Lakers%20Logo%20%20Lot%204%203%20of%203.gif', width="50", height="40")
+      .search-entry-info
+        .search-entry-info-hdr
+          a(href='/page') LA Lakers eekoh page
+        .search-entry-info-rank 1 / 452
+      a(href='/page', class="search-entry-icon follow")
+      .clear
+
+  .search-hdr People
+  .search-entries
+
+    .search-entry
+      .search-entry-img
+        a(href='/page')
+          img(src='https://positivecoach.org/common/cms/images/Lakers%20Logo%20%20Lot%204%203%20of%203.gif', width="50", height="40")
+      .search-entry-info
+        .search-entry-info-hdr
+          a(href='/page') LA Lakers eekoh page
+        .search-entry-info-rank 1 / 452
+      a(href='/page', class="search-entry-icon connect")
+      .clear
+
+    .search-entry
+      .search-entry-img
+        a(href='/page')
+          img(src='https://positivecoach.org/common/cms/images/Lakers%20Logo%20%20Lot%204%203%20of%203.gif', width="50", height="40")
+      .search-entry-info
+        .search-entry-info-hdr
+          a(href='/page') LA Lakers eekoh page
+        .search-entry-info-rank 1 / 452
+      a(href='/page', class="search-entry-icon add")
+      .clear
+
+  .search-seeall
+     a(href='#') See all
+  
+  

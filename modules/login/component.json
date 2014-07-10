@@ -1,0 +1,19 @@
+{
+	"name": "login",
+	"version": "0.0.1",
+	"paths": [
+		"../vendor"
+	],
+  "local": [
+    "jquery"
+  ],
+	"main": "index.js",
+	"scripts": [
+		"index.js"
+	],
+	"styles": [
+		"style.sass"
+	],
+	"images": [
+	]
+}

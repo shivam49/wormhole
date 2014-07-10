@@ -1,0 +1,34 @@
+{
+  "elastic": {
+    "log": null
+  },
+  "express": {
+    "sessions": {
+      "redis": {
+        "prefix": "ee"
+      },
+      "key": "sid",
+      "secret": "changeme",
+      "cookie": {
+        "httpOnly": true,
+        "secure": false
+      }
+    }
+  },
+  "twitter": {
+    "id": "jC0UQJDrDT6NwRGYVfZdJBdpp",
+    "secret": "ZLXqfj8F1XAAPkR3gd07HvjvejQexCltOIwiFradbeU7gQQpnH",
+    "callbackUrl": "http://beta.eekoh.me/auth/twitter/callback"
+  },
+  "facebook": {
+    "id": "717340098325774",
+    "secret": "bebd3c1ccbb2b264006cfb462316c4e9",
+    "callbackUrl": "http://beta.eekoh.me/auth/facebook/callback"
+  },
+  "google": {
+    "id": "115489730074.apps.googleusercontent.com",
+    "secret": "Aq9at97pYtfAB8Hm-y1FYzgB",
+    "email": "115489730074@developer.gserviceaccount.com",
+    "callbackUrl": "http://beta.eekoh.me/auth/google/callback"
+  }
+}

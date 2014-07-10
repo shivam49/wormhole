@@ -1,0 +1,16 @@
+image: node
+env:
+  - NODE_ENV=production
+  - DB_HOST=192.168.3.65
+  - PG_DATABASE=wormhole
+  - PG_USER=wormhole
+  - PG_PASSWORD=e3en8hhe
+script:
+  # - npm install -g mocha
+  # - npm install
+  # - mocha
+  - echo "Fix Me..."
+deploy:
+  ssh:
+    target: beta@192.168.3.66
+    cmd: /home/beta/deploy.sh

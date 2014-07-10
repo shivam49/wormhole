@@ -1,0 +1,10 @@
+config/local.json
+.env
+.DS_Store
+node_modules
+public/build.*
+.sass-cache
+public/assets
+*.swp
+naught.*
+std*.log

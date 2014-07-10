@@ -1,0 +1,5 @@
+{
+  "name": "wormhole",
+  "paths": [ "modules" ],
+  "local": [ "core" ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "navbar",
+	"version": "0.0.1",
+	"paths": [
+		"../vendor"
+	],
+  "local": [
+    "jquery"
+  ],
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+	"styles": [
+		"style.sass"
+	],
+	"images": [
+		"logo.svg",
+		"search.svg",
+		"tree.svg",
+		"messages.svg",
+		"notifications.svg",
+		"deals.svg",
+		"settings.svg"
+	]
+}
+

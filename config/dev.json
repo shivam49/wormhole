@@ -1,0 +1,18 @@
+{
+  "express": {
+    "sessions": {
+      "key": "sid",
+      "secret": "changeme",
+      "cookie": {
+        "httpOnly": true,
+        "secure": false
+      }
+    }
+  },
+  "facebook": {
+    "callbackUrl": "http://localhost:8000/auth/facebook/callback"
+  },
+  "google": {
+    "callbackUrl": "http://localhost:8000/auth/google/callback"
+  }
+}

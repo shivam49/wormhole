@@ -1,0 +1,47 @@
+{
+	"name": "article",
+	"version": "0.0.1",
+	"paths": [
+		"../vendor"
+	],
+	"local": [
+    	"jquery"
+	],
+	"main": "index.js",
+	"scripts": [
+		"index.js"
+	],
+	"styles": [
+		"style.sass"
+	],
+  "images": [
+    "arrow.png",
+    "article-chop.svg",
+    "article-discuss.svg",
+    "article-page.svg",
+    "article-share.svg",
+    "article-system.svg",
+    "icon-dislike.svg",
+    "icon-flag.svg",
+    "icon-like.svg",
+    "icon-reply.svg",
+    "icon-share.svg",
+    "noImage-business.svg",
+    "noImage-edutech.svg",
+    "noImage-entertainment.svg",
+    "noImage-lifestyle.svg",
+    "noImage-news.svg",
+    "noImage-politics.svg",
+    "noImage-sports.svg",
+    "social-chop-hover.png",
+    "social-chop.png",
+    "social-discuss-hover.png",
+    "social-discuss.png",
+    "social-page-hover.png",
+    "social-page.png",
+    "social-share-hover.png",
+    "social-share.png",
+    "social-system-hover.png",
+    "social-system.png"
+	]
+}

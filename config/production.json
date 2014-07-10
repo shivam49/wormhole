@@ -1,0 +1,8 @@
+{
+  "facebook": {
+    "callbackUrl": "http://beta.eekoh.me/auth/facebook/callback"
+  },
+  "google": {
+    "callbackUrl": "http://beta.eekoh.me/auth/google/callback"
+  }
+}

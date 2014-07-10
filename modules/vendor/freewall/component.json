@@ -1,0 +1,15 @@
+{
+	"name": "freewall",
+	"version": "0.0.1",
+	"main": "freewall.js",
+	"paths": [
+		"../../vendor"
+	],
+	"local": [
+		"jquery"
+	],
+	"scripts": [
+		"freewall.js"
+	]
+}
+

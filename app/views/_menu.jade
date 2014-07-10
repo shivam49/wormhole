@@ -1,0 +1,9 @@
+ul
+  if authenticated
+    li Welcome back!
+    li: a(href='/logout') Logout
+  else
+    li: a(href='/auth/google') Google Authentication
+    li: a(href='/auth/facebook') Facebook Authentication
+    li: a(href='/auth/twitter') Twitter Authentication
+    li: a(href='/login') Login/Register

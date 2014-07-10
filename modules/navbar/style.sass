@@ -1,0 +1,419 @@
+@import "bourbon/bourbon"
+@import "neat/neat"
+
+$grid-columns: 24
+$max-width: auto
+$bg-color: #fff
+$textcolor: #fff
+$smalltext: 10px
+$biggertext: 12px
+
+*:focus  
+  outline: 0
+input[type="text"]:focus
+  border-color: #b6b6b7 !important
+  box-shadow: none !important
+
+/* Navbar */
+.navbar
+  background-color: $bg-color
+  height: 50px
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 100
+
+  .brand-wrap
+    width: 215px
+    height: 50px
+    position: absolute
+    background-image: url(/assets/navbar/logo.svg)
+    background-repeat: no-repeat
+    background-size: 100px auto
+    background-position: center center
+    top: 0px
+    left: 0px	
+
+  .search-wrap
+    position: fixed
+    height: 40px
+    bottom: 0
+    left: 0
+    right: 0
+    top: 0
+    margin: 5px 250px 5px 214px
+
+    .form-wrap
+      @include outer-container
+      
+      input
+        font-family: 'Open Sans', sans-serif
+      
+  .tree
+    background-image: url(/assets/navbar/tree.svg)
+    background-repeat: no-repeat
+    width: 40px
+    height: 40px
+    position: absolute
+    right: 260px
+    top: 5px
+
+  .action-wrap
+    height: 38px
+    position: fixed
+    top: 7px
+    right: 0px
+    width: 243px
+    border-left: 1px solid #b6b7b7
+
+    .action-container
+      @include outer-container
+      margin-top: 3px
+      
+      .action-field
+        height: 30px
+        background-repeat: no-repeat
+        background-position: center center
+        position: relative
+        float: left
+      
+      .action-field:hover
+        cursor: pointer
+
+      .active-holder 
+        position: absolute
+        top: -3px
+        right: -3px
+        font-size: $smalltext
+        color: $textcolor
+        background: #67a6da
+        width: 20px
+        height: 20px
+        line-height: 18px
+        text-align: center
+        -webkit-border-radius: 15px
+        -moz-border-radius: 15px
+        border-radius: 15px
+        font-weight: 700
+        border: 1px solid $textcolor
+
+      .messages
+        @extend .action-field
+        background-image: url(/assets/navbar/messages.svg)
+        position: relative
+        width: 40px
+        margin-left: 29px
+
+        .active
+          @extend .active-holder
+          background: #67a6da
+        
+      .notifications
+        @extend .action-field
+        background-image: url(/assets/navbar/notifications.svg)
+        width: 24px
+        margin-left: 24px
+
+        .active
+          @extend .active-holder
+          background: #ae6730
+
+      .deals
+        @extend .action-field
+        background-image: url(/assets/navbar/deals.svg)
+        width: 24px
+        margin-left: 18px
+
+        .active
+          @extend .active-holder
+          background: #f0c93c
+
+      .settings
+        @extend .action-field
+        background-image: url(/assets/navbar/settings.svg)
+        width: 40px
+        margin-left: 15px
+        margin-top: 2px
+
+
+  form
+    @include span-columns(16)
+
+    input
+      @include fill-parent()
+      border: 1px solid #b6b6b7
+      float: left
+      border-radius: 0px
+      font-weight: normal
+    
+    button
+      background: none
+      border: none
+      float: right
+      margin-left: em(-70.1)
+      padding: .5em
+
+  button, button:hover:not(:disabled), input[type="submit"]:hover:not(:disabled), button:focus:not(:disabled)
+    box-shadow: inset 0 0 0 0 transparent !important
+    box-shadow: 0 0 0 0 transparent !important
+    border: 0 transparent
+    background-color: transparent
+    background-image: none
+    text-shadow: none
+    outline: none
+    outline-color: transparent
+    outline-sytle: none
+
+.active 
+  right: 0px
+
+.submenu
+  background: #4f5051
+  height: 25px
+  width: 100%
+  position: fixed
+  top: 50px
+  left: 0px
+  border-bottom: 3px solid $textcolor
+  z-index: 50
+  font-size: 14px
+  line-height: 22px
+  color: $textcolor
+
+  .submenu-holder
+    width: 100%
+    position: relative
+    height: 22px
+    font-family: 'Open Sans', sans-serif
+  
+    .dropdown-menu
+      width: 142px
+      height: 22px
+      border-right: 3px solid $textcolor
+      margin-left: 214px
+      float: left
+      padding-left: 15px
+      position: relative
+      line-height: 23px
+      font-family: 'Open Sans', sans-serif
+
+      .dropdown-burger
+        width: 12px
+        height: 7px
+        background: url(/assets/navbar/icon-mrburger.png)
+        position: absolute
+        top: 8px
+        right: 15px
+
+    .dropdown-menu:hover
+      cursor: pointer
+
+    .dropdown
+      width: 237px
+      height: auto
+      padding: 0 100px 100px 0
+      position: absolute
+      top: 25px
+      left: 214px
+      display: none
+      z-index: 1000
+
+      .dropdown-bg
+        width: 137px
+        background: #000
+        opacity: 0.8
+        padding: 10px 15px
+                
+        a, a:link, a:visited, a:hover, a:active
+          color: $textcolor
+          font-size: $biggertext
+          display: block
+          margin-bottom: 3px
+  
+    .calendar
+      margin-left: 30px
+      margin-right: 244px
+      float: left
+      line-height: 23px
+    
+      a 
+        color: #929090
+        margin-right: 45px
+        font-size: $biggertext
+      
+      .active 
+        color: $textcolor
+        font-size: 14px
+      
+    .chat-status
+      position: absolute
+      top: 0px
+      right: 0px
+      width: 244px
+      height: 22px
+      border-left: 3px solid $textcolor
+      font-size: 11px
+      line-height: 22px
+      color: #929090
+
+      a, a:link, a:visited, a:hover, a:active
+        background: url(/assets/navbar/icon-chat-online.svg)
+        background-size: 12px 12px
+        background-repeat: no-repeat
+        padding-left: 22px
+        color: $textcolor
+        margin-left: 20px
+      
+    
+    .chat-status:hover
+      cursor: pointer
+
+.clear
+  clear: both
+
+.search_results
+  width: 700px
+  position: fixed
+  top: 43px
+  left: 214px
+  z-index: 100
+  background: url(/assets/navbar/search-bg.png)
+  display: none
+  
+  .search-hdr
+    background: #4f5051
+    height: 35px
+    width: 100%
+    font-size: $biggertext
+    color: $textcolor
+    text-align: center
+    line-height: 35px
+    font-weight: 700
+
+  .search-hdr:first-child
+    margin: 0px
+
+  .search-seeall
+    width: 100%
+    height: 20px
+    background: #000
+    color: $textcolor
+    text-align: center
+    font-size: $biggertext
+    line-height: 20px
+    
+    a, a:link, a:hover, a:active, a:visited
+      color: #fff
+    
+   
+  .search-entries
+    width: 100%
+    padding: 10px 0px
+    
+    .search-entry
+      padding: 2px 20px
+    
+      .search-entry-img
+        width: 52px
+        height: 42px
+        background: red
+        float: left
+        border: 1px solid #ccc
+        
+      .search-entry-info
+        float: left
+        max-height: 52px
+        font-size: $smalltext
+        margin-left: 25px
+              
+        .search-entry-info-hdr
+          font-size: $biggertext
+          color: $textcolor
+          line-height: 16px
+
+          a, a:link, a:hover, a:active, a:visited
+            color: #fff
+
+        .search-entry-info-rank
+          font-size: $smalltext
+          color: $textcolor
+          line-height: 12px
+          
+      .search-entry-icon
+        float: right
+        width: 50px
+        height: 40px
+        background-repeat: no-repeat
+        
+        &.follow
+          background: url(/assets/navbar/icon-follow.svg)
+          background-size: 19px 18px
+          background-repeat: no-repeat
+          background-position: center center
+          
+        &.connect
+          background: url(/assets/navbar/icon-connect.svg)
+          background-size: 47px 7px
+          background-repeat: no-repeat
+          background-position: center center
+        
+        &.add
+          background: url(/assets/navbar/icon-add.svg)
+          background-size: 23px 17px
+          background-repeat: no-repeat
+          background-position: center center
+    
+
+.logintop
+  position: absolute
+  top: 0px
+  right: 0px
+  width: 244px
+  background: #fff
+  z-index: 2000
+  height: 50px
+  
+  .links
+    margin-top: 20px
+    color: #333
+    font-size: 14px
+    margin-right: 40px
+    text-align: right
+    
+    a, a:hover, a:active, a:visited, a:link
+      font-weight: 600
+      color: #333
+      
+  .top-login-overlay
+    width: 244px
+    background: url(/assets/navbar/search-bg.png)
+    z-index: 2000
+    right: 0px
+    top: 50px
+    position: absolute
+    padding: 40px 20px 20px 20px
+    display: none
+
+    button 
+      @include button(simple, #333)
+      margin-top: 5px
+      padding: 6px 10px 7px 10px
+      font-size: 14px
+      font-family: 'Open Sans', sans-serif
+      margin: 20px auto
+      width: 100%
+   
+    input
+      background: transparent
+      font-size: 13px
+      font-family: 'Open Sans', sans-serif
+      border: 1px solid #828081
+      color: #fff
+      padding: 5px 10px
+  
+  .small
+    font-size: 10px
+    color: #fff
+    
+    a, a:link, a:visited, a:hover, a:active 
+      color: #fff

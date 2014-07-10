@@ -1,0 +1,94 @@
+.article-page
+  .article-page-hdr
+    .photo
+      - var image = /\/\d+$/.exec(article._source.image)
+      - var category = article._source.article_category
+      if image
+        img(src='http://riak.internal.eekoh.me/article' + image.toString())
+    .info
+      .name=  article._source.title
+      .divider
+      .author
+        | by 
+        a(href="#", class="system") Ali
+      .date May 28, 2014 at 10:13 am
+      .source(class='link-'+category)
+      .source Source: espn.com
+    .social
+      a(href="/article/#{hash}/add", class="system") 
+      a(href="#", class="page") 
+      a(href="#", class="discuss") 
+      a(href="#", class="share") 
+      a(href="#", class="chop") 
+    .clear
+      
+  .article-page-content
+    p!= article._source.article_text  
+    .article-page-brands-hdr
+    .article-page-brands-title Choose Brands To Receive Deals:
+    .article-page-brands
+      .brand
+        img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
+      .brand
+        img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
+      .brand
+        img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="170", height="85")
+      .clear
+    .article-page-discuss-hdr
+      a(href="#") Everyone
+      a(href="#") Connections
+      a(href="#") Interests
+    .article-page-discuss
+      .comment
+        .photo
+          img(src="http://1up.fm/wp/wp-content/uploads/2014/02/Lakers.png", width="55", height="50")
+        .info
+          .name
+            a(href="#") Postman Pat
+          .time
+            | &nbsp;&nbsp;>&nbsp;&nbsp; 5 minutes
+          .text Woohooo hello yaaaaaay!
+        .clear
+        .links
+          a(href="#", class="reply") Reply
+          a(href="#", class="like") Like
+          a(href="#", class="dislike") Dislike
+          a(href="#", class="flag") Flag
+          a(href="#", class="share") Share
+
+    .comment-answer
+      .photo
+        img(src="http://1up.fm/wp/wp-content/uploads/2014/02/Lakers.png", width="55", height="50")
+      .content
+        .name
+          a(href="#") Lil Meowzers
+        .comment-input
+          input(type="text", placeholder="Enter your comment..", name="article-comment", id="article-comment")
+        .comment-button
+          button(value="Comment") Comment
+        .clear
+      .clear
+
+.article-page-sidebar
+  .source-holder
+    .source-hdr Choose Source
+    .source.active
+      img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="65", height="50")
+    .source
+      img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="65", height="50")
+    .source
+      img(src="http://counterkicks.com/wp-content/uploads/2010/10/nike-swoosh.jpg", width="65", height="50")
+    .clear
+  .related-hdr  Related Articles
+    a(href="#") View all
+  .related-wrap
+    each rArticle in related
+      .related-article
+        a(href='/article/' + rArticle._id)
+          .image
+            - var image = /\/\d+$/.exec(rArticle._source.image)
+            if image
+              img(src='http://riak.internal.eekoh.me/article' + image.toString())
+          .hdr= rArticle._source.title
+            .arrow
+          .excerpt= rArticle._source.description

@@ -1,0 +1,35 @@
+$visual-grid: false
+$visual-grid-color: orange
+$visual-grid-index: front
+$grid-columns: 24
+$max-width: auto
+
+// font-face mixin //
+
+=font-face($family, $path, $svg, $weight: normal, $style: normal)
+  @font-face
+    font-family: $family
+    src: url('#{$path}.eot')
+    src: url('#{$path}.eot?#iefix') format('embedded-opentype'), url('#{$path}.woff') format('woff'), url('#{$path}.ttf') format('truetype'), url('#{$path}.svg##{$svg}') format('svg')
+    font-weight: $weight
+    font-style: $style
+    
+@import "bourbon/bourbon"
+@import "neat/neat"
+@import "bitters/bitters"
+
+$bg-color: #fff
+
+html
+  background-color: $bg-color
+
+body
+  font-family: 'Open Sans', sans-serif
+  font-weight: 400
+  min-height: 100%
+
+b 
+  font-weight: 700
+
+input:focus 
+  outline: 0 !important
